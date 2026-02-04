@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Portfolio preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4F0E6" />
+      <stop offset="1" stop-color="#EFE7DA" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2F6B5F" />
+      <stop offset="1" stop-color="#E07A5F" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="80" y="80" width="1040" height="470" rx="48" fill="#ffffff" opacity="0.7" />
+  <rect x="120" y="120" width="180" height="180" rx="36" fill="url(#accent)" />
+  <text x="340" y="240" font-family="Fraunces, serif" font-size="64" fill="#1E1B16">Maxwell McInnis</text>
+  <text x="340" y="310" font-family="Manrope, sans-serif" font-size="28" fill="#5A534C">Biomedical engineering portfolio</text>
+  <text x="340" y="370" font-family="Manrope, sans-serif" font-size="22" fill="#5A534C">Medical devices, biotech R&amp;D, and software</text>
+</svg>

@@ -139,7 +139,7 @@ export const projects = [
       "Reduced manual exports with smart views.",
     ],
     stats: [
-      { label: "Reporting time", value: "2.3x faster" },
+      { label: "Reporting time", value: "2.3x faster" }, 
       { label: "Tools consolidated", value: "5 to 1" },
       { label: "Data freshness", value: "Hourly" },
     ],

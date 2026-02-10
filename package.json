@@ -4,8 +4,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "predev": "node scripts/kill-stale-next-dev.cjs",
     "clean": "node -e \"require('node:fs').rmSync('.next', { recursive: true, force: true })\"",
-    "dev": "pnpm run clean && next dev",
+    "dev": "pnpm run clean && next dev -p 3000",
     "build": "next build",
     "start": "next start"
   },

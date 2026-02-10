@@ -1,20 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function ProjectCard({ project, index }) {
-  const gradient = `linear-gradient(135deg, ${project.palette[0]}, ${project.palette[1]})`;
+  const solidCardColor = project.palette[0];
   const accent = project.palette[2];
   return (
     <Link
-      to={`/work/${project.slug}`}
+      href={`/work/${project.slug}`}
       className="project-card reveal"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      <div className="project-card__image" style={{ backgroundImage: gradient }}>
+      <div className="project-card__image" style={{ backgroundColor: solidCardColor }}>
         <div className="project-card__badge" style={{ borderColor: accent }}>
           {project.category}
         </div>
-        <div className="project-card__label">Image placeholder</div>
+        <div className="project-card__label">View case study</div>
       </div>
       <div className="project-card__body">
         <div className="project-card__title">

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-label="qPCRLabAutomation abstract image">
+  <defs>
+    <radialGradient id="q1" cx="22%" cy="24%" r="86%">
+      <stop offset="0%" stop-color="#7ef7b6"/>
+      <stop offset="100%" stop-color="#129d57"/>
+    </radialGradient>
+    <radialGradient id="q2" cx="78%" cy="74%" r="78%">
+      <stop offset="0%" stop-color="#5ee7a1"/>
+      <stop offset="100%" stop-color="#0c6b3a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#11874a"/>
+  <circle cx="430" cy="320" r="360" fill="url(#q1)" opacity="0.9"/>
+  <circle cx="1180" cy="690" r="340" fill="url(#q2)" opacity="0.86"/>
+  <rect x="150" y="150" width="1300" height="700" rx="56" fill="#0b4428" opacity="0.26"/>
+  <rect x="230" y="230" width="1140" height="110" rx="28" fill="#d7ffe9" opacity="0.2"/>
+  <rect x="230" y="374" width="660" height="450" rx="34" fill="#eafff3" opacity="0.15"/>
+  <rect x="940" y="374" width="430" height="200" rx="30" fill="#eafff3" opacity="0.2"/>
+  <rect x="940" y="602" width="430" height="222" rx="30" fill="#eafff3" opacity="0.2"/>
+  <circle cx="500" cy="580" r="130" fill="#d4ffe7" opacity="0.34"/>
+  <circle cx="650" cy="560" r="96" fill="#d4ffe7" opacity="0.28"/>
+  <circle cx="360" cy="600" r="80" fill="#d4ffe7" opacity="0.24"/>
+</svg>

@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { site } from "../data/portfolio";
 
 export default function SiteNav() {
   return (
     <header className="nav">
       <div className="nav__inner">
-        <Link className="nav__brand" to="/">
+        <Link className="nav__brand" href="/">
           <span className="nav__mark" aria-hidden="true"></span>
           <span>{site.name}</span>
         </Link>

@@ -1,33 +1,10 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { projects } from "../data/portfolio";
+import Link from "next/link";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 
-export default function ProjectDetail() {
-  const { slug } = useParams();
-  const projectIndex = projects.findIndex((item) => item.slug === slug);
-  const project = projects[projectIndex];
-
-  if (!project) {
-    return (
-      <div className="page">
-        <SiteNav />
-        <main className="not-found">
-          <p className="eyebrow">Case study not found</p>
-          <h1>That project does not exist.</h1>
-          <p>Try heading back to the portfolio overview.</p>
-          <Link className="button button--primary" to="/">
-            Back to home
-          </Link>
-        </main>
-        <SiteFooter />
-      </div>
-    );
-  }
-
-  const nextProject = projects[(projectIndex + 1) % projects.length];
-  const heroGradient = `linear-gradient(140deg, ${project.palette[0]}, ${project.palette[1]})`;
+export default function ProjectDetail({ project, nextProject }) {
+  const solidCardColor = project.palette[0];
 
   return (
     <div className="page">
@@ -58,8 +35,11 @@ export default function ProjectDetail() {
               ))}
             </div>
           </div>
-          <div className="detail-hero__image" style={{ backgroundImage: heroGradient }}>
-            <div className="detail-hero__label">Hero image placeholder</div>
+          <div
+            className="detail-hero__image"
+            style={{ backgroundColor: solidCardColor }}
+          >
+            <div className="detail-hero__label">{project.title}</div>
           </div>
         </section>
 
@@ -115,11 +95,13 @@ export default function ProjectDetail() {
             </p>
           </div>
           <div className="gallery-grid">
-            {project.gallery.map((item) => (
-              <div key={item.label} className="gallery-card" style={{ backgroundImage: heroGradient }}>
+            {project.gallery.map((item) => {
+              return (
+              <div key={item.label} className="gallery-card" style={{ backgroundColor: solidCardColor }}>
                 <div className="gallery-card__label">{item.label}</div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -130,7 +112,7 @@ export default function ProjectDetail() {
               <h2>{nextProject.title}</h2>
               <p>{nextProject.summary}</p>
             </div>
-            <Link className="button button--primary" to={`/work/${nextProject.slug}`}>
+            <Link className="button button--primary" href={`/work/${nextProject.slug}`}>
               View next case study
             </Link>
           </div>

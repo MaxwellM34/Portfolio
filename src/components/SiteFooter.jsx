@@ -23,8 +23,8 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="footer__bottom">
-        <span>2026 Portfolio. All projects shown are sample work.</span>
-        <span>Made with the PrimerPlus framework.</span>
+        <span>2026 Portfolio. Real projects only.</span>
+        <span>Built with Next.js, React, Tailwind CSS, and pnpm.</span>
       </div>
     </footer>
   );

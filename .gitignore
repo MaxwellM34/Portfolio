@@ -1,9 +1,6 @@
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-.yarn/cache/*
-.yarn/install-state.gz
+/.pnpm-store
 
 # testing
 /coverage
@@ -11,6 +8,8 @@
 # production
 /build
 /prod
+/.next
+/out
 
 # misc
 .DS_Store
@@ -19,14 +18,6 @@
 .env.cloud
 
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Yarn Berry
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*

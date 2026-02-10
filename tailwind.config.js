@@ -1,5 +1,9 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
+  content: [
+    "./src/app/**/*.{js,jsx,ts,tsx,mdx}",
+    "./src/components/**/*.{js,jsx,ts,tsx,mdx}",
+    "./src/views/**/*.{js,jsx,ts,tsx,mdx}",
+  ],
   theme: {
     fontFamily: {
       sans: ["Manrope", "system-ui", "sans-serif"],

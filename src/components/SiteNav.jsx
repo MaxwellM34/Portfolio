@@ -11,6 +11,7 @@ export default function SiteNav() {
           <span>{site.name}</span>
         </Link>
         <nav className="nav__links">
+          <a href="/#home">Home</a>
           <a href="/#work">Work</a>
           <a href="/#services">Services</a>
           <a href="/#about">About</a>

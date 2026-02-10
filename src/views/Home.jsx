@@ -2,7 +2,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   education,
   experience,
@@ -55,7 +54,6 @@ function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
 }
 
 export default function Home() {
-  const router = useRouter();
   const heroProjects = visibleProjects;
   const hiddenProjectCount = Math.max(0, projects.length - heroProjects.length);
   const [orbitTime, setOrbitTime] = useState(0);
@@ -67,7 +65,6 @@ export default function Home() {
   const navigationLockRef = useRef(false);
   const navigationTimeoutRef = useRef(null);
   const activeNavigationRef = useRef("");
-  const prefetchedRoutesRef = useRef(new Set());
   const releaseMotionRef = useRef({ freezeUntil: 0, rampUntil: 0 });
   const orbitPhaseRef = useRef(0);
   const lastFrameTimeRef = useRef(null);
@@ -322,15 +319,6 @@ export default function Home() {
     event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
   const isPrimaryPlainClick = (event) => event.button === 0 && !isModifiedClick(event);
 
-  const prefetchProjectRoute = (slug) => {
-    if (!slug || prefetchedRoutesRef.current.has(slug)) {
-      return;
-    }
-
-    prefetchedRoutesRef.current.add(slug);
-    router.prefetch(`/work/${slug}`);
-  };
-
   const beginProjectNavigation = (slug) => {
     if (!slug || activeNavigationRef.current) {
       return;
@@ -348,7 +336,7 @@ export default function Home() {
       activeNavigationRef.current = "";
     }, NAV_LOCK_MS);
 
-    router.push(`/work/${slug}`);
+    window.location.assign(`/work/${slug}`);
   };
 
   const getEventClientPoint = (event) => {
@@ -406,14 +394,8 @@ export default function Home() {
     }
 
     const currentOrbit = normalOrbitStates[index];
-    const project = heroProjects[index];
-
     if (!currentOrbit) {
       return;
-    }
-
-    if (project) {
-      prefetchProjectRoute(project.slug);
     }
 
     let anchorX = currentOrbit.x;
@@ -577,22 +559,13 @@ export default function Home() {
                         <Link
                           href={`/work/${project.slug}`}
                           className="hero-card__button"
-                          onMouseEnter={() => prefetchProjectRoute(project.slug)}
-                          onFocus={() => prefetchProjectRoute(project.slug)}
-                          onPointerDown={(event) => {
-                            if (
-                              event.pointerType === "mouse" &&
-                              isPrimaryPlainClick(event)
-                            ) {
+                          onMouseDown={(event) => {
+                            if (isPrimaryPlainClick(event)) {
                               event.preventDefault();
                               beginProjectNavigation(project.slug);
                             }
                           }}
-                          onClick={(event) => {
-                            if (isModifiedClick(event)) {
-                              return;
-                            }
-
+                          onTouchStart={(event) => {
                             event.preventDefault();
                             beginProjectNavigation(project.slug);
                           }}

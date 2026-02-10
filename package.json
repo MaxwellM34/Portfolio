@@ -6,6 +6,7 @@
   "scripts": {
     "predev": "node scripts/kill-stale-next-dev.cjs && pnpm run clean",
     "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('.next', { recursive: true, force: true }); fs.rmSync('.next-dev', { recursive: true, force: true });\"",
+    "dev:clean": "pnpm run clean && next dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
@@ -21,5 +22,8 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
-  "packageManager": "pnpm@10.2.0"
+  "packageManager": "pnpm@10.2.0",
+  "engines": {
+    "node": ">=20 <23"
+  }
 }

@@ -16,8 +16,14 @@ $repoPath = '${repoPath.replace(/'/g, "''")}';
 Get-CimInstance Win32_Process |
   Where-Object {
     $_.Name -eq 'node.exe' -and
-    $_.CommandLine -like '*next\\dist\\server\\lib\\start-server.js*' -and
-    $_.CommandLine -like ('*' + $repoPath + '*')
+    $_.CommandLine -like ('*' + $repoPath + '*') -and
+    (
+      $_.CommandLine -like '*next\\dist\\server\\lib\\start-server.js*' -or
+      (
+        $_.CommandLine -like '*next\\dist\\bin\\next*' -and
+        $_.CommandLine -match '\\bdev\\b'
+      )
+    )
   } |
   Select-Object -ExpandProperty ProcessId
 `;
@@ -56,10 +62,12 @@ function getPosixPids() {
         (entry) =>
           entry &&
           entry.pid !== process.pid &&
-          entry.command.includes("next/dist/server/lib/start-server.js") &&
           entry.command.includes(
             path.sep === "\\" ? repoPath.replace(/\\/g, "\\\\") : repoPath
-          )
+          ) &&
+          (entry.command.includes("next/dist/server/lib/start-server.js") ||
+            (entry.command.includes("next/dist/bin/next") &&
+              /\bdev\b/.test(entry.command)))
       )
       .map((entry) => entry.pid);
   } catch {

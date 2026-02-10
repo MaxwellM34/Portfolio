@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   education,
   experience,
+  projects,
   resume,
   site,
   visibleProjects,
@@ -13,10 +14,47 @@ import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import ProjectCard from "../components/ProjectCard";
 
+function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
+  const slots = [];
+
+  if (total <= 0) {
+    return slots;
+  }
+
+  let remaining = total;
+  let offset = 0;
+  let ring = 0;
+
+  while (remaining > 0) {
+    const radius = startRadius + ring * ringGap;
+    const circumference = Math.PI * 2 * radius;
+    const capacity = Math.max(1, Math.floor(circumference / Math.max(1, minSpacing)));
+    const count = Math.min(remaining, capacity);
+
+    for (let i = 0; i < count; i += 1) {
+      const jitter = (i % 2 === 0 ? -1 : 1) * 0.06 + ring * 0.17;
+      slots[offset + i] = {
+        ring,
+        radius,
+        count,
+        angleOffset: (Math.PI * 2 * i) / count + jitter,
+      };
+    }
+
+    remaining -= count;
+    offset += count;
+    ring += 1;
+  }
+
+  return slots;
+}
+
 export default function Home() {
   const heroProjects = visibleProjects;
+  const hiddenProjectCount = Math.max(0, projects.length - heroProjects.length);
   const [orbitTime, setOrbitTime] = useState(0);
   const [isCompactOrbit, setIsCompactOrbit] = useState(false);
+  const [hoverLock, setHoverLock] = useState(null);
 
   useEffect(() => {
     const onResize = () => setIsCompactOrbit(window.innerWidth <= 980);
@@ -25,6 +63,16 @@ export default function Home() {
 
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  useEffect(() => {
+    setHoverLock((current) => {
+      if (!current) {
+        return current;
+      }
+
+      return current.index < heroProjects.length ? current : null;
+    });
+  }, [heroProjects.length]);
 
   useEffect(() => {
     if (heroProjects.length <= 1) {
@@ -48,33 +96,116 @@ export default function Home() {
     return () => window.cancelAnimationFrame(animationFrame);
   }, [heroProjects.length]);
 
-  const orbitStates = useMemo(() => {
+  const orbitConfig = useMemo(() => {
+    const total = heroProjects.length;
+    const sizePenalty = Math.max(0, total - (isCompactOrbit ? 2 : 3));
+    const cardWidth = Math.round(
+      Math.max(isCompactOrbit ? 220 : 260, (isCompactOrbit ? 292 : 360) - sizePenalty * 12)
+    );
+    const crowdScale = Math.max(isCompactOrbit ? 0.78 : 0.72, 1 - sizePenalty * 0.05);
+    const minSpacing = cardWidth * (isCompactOrbit ? 0.72 : 0.74);
+    const baseRadius = isCompactOrbit ? 120 : 176;
+    const ringGap = Math.max(minSpacing * 0.88, isCompactOrbit ? 150 : 190);
+    const verticalScale = isCompactOrbit ? 0.82 : 0.76;
+    const slots = buildOrbitSlots(total, baseRadius, ringGap, minSpacing);
+    const maxRing = slots.reduce((max, slot) => Math.max(max, slot.ring), 0);
+    const stackHeight = (isCompactOrbit ? 350 : 470) + maxRing * (isCompactOrbit ? 104 : 128);
+
+    return {
+      cardWidth,
+      crowdScale,
+      minSpacing,
+      ringGap,
+      verticalScale,
+      slots,
+      maxRing,
+      stackHeight,
+    };
+  }, [heroProjects.length, isCompactOrbit]);
+
+  const normalOrbitStates = useMemo(() => {
     if (heroProjects.length === 0) {
       return [];
     }
 
-    const speed = 0.0002;
-    const orbitWarp = 0.42;
-    const radiusX = isCompactOrbit ? 104 : 176;
-    const radiusY = isCompactOrbit ? 22 : 34;
-    const depthRange = isCompactOrbit ? 170 : 240;
-    const verticalOffset = isCompactOrbit ? 18 : 24;
+    const baseSpeed = isCompactOrbit ? 0.00024 : 0.00018;
+    const ringLift = (orbitConfig.maxRing * 8) / 2;
 
-    return heroProjects.map((_, index) => {
-      const spacing = (Math.PI * 2) / heroProjects.length;
-      const rawAngle = orbitTime * speed + index * spacing;
-      // Warp angular speed so cards appear to linger near the front.
-      const angle = rawAngle - orbitWarp * Math.sin(rawAngle * 2);
+    return orbitConfig.slots.map((slot) => {
+      const speed = baseSpeed / (1 + slot.ring * 0.16);
+      const angle = orbitTime * speed + slot.angleOffset;
       const depth = (Math.cos(angle) + 1) / 2;
-      const x = Math.sin(angle) * radiusX;
-      const y = Math.cos(angle) * radiusY + verticalOffset + (1 - depth) * 16;
-      const z = -126 + depth * depthRange;
-      const scale = 0.76 + depth * 0.28;
-      const tilt = -5 * Math.sin(angle);
+      const x = Math.cos(angle) * slot.radius;
+      const y = Math.sin(angle) * slot.radius * orbitConfig.verticalScale + slot.ring * 8 - ringLift;
+      const z = -78 + depth * (isCompactOrbit ? 110 : 148) - slot.ring * 8;
+      const scale = orbitConfig.crowdScale * (0.84 + depth * 0.2 - slot.ring * 0.02);
+      const tilt = Math.sin(angle) * (slot.ring === 0 ? 5 : 3);
 
       return { depth, x, y, z, scale, tilt };
     });
-  }, [heroProjects, isCompactOrbit, orbitTime]);
+  }, [heroProjects.length, isCompactOrbit, orbitConfig, orbitTime]);
+
+  const orbitStates = useMemo(() => {
+    if (!hoverLock || hoverLock.index >= heroProjects.length) {
+      return normalOrbitStates;
+    }
+
+    const states = normalOrbitStates.map((orbit) => ({ ...orbit }));
+    const lockedIndex = hoverLock.index;
+    const otherIndices = [];
+
+    for (let i = 0; i < heroProjects.length; i += 1) {
+      if (i !== lockedIndex) {
+        otherIndices.push(i);
+      }
+    }
+
+    const swirlSlots = buildOrbitSlots(
+      otherIndices.length,
+      orbitConfig.minSpacing * 0.9,
+      orbitConfig.ringGap * 0.9,
+      orbitConfig.minSpacing * 0.92
+    );
+
+    const swirlSpeed = isCompactOrbit ? 0.00042 : 0.00034;
+    const swirlVerticalScale = isCompactOrbit ? 0.9 : 0.82;
+
+    states[lockedIndex] = {
+      depth: 1,
+      x: hoverLock.x,
+      y: hoverLock.y,
+      z: Math.max(24, hoverLock.z),
+      scale: hoverLock.scale * 1.02,
+      tilt: hoverLock.tilt * 0.15,
+    };
+
+    otherIndices.forEach((cardIndex, order) => {
+      const slot = swirlSlots[order];
+      const speed = swirlSpeed / (1 + slot.ring * 0.15);
+      const angle = orbitTime * speed + slot.angleOffset;
+      const radiusScale = 0.84 + 0.16 * Math.sin(angle * 1.5 + slot.ring * 0.7);
+      const radius = slot.radius * radiusScale;
+      const waveX = Math.cos(angle * 0.48 + order * 0.35) * 14;
+      const waveY = Math.sin(angle * 0.62 + order * 0.55) * 10;
+      const x = hoverLock.x + Math.cos(angle) * radius + waveX;
+      const y =
+        hoverLock.y +
+        Math.sin(angle * 1.1 + slot.ring * 0.35) * radius * swirlVerticalScale +
+        waveY;
+      const depthWave = Math.sin(angle * 1.32 + order * 0.68);
+
+      states[cardIndex] = {
+        depth: 0.44 - slot.ring * 0.07 + (depthWave + 1) * 0.05,
+        x,
+        y,
+        z: -46 - slot.ring * 14 + depthWave * 18,
+        scale: orbitConfig.crowdScale * Math.max(0.74, 0.9 - slot.ring * 0.08),
+        tilt: Math.sin(angle * 0.9 + order * 0.4) * 2.8 + Math.cos(angle * 0.45) * 1.4,
+      };
+    });
+
+    return states;
+  }, [heroProjects.length, hoverLock, isCompactOrbit, normalOrbitStates, orbitConfig, orbitTime]);
 
   const depthZIndexMap = useMemo(() => {
     const ranking = orbitStates
@@ -83,13 +214,21 @@ export default function Home() {
 
     const zIndexMap = new Array(orbitStates.length).fill(1);
     ranking.forEach((entry, rank) => {
-      zIndexMap[entry.index] = 20 + rank;
+      zIndexMap[entry.index] = 40 + rank;
     });
 
+    if (hoverLock && hoverLock.index < zIndexMap.length) {
+      zIndexMap[hoverLock.index] = 200;
+    }
+
     return zIndexMap;
-  }, [orbitStates]);
+  }, [hoverLock, orbitStates]);
 
   const frontCardIndex = useMemo(() => {
+    if (hoverLock && hoverLock.index < orbitStates.length) {
+      return hoverLock.index;
+    }
+
     if (orbitStates.length === 0) {
       return -1;
     }
@@ -102,7 +241,34 @@ export default function Home() {
     }
 
     return frontIndex;
-  }, [orbitStates]);
+  }, [hoverLock, orbitStates]);
+
+  const releaseHoverLock = () => setHoverLock(null);
+
+  const handleCardHover = (index) => {
+    const currentOrbit = normalOrbitStates[index];
+
+    if (!currentOrbit) {
+      return;
+    }
+
+    setHoverLock({
+      index,
+      x: currentOrbit.x,
+      y: currentOrbit.y,
+      z: currentOrbit.z,
+      scale: currentOrbit.scale,
+      tilt: currentOrbit.tilt,
+    });
+  };
+
+  const handleCardLeave = (index) => {
+    if (!hoverLock || hoverLock.index !== index) {
+      return;
+    }
+
+    releaseHoverLock();
+  };
 
   return (
     <div className="page">
@@ -135,7 +301,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="hero__stack">
+          <div
+            className="hero__stack"
+            style={{
+              "--hero-card-width": `${orbitConfig.cardWidth}px`,
+              "--hero-stack-height": `${orbitConfig.stackHeight}px`,
+            }}
+            onMouseLeave={releaseHoverLock}
+          >
             {heroProjects.length > 0 ? (
               heroProjects.map((project, index) => {
                 const orbit = orbitStates[index] || {
@@ -149,16 +322,24 @@ export default function Home() {
 
                 const solidCardColor = project.palette[0];
                 const isTopCard = index === frontCardIndex;
-                const brightness = 0.8 + orbit.depth * 0.2;
-                const saturate = 1 + orbit.depth * 0.15;
-                const shadowStrength = 0.2 + orbit.depth * 0.18;
+                const brightness = hoverLock
+                  ? isTopCard
+                    ? 1.05
+                    : 0.94
+                  : 0.82 + orbit.depth * 0.2;
+                const saturate = hoverLock
+                  ? isTopCard
+                    ? 1.06
+                    : 0.96
+                  : 1 + orbit.depth * 0.15;
+                const shadowStrength = isTopCard ? 0.34 : 0.2 + orbit.depth * 0.12;
 
                 const shellStyle = {
                   zIndex: depthZIndexMap[index] ?? 1,
-                  pointerEvents: isTopCard ? "auto" : "none",
-                  opacity: 0.58 + orbit.depth * 0.42,
+                  pointerEvents: "auto",
+                  opacity: hoverLock ? (isTopCard ? 1 : 0.86) : 0.6 + orbit.depth * 0.4,
                   filter: `brightness(${brightness}) saturate(${saturate})`,
-                  boxShadow: `0 ${12 + orbit.depth * 16}px ${22 + orbit.depth * 20}px rgba(17, 14, 12, ${shadowStrength})`,
+                  boxShadow: `0 ${12 + orbit.depth * 14}px ${22 + orbit.depth * 18}px rgba(17, 14, 12, ${shadowStrength})`,
                   "--orbit-x": `${orbit.x}px`,
                   "--orbit-y": `${orbit.y}px`,
                   "--orbit-z": `${orbit.z}px`,
@@ -171,6 +352,9 @@ export default function Home() {
                     key={project.slug}
                     className="hero-card-shell"
                     style={shellStyle}
+                    onMouseEnter={() => handleCardHover(index)}
+                    onMouseLeave={() => handleCardLeave(index)}
+                    onFocusCapture={() => handleCardHover(index)}
                   >
                     <Link
                       href={`/work/${project.slug}`}
@@ -184,7 +368,7 @@ export default function Home() {
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
                       <div className="hero-card__label">
-                        {isTopCard ? "Click to open case study" : "Up next"}
+                        {isTopCard ? "Click to open case study" : hoverLock ? "Orbiting" : "Up next"}
                       </div>
                     </Link>
                   </div>
@@ -272,11 +456,11 @@ export default function Home() {
               </p>
               <div className="about-stats">
                 <div>
-                  <strong>3</strong>
+                  <strong>{heroProjects.length}</strong>
                   <span>Published real projects</span>
                 </div>
                 <div>
-                  <strong>3</strong>
+                  <strong>{hiddenProjectCount}</strong>
                   <span>Hidden placeholders</span>
                 </div>
                 <div>

@@ -30,6 +30,41 @@ const placeholderProject = (index) => ({
   palette: ["#6B7280", "#9CA3AF", "#D1D5DB"],
 });
 
+const publicPlaceholderProject = (slug, title, palette) => ({
+  slug,
+  hidden: false,
+  title,
+  category: "Placeholder Case Study",
+  year: "2026",
+  summary: "Placeholder card for layout testing. Replace with a real project when ready.",
+  description:
+    "This placeholder project is visible for card/orbit testing. Replace content and visuals with a real case study before publishing publicly.",
+  role: "TBD",
+  timeline: "TBD",
+  services: ["Placeholder content", "Orbit layout test", "Card interaction test"],
+  tools: ["Next.js", "React", "Tailwind CSS"],
+  image: "/og-image.svg",
+  heroImage: "/og-image.svg",
+  highlights: [
+    "Visible placeholder used to stress-test the homepage card system.",
+    "Can be swapped for a real project by editing this entry in portfolio.js.",
+  ],
+  stats: [
+    { label: "Status", value: "Placeholder" },
+    { label: "Visibility", value: "Published" },
+    { label: "Action", value: "Replace with real case study" },
+  ],
+  gallery: [
+    { label: "Placeholder frame 1", image: "/og-image.svg" },
+    { label: "Placeholder frame 2", image: "/og-image.svg" },
+    { label: "Placeholder frame 3", image: "/og-image.svg" },
+  ],
+  challenge: "Placeholder challenge text.",
+  approach: "Placeholder approach text.",
+  outcome: "Placeholder outcome text.",
+  palette,
+});
+
 export const site = {
   name: "Maxwell McInnis",
   role: "Biomedical Engineer + Software Builder",
@@ -216,6 +251,21 @@ export const projects = [
       "A central foundation for scaling qPCR software workflows with less manual handoff across tools.",
     palette: ["#14532D", "#22C55E", "#A7F3D0"],
   },
+  publicPlaceholderProject("placeholder-aurora", "Aurora Placeholder", [
+    "#5B6DF8",
+    "#93C5FD",
+    "#DBEAFE",
+  ]),
+  publicPlaceholderProject("placeholder-mosaic", "Mosaic Placeholder", [
+    "#AD6A2F",
+    "#F4A261",
+    "#FDEBD2",
+  ]),
+  publicPlaceholderProject("placeholder-signal", "Signal Placeholder", [
+    "#7C3AED",
+    "#C4B5FD",
+    "#EDE9FE",
+  ]),
   placeholderProject(1),
   placeholderProject(2),
   placeholderProject(3),

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   education,
   experience,
@@ -13,6 +14,10 @@ import {
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import ProjectCard from "../components/ProjectCard";
+
+const RELEASE_FREEZE_MS = 1000;
+const RELEASE_RAMP_MS = 2800;
+const NAV_LOCK_MS = 1800;
 
 function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
   const slots = [];
@@ -50,11 +55,31 @@ function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
 }
 
 export default function Home() {
+  const router = useRouter();
   const heroProjects = visibleProjects;
   const hiddenProjectCount = Math.max(0, projects.length - heroProjects.length);
   const [orbitTime, setOrbitTime] = useState(0);
   const [isCompactOrbit, setIsCompactOrbit] = useState(false);
+  const [isTouchInput, setIsTouchInput] = useState(false);
   const [hoverLock, setHoverLock] = useState(null);
+  const stackRef = useRef(null);
+  const hoverLockRef = useRef(null);
+  const navigationLockRef = useRef(false);
+  const navigationTimeoutRef = useRef(null);
+  const activeNavigationRef = useRef("");
+  const prefetchedRoutesRef = useRef(new Set());
+  const releaseMotionRef = useRef({ freezeUntil: 0, rampUntil: 0 });
+  const orbitPhaseRef = useRef(0);
+  const lastFrameTimeRef = useRef(null);
+
+  useEffect(
+    () => () => {
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const onResize = () => setIsCompactOrbit(window.innerWidth <= 980);
@@ -62,6 +87,24 @@ export default function Home() {
     window.addEventListener("resize", onResize);
 
     return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia("(hover: none), (pointer: coarse)");
+    const updateInputMode = () => setIsTouchInput(mediaQuery.matches);
+    updateInputMode();
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", updateInputMode);
+      return () => mediaQuery.removeEventListener("change", updateInputMode);
+    }
+
+    mediaQuery.addListener(updateInputMode);
+    return () => mediaQuery.removeListener(updateInputMode);
   }, []);
 
   useEffect(() => {
@@ -75,26 +118,57 @@ export default function Home() {
   }, [heroProjects.length]);
 
   useEffect(() => {
+    hoverLockRef.current = hoverLock;
+  }, [hoverLock]);
+
+  useEffect(() => {
     if (heroProjects.length <= 1) {
+      orbitPhaseRef.current = 0;
+      lastFrameTimeRef.current = null;
+      setOrbitTime(0);
       return undefined;
     }
 
     let animationFrame;
-    let startTime;
-
     const animate = (now) => {
-      if (startTime === undefined) {
-        startTime = now;
+      if (lastFrameTimeRef.current === null) {
+        lastFrameTimeRef.current = now;
       }
 
-      setOrbitTime(now - startTime);
+      const dt = Math.min(64, now - lastFrameTimeRef.current);
+      lastFrameTimeRef.current = now;
+
+      let timeScale = 1;
+      const releaseMotion = releaseMotionRef.current;
+
+      if (navigationLockRef.current) {
+        timeScale = 0;
+      } else if (hoverLockRef.current) {
+        timeScale = isCompactOrbit ? 0.58 : 0.5;
+      } else if (releaseMotion.rampUntil > now) {
+        if (now < releaseMotion.freezeUntil) {
+          timeScale = 0;
+        } else {
+          const progress =
+            (now - releaseMotion.freezeUntil) /
+            Math.max(1, releaseMotion.rampUntil - releaseMotion.freezeUntil);
+          const easedProgress = progress * progress * (3 - 2 * progress);
+          timeScale = 0.08 + easedProgress * 0.92;
+        }
+      }
+
+      orbitPhaseRef.current += dt * timeScale;
+      setOrbitTime(orbitPhaseRef.current);
       animationFrame = window.requestAnimationFrame(animate);
     };
 
     animationFrame = window.requestAnimationFrame(animate);
 
-    return () => window.cancelAnimationFrame(animationFrame);
-  }, [heroProjects.length]);
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      lastFrameTimeRef.current = null;
+    };
+  }, [heroProjects.length, isCompactOrbit]);
 
   const orbitConfig = useMemo(() => {
     const total = heroProjects.length;
@@ -128,7 +202,7 @@ export default function Home() {
       return [];
     }
 
-    const baseSpeed = isCompactOrbit ? 0.00024 : 0.00018;
+    const baseSpeed = isCompactOrbit ? 0.00016 : 0.00012;
     const ringLift = (orbitConfig.maxRing * 8) / 2;
 
     return orbitConfig.slots.map((slot) => {
@@ -167,7 +241,7 @@ export default function Home() {
       orbitConfig.minSpacing * 0.92
     );
 
-    const swirlSpeed = isCompactOrbit ? 0.00042 : 0.00034;
+    const swirlSpeed = isCompactOrbit ? 0.00024 : 0.00019;
     const swirlVerticalScale = isCompactOrbit ? 0.9 : 0.82;
 
     states[lockedIndex] = {
@@ -185,8 +259,8 @@ export default function Home() {
       const angle = orbitTime * speed + slot.angleOffset;
       const radiusScale = 0.84 + 0.16 * Math.sin(angle * 1.5 + slot.ring * 0.7);
       const radius = slot.radius * radiusScale;
-      const waveX = Math.cos(angle * 0.48 + order * 0.35) * 14;
-      const waveY = Math.sin(angle * 0.62 + order * 0.55) * 10;
+      const waveX = Math.cos(angle * 0.48 + order * 0.35) * 11;
+      const waveY = Math.sin(angle * 0.62 + order * 0.55) * 8;
       const x = hoverLock.x + Math.cos(angle) * radius + waveX;
       const y =
         hoverLock.y +
@@ -243,31 +317,156 @@ export default function Home() {
     return frontIndex;
   }, [hoverLock, orbitStates]);
 
-  const releaseHoverLock = () => setHoverLock(null);
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const isModifiedClick = (event) =>
+    event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+  const isPrimaryPlainClick = (event) => event.button === 0 && !isModifiedClick(event);
 
-  const handleCardHover = (index) => {
+  const prefetchProjectRoute = (slug) => {
+    if (!slug || prefetchedRoutesRef.current.has(slug)) {
+      return;
+    }
+
+    prefetchedRoutesRef.current.add(slug);
+    router.prefetch(`/work/${slug}`);
+  };
+
+  const beginProjectNavigation = (slug) => {
+    if (!slug || activeNavigationRef.current) {
+      return;
+    }
+
+    activeNavigationRef.current = slug;
+    navigationLockRef.current = true;
+
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+
+    navigationTimeoutRef.current = setTimeout(() => {
+      navigationLockRef.current = false;
+      activeNavigationRef.current = "";
+    }, NAV_LOCK_MS);
+
+    router.push(`/work/${slug}`);
+  };
+
+  const getEventClientPoint = (event) => {
+    if (!event) {
+      return null;
+    }
+
+    if (typeof event.clientX === "number" && typeof event.clientY === "number") {
+      return { x: event.clientX, y: event.clientY };
+    }
+
+    if (event.nativeEvent) {
+      const native = event.nativeEvent;
+
+      if (typeof native.clientX === "number" && typeof native.clientY === "number") {
+        return { x: native.clientX, y: native.clientY };
+      }
+
+      if (native.touches && native.touches.length > 0) {
+        return { x: native.touches[0].clientX, y: native.touches[0].clientY };
+      }
+
+      if (native.changedTouches && native.changedTouches.length > 0) {
+        return { x: native.changedTouches[0].clientX, y: native.changedTouches[0].clientY };
+      }
+    }
+
+    if (event.touches && event.touches.length > 0) {
+      return { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    }
+
+    return null;
+  };
+
+  const releaseHoverLock = () => {
+    if (navigationLockRef.current) {
+      return;
+    }
+
+    if (!hoverLockRef.current) {
+      return;
+    }
+
+    setHoverLock(null);
+    const now = performance.now();
+    releaseMotionRef.current = {
+      freezeUntil: now + RELEASE_FREEZE_MS,
+      rampUntil: now + RELEASE_FREEZE_MS + RELEASE_RAMP_MS,
+    };
+  };
+
+  const handleCardHover = (index, event) => {
+    if (navigationLockRef.current) {
+      return;
+    }
+
     const currentOrbit = normalOrbitStates[index];
+    const project = heroProjects[index];
 
     if (!currentOrbit) {
       return;
     }
 
+    if (project) {
+      prefetchProjectRoute(project.slug);
+    }
+
+    let anchorX = currentOrbit.x;
+    let anchorY = currentOrbit.y;
+    const point = getEventClientPoint(event);
+
+    if (point && stackRef.current) {
+      const rect = stackRef.current.getBoundingClientRect();
+      const relativeX = point.x - (rect.left + rect.width / 2);
+      const relativeY = point.y - (rect.top + rect.height / 2);
+      anchorX = clamp(relativeX, -rect.width * 0.33, rect.width * 0.33);
+      anchorY = clamp(relativeY, -rect.height * 0.3, rect.height * 0.3);
+    }
+
+    releaseMotionRef.current = { freezeUntil: 0, rampUntil: 0 };
+
     setHoverLock({
       index,
-      x: currentOrbit.x,
-      y: currentOrbit.y,
+      x: anchorX,
+      y: anchorY,
       z: currentOrbit.z,
       scale: currentOrbit.scale,
       tilt: currentOrbit.tilt,
     });
   };
 
-  const handleCardLeave = (index) => {
-    if (!hoverLock || hoverLock.index !== index) {
+  const handleCardPointerDown = (index, slug, event) => {
+    const target = event.target;
+    const isButtonTarget =
+      target instanceof Element && target.closest(".hero-card__button");
+
+    if (isButtonTarget) {
       return;
     }
 
-    releaseHoverLock();
+    if (event.pointerType === "touch" || event.pointerType === "pen") {
+      handleCardHover(index, event);
+      return;
+    }
+
+    if (event.pointerType === "mouse" && isPrimaryPlainClick(event)) {
+      handleCardHover(index, event);
+      beginProjectNavigation(slug);
+    }
+  };
+
+  const handleCardTouchStart = (index, event) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest(".hero-card__button")) {
+      return;
+    }
+
+    handleCardHover(index, event);
   };
 
   return (
@@ -302,6 +501,7 @@ export default function Home() {
             </div>
           </div>
           <div
+            ref={stackRef}
             className="hero__stack"
             style={{
               "--hero-card-width": `${orbitConfig.cardWidth}px`,
@@ -352,12 +552,18 @@ export default function Home() {
                     key={project.slug}
                     className="hero-card-shell"
                     style={shellStyle}
-                    onMouseEnter={() => handleCardHover(index)}
-                    onMouseLeave={() => handleCardLeave(index)}
-                    onFocusCapture={() => handleCardHover(index)}
+                    onMouseEnter={(event) => {
+                      if (!isTouchInput) {
+                        handleCardHover(index, event);
+                      }
+                    }}
+                    onPointerDown={(event) =>
+                      handleCardPointerDown(index, project.slug, event)
+                    }
+                    onTouchStart={(event) => handleCardTouchStart(index, event)}
+                    onFocusCapture={(event) => handleCardHover(index, event)}
                   >
-                    <Link
-                      href={`/work/${project.slug}`}
+                    <article
                       className="hero-card"
                       style={{ backgroundColor: solidCardColor }}
                     >
@@ -367,10 +573,34 @@ export default function Home() {
                       </div>
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
-                      <div className="hero-card__label">
-                        {isTopCard ? "Click to open case study" : hoverLock ? "Orbiting" : "Up next"}
+                      <div className="hero-card__actions">
+                        <Link
+                          href={`/work/${project.slug}`}
+                          className="hero-card__button"
+                          onMouseEnter={() => prefetchProjectRoute(project.slug)}
+                          onFocus={() => prefetchProjectRoute(project.slug)}
+                          onPointerDown={(event) => {
+                            if (
+                              event.pointerType === "mouse" &&
+                              isPrimaryPlainClick(event)
+                            ) {
+                              event.preventDefault();
+                              beginProjectNavigation(project.slug);
+                            }
+                          }}
+                          onClick={(event) => {
+                            if (isModifiedClick(event)) {
+                              return;
+                            }
+
+                            event.preventDefault();
+                            beginProjectNavigation(project.slug);
+                          }}
+                        >
+                          Open project
+                        </Link>
                       </div>
-                    </Link>
+                    </article>
                   </div>
                 );
               })

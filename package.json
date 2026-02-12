@@ -4,11 +4,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "predev": "node scripts/kill-stale-next-dev.cjs && pnpm run clean",
     "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('.next', { recursive: true, force: true }); fs.rmSync('.next-dev', { recursive: true, force: true });\"",
-    "dev:clean": "pnpm run clean && next dev",
-    "dev": "next dev",
-    "build": "next build",
+    "clean:dev": "node -e \"const fs=require('node:fs'); fs.rmSync('.next-dev', { recursive: true, force: true });\"",
+    "clean:prod": "node -e \"const fs=require('node:fs'); fs.rmSync('.next', { recursive: true, force: true });\"",
+    "dev": "node scripts/run-next-dev.cjs",
+    "dev:clean": "pnpm run clean:dev && node scripts/run-next-dev.cjs",
+    "dev:reset": "node scripts/kill-stale-next-dev.cjs && pnpm run clean:dev && node scripts/run-next-dev.cjs",
+    "build": "pnpm run clean:prod && next build",
     "start": "next start"
   },
   "devDependencies": {

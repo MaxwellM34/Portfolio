@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   education,
@@ -60,6 +61,8 @@ export default function Home() {
   const [isCompactOrbit, setIsCompactOrbit] = useState(false);
   const [isTouchInput, setIsTouchInput] = useState(false);
   const [hoverLock, setHoverLock] = useState(null);
+  const [contentRightInStackX, setContentRightInStackX] = useState(null);
+  const contentRef = useRef(null);
   const stackRef = useRef(null);
   const hoverLockRef = useRef(null);
   const navigationLockRef = useRef(false);
@@ -77,6 +80,40 @@ export default function Home() {
     },
     []
   );
+
+  useEffect(() => {
+    const stackNode = stackRef.current;
+    const contentNode = contentRef.current;
+    if (!stackNode || !contentNode) {
+      return undefined;
+    }
+
+    const updateContentRightBound = () => {
+      const stackRect = stackNode.getBoundingClientRect();
+      const contentRect = contentNode.getBoundingClientRect();
+      const stackCenterX = stackRect.left + stackRect.width / 2;
+      setContentRightInStackX(contentRect.right - stackCenterX);
+    };
+
+    updateContentRightBound();
+    window.addEventListener("resize", updateContentRightBound);
+
+    if (typeof ResizeObserver === "undefined") {
+      return () => window.removeEventListener("resize", updateContentRightBound);
+    }
+
+    const observer = new ResizeObserver(() => {
+      updateContentRightBound();
+    });
+
+    observer.observe(stackNode);
+    observer.observe(contentNode);
+
+    return () => {
+      window.removeEventListener("resize", updateContentRightBound);
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const onResize = () => setIsCompactOrbit(window.innerWidth <= 980);
@@ -194,6 +231,12 @@ export default function Home() {
     };
   }, [heroProjects.length, isCompactOrbit]);
 
+  const leftOrbitPadding = isCompactOrbit ? 12 : 20;
+  const leftOrbitEdgeBound =
+    !isCompactOrbit && typeof contentRightInStackX === "number"
+      ? contentRightInStackX + leftOrbitPadding
+      : Number.NEGATIVE_INFINITY;
+
   const normalOrbitStates = useMemo(() => {
     if (heroProjects.length === 0) {
       return [];
@@ -206,15 +249,18 @@ export default function Home() {
       const speed = baseSpeed / (1 + slot.ring * 0.16);
       const angle = orbitTime * speed + slot.angleOffset;
       const depth = (Math.cos(angle) + 1) / 2;
-      const x = Math.cos(angle) * slot.radius;
+      const scale = orbitConfig.crowdScale * (0.84 + depth * 0.2 - slot.ring * 0.02);
+      const minCenterX = Number.isFinite(leftOrbitEdgeBound)
+        ? leftOrbitEdgeBound + (orbitConfig.cardWidth * scale) / 2
+        : Number.NEGATIVE_INFINITY;
+      const x = Math.max(minCenterX, Math.cos(angle) * slot.radius);
       const y = Math.sin(angle) * slot.radius * orbitConfig.verticalScale + slot.ring * 8 - ringLift;
       const z = -78 + depth * (isCompactOrbit ? 110 : 148) - slot.ring * 8;
-      const scale = orbitConfig.crowdScale * (0.84 + depth * 0.2 - slot.ring * 0.02);
       const tilt = Math.sin(angle) * (slot.ring === 0 ? 5 : 3);
 
       return { depth, x, y, z, scale, tilt };
     });
-  }, [heroProjects.length, isCompactOrbit, orbitConfig, orbitTime]);
+  }, [heroProjects.length, isCompactOrbit, leftOrbitEdgeBound, orbitConfig, orbitTime]);
 
   const orbitStates = useMemo(() => {
     if (!hoverLock || hoverLock.index >= heroProjects.length) {
@@ -241,12 +287,17 @@ export default function Home() {
     const swirlSpeed = isCompactOrbit ? 0.00024 : 0.00019;
     const swirlVerticalScale = isCompactOrbit ? 0.9 : 0.82;
 
+    const lockedScale = hoverLock.scale * 1.02;
+    const lockedMinCenterX = Number.isFinite(leftOrbitEdgeBound)
+      ? leftOrbitEdgeBound + (orbitConfig.cardWidth * lockedScale) / 2
+      : Number.NEGATIVE_INFINITY;
+
     states[lockedIndex] = {
       depth: 1,
-      x: hoverLock.x,
+      x: Math.max(lockedMinCenterX, hoverLock.x),
       y: hoverLock.y,
       z: Math.max(24, hoverLock.z),
-      scale: hoverLock.scale * 1.02,
+      scale: lockedScale,
       tilt: hoverLock.tilt * 0.15,
     };
 
@@ -258,7 +309,11 @@ export default function Home() {
       const radius = slot.radius * radiusScale;
       const waveX = Math.cos(angle * 0.48 + order * 0.35) * 11;
       const waveY = Math.sin(angle * 0.62 + order * 0.55) * 8;
-      const x = hoverLock.x + Math.cos(angle) * radius + waveX;
+      const scale = orbitConfig.crowdScale * Math.max(0.74, 0.9 - slot.ring * 0.08);
+      const minCenterX = Number.isFinite(leftOrbitEdgeBound)
+        ? leftOrbitEdgeBound + (orbitConfig.cardWidth * scale) / 2
+        : Number.NEGATIVE_INFINITY;
+      const x = Math.max(minCenterX, hoverLock.x + Math.cos(angle) * radius + waveX);
       const y =
         hoverLock.y +
         Math.sin(angle * 1.1 + slot.ring * 0.35) * radius * swirlVerticalScale +
@@ -270,13 +325,13 @@ export default function Home() {
         x,
         y,
         z: -46 - slot.ring * 14 + depthWave * 18,
-        scale: orbitConfig.crowdScale * Math.max(0.74, 0.9 - slot.ring * 0.08),
+        scale,
         tilt: Math.sin(angle * 0.9 + order * 0.4) * 2.8 + Math.cos(angle * 0.45) * 1.4,
       };
     });
 
     return states;
-  }, [heroProjects.length, hoverLock, isCompactOrbit, normalOrbitStates, orbitConfig, orbitTime]);
+  }, [heroProjects.length, hoverLock, isCompactOrbit, leftOrbitEdgeBound, normalOrbitStates, orbitConfig, orbitTime]);
 
   const depthZIndexMap = useMemo(() => {
     const ranking = orbitStates
@@ -406,15 +461,22 @@ export default function Home() {
       const rect = stackRef.current.getBoundingClientRect();
       const relativeX = point.x - (rect.left + rect.width / 2);
       const relativeY = point.y - (rect.top + rect.height / 2);
-      anchorX = clamp(relativeX, -rect.width * 0.33, rect.width * 0.33);
+      const minHoverX = Number.isFinite(leftOrbitEdgeBound)
+        ? leftOrbitEdgeBound + (orbitConfig.cardWidth * currentOrbit.scale) / 2
+        : Number.NEGATIVE_INFINITY;
+      anchorX = clamp(relativeX, minHoverX, rect.width * 0.33);
       anchorY = clamp(relativeY, -rect.height * 0.3, rect.height * 0.3);
     }
 
     releaseMotionRef.current = { freezeUntil: 0, rampUntil: 0 };
 
+    const lockedMinCenterX = Number.isFinite(leftOrbitEdgeBound)
+      ? leftOrbitEdgeBound + (orbitConfig.cardWidth * currentOrbit.scale) / 2
+      : Number.NEGATIVE_INFINITY;
+
     setHoverLock({
       index,
-      x: anchorX,
+      x: Math.max(lockedMinCenterX, anchorX),
       y: anchorY,
       z: currentOrbit.z,
       scale: currentOrbit.scale,
@@ -456,11 +518,19 @@ export default function Home() {
       <SiteNav />
       <main>
         <section className="hero">
-          <div className="hero__content">
+          <div ref={contentRef} className="hero__content">
             <p className="eyebrow">Portfolio 2026</p>
+            <Image
+              src="/projects/pfp.png"
+              alt={`${site.name} portrait`}
+              className="hero__portrait"
+              width={420}
+              height={420}
+              priority
+            />
             <h1>
               {site.name}
-              <span>{site.role}</span>
+              <span className="hero__role">{site.role}</span>
             </h1>
             <p className="hero__intro">{site.intro}</p>
             <div className="hero__actions">

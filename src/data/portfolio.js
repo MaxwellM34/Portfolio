@@ -71,50 +71,130 @@ export const site = {
   location: "Mississauga, Ontario, Canada",
   intro:
     "I build biomedical software and automation tools, with a focus on qPCR workflows, primer design systems, and practical engineering tools.",
-  email: "hello@yourname.com",
-  phone: "(555) 123-4567",
+  email: "maxwellmcinnis123@gmail.com",
+  phone: "+1 (289) 923-0540",
   availability: "Open to collaborations and product engineering roles.",
   socials: [
     { label: "GitHub", url: "https://github.com/MaxwellM34" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/yourname" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/maxwellmcinnis" },
+    { label: "Website", url: "https://www.maxwellmcinnis.com" },
   ],
 };
 
 export const resume = {
   summary:
-    "This section is now a placeholder while portfolio content is being updated with real project history only.",
-  resumeUrl: "/resume.pdf",
+    "Biomedical software engineer with experience across device-facing systems, internal engineering platforms, workflow automation, and applied research in biomechanics and biosensing.",
+  resumeUrl: "/projects/MaxwellMcInnisCV.pdf",
   highlights: [
-    "Replace with verified highlights from your actual work history.",
-    "Keep this section factual and project-backed.",
+    "Designed and commercialized accessory hardware, and built supporting software systems for engineering and operations.",
+    "Built internal tools spanning ERP, CRM, qPCR design automation, and lab workflow data handling.",
+    "Contributed to peer-reviewed biomedical research and conference-level publications.",
   ],
   skills: [
+    "Biomedical software",
     "Python",
+    "Node.js",
     "React",
     "Next.js",
     "FastAPI",
+    "REST APIs",
+    "SQL",
+    "PostgreSQL",
+    "Power BI",
     "qPCR workflows",
     "Lab automation",
+    "Embedded systems",
   ],
 };
 
 export const experience = [
   {
-    title: "Role title placeholder",
-    company: "Company placeholder",
-    location: "Location placeholder",
-    dates: "Dates placeholder",
-    summary: "Replace with a real role summary.",
-    bullets: ["Add real bullet 1", "Add real bullet 2", "Add real bullet 3"],
+    title: "Biomedical Software Engineer & Operations Manager",
+    company: "Kraken Sense",
+    location: "Oakville, Canada",
+    dates: "Nov 2025 - Current",
+    summary:
+      "Leading product lifecycle coordination across hardware, chemistry, and software, while designing and commercializing device hardware and core digital infrastructure.",
+    bullets: [
+      "Designed and commercialized accessory hardware including CAD, fluidics systems, metallic pumps, and sensor integration for manufacturing planning and device cost modeling.",
+      "Built internal engineering software including ERP, AI-automated CRM, and qPCR primer design automation with Python, FastAPI, PostgreSQL, Redis, REST APIs, and cloud deployment.",
+      "Developed full-stack internal tooling with Node.js, React, Next.js, and SQL supporting engineering, lab, production, and data workflows.",
+    ],
+  },
+  {
+    title: "Engineering Administrator",
+    company: "Walinga Inc",
+    location: "Guelph, Canada",
+    dates: "Jul 2025 - Nov 2025",
+    summary:
+      "Supported engineering operations, R&D coordination, workflow automation, and SR&ED technical documentation.",
+    bullets: [
+      "Streamlined reporting and collaboration workflows to reduce internal delays.",
+      "Built automated planning/reporting systems with MariaDB, SQL data models, and Power BI dashboards.",
+      "Converted manual planning processes into near real-time KPI-driven workflows.",
+    ],
+  },
+  {
+    title: "Research Engineer",
+    company: "University of Guelph",
+    location: "Guelph, Canada",
+    dates: "Jan 2024 - Apr 2025",
+    summary:
+      "Conducted biomedical engineering research across biomechanics, wearable sensing systems, bioinstrumentation, and sustainable biomaterials.",
+    bullets: [
+      "Designed and validated wearable sensor systems and gait-correction monitoring with ESP32 microcontrollers, IMUs, and vibration feedback.",
+      "Developed sensor fusion and calibration algorithms for real-time biomechanical monitoring and feedback control.",
+      "Contributed to peer-reviewed publications and technical reporting, including publication output tied to pubmed record 40347002.",
+    ],
+  },
+  {
+    title: "Bookkeeper",
+    company: "Concorde Accounting and Tax Inc.",
+    location: "Guelph, Canada",
+    dates: "May 2024 - Aug 2024",
+    summary:
+      "Supported tax-season processing, documentation verification, and administrative workflows in a high-volume accounting environment.",
+    bullets: [
+      "Processed tax documentation for 100+ clients with compliance and accuracy.",
+      "Maintained confidential financial records and supporting documentation systems.",
+      "Coordinated client communication and internal workflow timelines.",
+    ],
+  },
+  {
+    title: "Municipal Student Landscaper",
+    company: "City of Pickering",
+    location: "Pickering, Canada",
+    dates: "May 2022 - Aug 2023",
+    summary:
+      "Maintained municipal parks and public infrastructure with field operations teams under safety and quality standards.",
+    bullets: [
+      "Supported scheduled maintenance across multiple public sites.",
+      "Maintained safety-first execution while meeting service timelines.",
+      "Worked across field crews to deliver reliable day-to-day operations.",
+    ],
+  },
+  {
+    title: "Food Service Worker",
+    company: "McDonald's",
+    location: "Scarborough, Canada",
+    dates: "Oct 2018 - Jul 2021",
+    summary:
+      "Supported high-volume customer service and multi-station restaurant operations.",
+    bullets: [
+      "Maintained food safety and quality control standards under peak demand.",
+      "Supported front counter, kitchen, and drive-thru operations.",
+      "Contributed to team coordination and service consistency.",
+    ],
   },
 ];
 
 export const education = [
   {
-    degree: "Degree placeholder",
-    school: "School placeholder",
-    dates: "Dates placeholder",
-    note: "Replace with real education details.",
+    degree: "Bachelor of Engineering (B.Eng.) - Biomedical Engineering",
+    school: "University of Guelph",
+    dates: "Aug 2021 - Jul 2025",
+    note:
+      "Training included biomechanics, bioinstrumentation, medical device design, robotics, signal processing, and embedded sensing systems, with research and publication contributions in biomedical engineering.",
   },
 ];
 

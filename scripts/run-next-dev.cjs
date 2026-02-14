@@ -89,8 +89,18 @@ function run() {
   writeLock();
   resetWebpackCache();
 
-  const pnpmCommand = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
-  const child = spawn(pnpmCommand, ["exec", "next", "dev"], {
+  let nextCliPath;
+  try {
+    nextCliPath = require.resolve("next/dist/bin/next");
+  } catch {
+    removeLock();
+    process.stderr.write(
+      "Unable to resolve `next/dist/bin/next`. Run `pnpm install` and try again.\n"
+    );
+    process.exit(1);
+  }
+
+  const child = spawn(process.execPath, [nextCliPath, "dev"], {
     cwd: repoPath,
     env: process.env,
     stdio: "inherit",

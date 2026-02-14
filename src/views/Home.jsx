@@ -659,13 +659,8 @@ export default function Home() {
         <section id="work" className="section">
           <div className="section__heading">
             <div>
-              <p className="eyebrow">Selected work</p>
-              <h2>Strategic builds with a calm, premium feel.</h2>
+              <h2>Projects</h2>
             </div>
-            <p className="section__lead">
-              Only projects with `hidden: false` are shown here. Hidden drafts stay in
-              your data file until you are ready to publish them.
-            </p>
           </div>
           <div className="project-grid">
             {visibleProjects.map((project, index) => (

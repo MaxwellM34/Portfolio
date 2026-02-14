@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "../data/portfolio";
 
 export default function SiteNav() {
@@ -7,7 +8,16 @@ export default function SiteNav() {
     <header className="nav">
       <div className="nav__inner">
         <Link className="nav__brand" href="/">
-          <span className="nav__mark" aria-hidden="true"></span>
+          <span className="nav__mark" aria-hidden="true">
+            <Image
+              src="/projects/pfp.png"
+              alt=""
+              className="nav__mark-image"
+              width={44}
+              height={44}
+              priority
+            />
+          </span>
           <span>{site.name}</span>
         </Link>
         <nav className="nav__links">

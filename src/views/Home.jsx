@@ -783,7 +783,7 @@ export default function Home() {
                   <div className="resume-pdf-shell">
                     <iframe
                       title="Maxwell McInnis EU CV"
-                      src={`${resume.cvUrl}#toolbar=0&navpanes=0&scrollbar=1&zoom=90`}
+                      src={`${resume.cvUrl}#toolbar=0&navpanes=0&scrollbar=1&zoom=80`}
                       className="resume-pdf-frame"
                     />
                   </div>

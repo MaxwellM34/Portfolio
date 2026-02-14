@@ -73,7 +73,7 @@ export const site = {
     "I build biomedical software and automation tools, with a focus on qPCR workflows, primer design systems, and practical engineering tools.",
   email: "maxwellmcinnis123@gmail.com",
   phone: "+1 (289) 923-0540",
-  availability: "Open to collaborations and product engineering roles.",
+  //availability: "Open to collaborations and product engineering roles.",
   socials: [
     { label: "GitHub", url: "https://github.com/MaxwellM34" },
     { label: "LinkedIn", url: "https://linkedin.com/in/maxwellmcinnis" },

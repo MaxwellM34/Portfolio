@@ -546,10 +546,10 @@ export default function Home() {
                 <span>Location</span>
                 <strong>{site.location}</strong>
               </div>
-              <div>
+      {/*        <div>
                 <span>Availability</span>
                 <strong>{site.availability}</strong>
-              </div>
+              </div> */}
             </div>
           </div>
           <div
@@ -783,7 +783,7 @@ export default function Home() {
                   <div className="resume-pdf-shell">
                     <iframe
                       title="Maxwell McInnis EU CV"
-                      src={`${resume.cvUrl}#toolbar=1&navpanes=0&zoom=page-width&view=FitH`}
+                      src={`${resume.cvUrl}#toolbar=0&navpanes=0&scrollbar=1&zoom=175`}
                       className="resume-pdf-frame"
                     />
                   </div>

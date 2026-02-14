@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
@@ -6,6 +8,19 @@ import SiteNav from "../components/SiteNav";
 export default function ProjectDetail({ project, nextProject }) {
   const solidCardColor = project.palette[0];
   const heroImage = project.heroImage || project.image;
+  const heroImagePosition = project.heroImagePosition || "center";
+  const [activeGalleryItem, setActiveGalleryItem] = useState(null);
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveGalleryItem(null);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <div className="page">
@@ -42,7 +57,7 @@ export default function ProjectDetail({ project, nextProject }) {
               backgroundColor: solidCardColor,
               backgroundImage: `url("${heroImage}")`,
               backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundPosition: heroImagePosition,
             }}
           ></div>
         </section>
@@ -94,18 +109,24 @@ export default function ProjectDetail({ project, nextProject }) {
               <p className="eyebrow">Gallery</p>
               <h2>Visual snapshots</h2>
             </div>
-            <p className="section__lead">
-              Replace these placeholders with final screens, photography, or brand assets.
-            </p>
+            <p className="section__lead">Click any image to expand.</p>
           </div>
           <div className="gallery-grid">
-            {project.gallery.map((item) => {
-              return (
-              <div key={item.label} className="gallery-card" style={{ backgroundColor: solidCardColor }}>
-                <div className="gallery-card__label">{item.label}</div>
-              </div>
-              );
-            })}
+            {project.gallery.map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                className="gallery-card"
+                style={{
+                  backgroundColor: solidCardColor,
+                  backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.02) 48%, rgba(0, 0, 0, 0.46) 100%), url("${item.image}")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                onClick={() => setActiveGalleryItem(item)}
+              >
+              </button>
+            ))}
           </div>
         </section>
 
@@ -123,6 +144,26 @@ export default function ProjectDetail({ project, nextProject }) {
         </section>
       </main>
       <SiteFooter />
+
+      {activeGalleryItem ? (
+        <div className="gallery-modal" onClick={() => setActiveGalleryItem(null)}>
+          <button
+            type="button"
+            className="gallery-modal__close"
+            onClick={() => setActiveGalleryItem(null)}
+            aria-label="Close image"
+          >
+            x
+          </button>
+          <img
+            className="gallery-modal__image"
+            src={activeGalleryItem.image}
+            alt={activeGalleryItem.label}
+            onClick={(event) => event.stopPropagation()}
+          />
+          <p className="gallery-modal__caption">{activeGalleryItem.label}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

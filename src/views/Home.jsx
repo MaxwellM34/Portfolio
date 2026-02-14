@@ -901,48 +901,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section section--process">
-          <div className="section__heading">
-            <div>
-              <p className="eyebrow">Process</p>
-              <h2>How I ship technical products.</h2>
-            </div>
-            <p className="section__lead">
-              Workflow adapted for technical products where domain logic and UX both matter.
-            </p>
-          </div>
-          <div className="process-grid">
-            {[
-              {
-                step: "01",
-                title: "Scope",
-                text: "Document the workflow, hard constraints, and success criteria.",
-              },
-              {
-                step: "02",
-                title: "Model",
-                text: "Design the data and processing model before committing to UI details.",
-              },
-              {
-                step: "03",
-                title: "Build",
-                text: "Implement, validate, and connect domain logic to usable interfaces.",
-              },
-              {
-                step: "04",
-                title: "Publish",
-                text: "Keep drafts hidden, publish intentionally, then iterate with real users.",
-              },
-            ].map((item) => (
-              <div key={item.step} className="process-card reveal">
-                <span>{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="contact" className="section section--contact">
           <div className="contact-card">
             <div>

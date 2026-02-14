@@ -22,7 +22,7 @@ export default function ProjectCard({ project, index }) {
         <div className="project-card__badge" style={{ borderColor: accent }}>
           {project.category}
         </div>
-        <div className="project-card__label">View case study</div>
+        <div className="project-card__label">View project</div>
       </div>
       <div className="project-card__body">
         <div className="project-card__title">

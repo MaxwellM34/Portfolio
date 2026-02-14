@@ -352,6 +352,7 @@ export const projects = [
     timeline: "Capstone term",
     image: "/projects/footallign-combined.jpg",
     heroImage: "/projects/footallign-combined.jpg",
+    heroImagePosition: "62% center",
     services: [
       "Wearable device prototyping",
       "Biomechanics validation",
@@ -372,7 +373,7 @@ export const projects = [
     gallery: [
       { label: "Capstone poster", image: "/projects/footallignbanner.jpg" },
       { label: "Project presentation", image: "/projects/footallignselfie.jpg" },
-      { label: "Combined preview", image: "/projects/footallign-combined.jpg" },
+      { label: "Team presentation", image: "/projects/mikoselfie.jpg" },
     ],
     challenge:
       "Excessive out-toeing can increase joint stress and injury risk, but practical real-time corrective tools are limited.",

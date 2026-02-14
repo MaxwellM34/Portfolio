@@ -561,6 +561,11 @@ export default function Home() {
             }}
             onMouseLeave={releaseHoverLock}
           >
+            <div className="hero-stack-hint" aria-hidden="true">
+              <span className="hero-stack-hint__desktop">Hover your cursor on a card.</span>
+              <span className="hero-stack-hint__mobile">Tap a card to focus it.</span>
+              <span className="hero-stack-hint__arrow">-&gt;</span>
+            </div>
             {heroProjects.length > 0 ? (
               heroProjects.map((project, index) => {
                 const orbit = orbitStates[index] || {
@@ -744,31 +749,16 @@ export default function Home() {
 
         <section id="about" className="section section--about">
           <div className="about-card reveal">
-            <div>
-              <p className="eyebrow">About</p>
-              <h2>Engineering-first product work.</h2>
-              <p>
-                This portfolio focuses on verified project work only. Draft projects can
-                stay hidden until they are fully documented and ready to publish.
-              </p>
-              <div className="about-stats">
-                <div>
-                  <strong>{heroProjects.length}</strong>
-                  <span>Published real projects</span>
-                </div>
-                <div>
-                  <strong>{hiddenProjectCount}</strong>
-                  <span>Hidden placeholders</span>
-                </div>
-                <div>
-                  <strong>1</strong>
-                  <span>Data file controls visibility</span>
-                </div>
-              </div>
-            </div>
-            <div className="about-image">
-              <div className="image-placeholder">Add your real profile image</div>
-            </div>
+            <p className="eyebrow">About</p>
+            <h2>Engineer, builder, and operator.</h2>
+            <p>
+              I build practical systems across biomedical engineering, software, and automation,
+              with a focus on projects that ship, solve real problems, and stay maintainable.
+            </p>
+            <p>
+              Work includes full-stack products, APIs, internal business tooling, biomechanical
+              analysis, and device-adjacent engineering.
+            </p>
           </div>
         </section>
 
@@ -945,4 +935,10 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
 

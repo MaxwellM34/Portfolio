@@ -303,13 +303,13 @@ export const projects = [
     summary:
       "A Python-based qPCR automation platform aimed at covering workflow steps and reducing operational overhead in small labs.",
     description:
-      "qPCRLabAutomation is a repository focused on end-to-end qPCR workflow automation. It integrates specialized modules for primer design and sequence analysis to support practical lab operations.",
+      "qPCRLabAutomation is a repository focused on end-to-end qPCR workflow automation. It integrates specialized modules for primer design and sequence analysis to support practical workflow operations.",
     role: "Project creator and software developer",
     timeline: "Ongoing",
     image: "/projects/qPCRLabAutomation.jpg",
     heroImage: "/projects/qPCRLabAutomation.jpg",
     services: [
-      "Lab workflow automation",
+      "Workflow automation",
       "Primer design pipeline integration",
       "Sequence analysis integration",
       "Tooling architecture",
@@ -623,7 +623,7 @@ export const projects = [
   {
     slug: "engg3150-force-plate-fft-lab",
     hidden: false,
-    title: "ENGG3150 Force Plate FFT Lab",
+    title: "Force Plate FFT Analysis",
     category: "Biomechanics Signal Analysis",
     year: "2024",
     summary:
@@ -631,7 +631,7 @@ export const projects = [
     description:
       "This project analyzes force-plate CSV trial data from shod and barefoot conditions at high and low sampling rates. The workflow extracts vertical ground reaction force (GRF), estimates loading rate, evaluates center-of-pressure behavior, and uses FFT/PSD to compare frequency content across conditions.",
     role: "Biomechanics data analysis and MATLAB implementation",
-    timeline: "ENGG3150 Lab 1",
+    timeline: "ENGG3150 Module 1",
     image: "/projects/3150l1-1.png",
     heroImage: "/projects/3150l1-1.png",
     services: [
@@ -652,7 +652,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/ENGG3150-Force-Plate-FFT-Lab" },
     ],
     gallery: [
-      { label: "Lab report overview", image: "/projects/3150l1-1.png" },
+      { label: "Report overview", image: "/projects/3150l1-1.png" },
       { label: "COP comparison chart", image: "/projects/3150l1-2.png" },
       { label: "Frequency spectrum comparison", image: "/projects/3150l1-3.png" },
     ],
@@ -661,22 +661,22 @@ export const projects = [
     approach:
       "I implemented a MATLAB pipeline that ingests selected trials, computes GRF and loading-rate features, maps center-of-pressure behavior, and applies single-sided FFT/PSD analysis for condition-level comparison.",
     outcome:
-      "Delivered a full lab analysis with reproducible scripts, comparative visualizations, and conclusions on impact peaks, loading behavior, and sampling-rate implications for accuracy.",
+      "Delivered a full analysis with reproducible scripts, comparative visualizations, and conclusions on impact peaks, loading behavior, and sampling-rate implications for accuracy.",
     palette: ["#1E3A8A", "#3B82F6", "#DBEAFE"],
   },
 
   {
     slug: "engg3150-vicon-jump-kinematics-lab",
     hidden: false,
-    title: "ENGG3150 VICON Jump Kinematics Lab",
+    title: "VICON Jump Kinematics Analysis",
     category: "Biomechanics Motion Analysis",
     year: "2024",
     summary:
       "VICON-based motion analysis of submaximal and maximal broad-jump trials, quantifying joint ROM, angular velocity, and knee adduction behavior at landing.",
     description:
-      "This lab project used VICON motion capture and force-plate synchronized analysis to evaluate ankle, knee, and hip mechanics during broad jumping at multiple effort levels. The workflow processed marker trajectories, computed sagittal-plane joint range of motion and angular velocity, and examined frontal-plane knee adduction angles at impact.",
+      "This project used VICON motion capture and force-plate synchronized analysis to evaluate ankle, knee, and hip mechanics during broad jumping at multiple effort levels. The workflow processed marker trajectories, computed sagittal-plane joint range of motion and angular velocity, and examined frontal-plane knee adduction angles at impact.",
     role: "Biomechanics analysis and MATLAB processing",
-    timeline: "ENGG3150 Lab 2",
+    timeline: "ENGG3150 Module 2",
     image: "/projects/3150l2-1.png",
     heroImage: "/projects/3150l2-1.png",
     services: [
@@ -689,15 +689,15 @@ export const projects = [
     highlights: [
       "Analyzed joint ROM and angular velocity across ankle, knee, and hip during broad-jump efforts.",
       "Quantified landing-phase knee adduction behavior to support injury-risk discussion.",
-      "Produced multi-figure lab report outputs linking biomechanics interpretation to measured trends.",
+      "Produced multi-figure report outputs linking biomechanics interpretation to measured trends.",
     ],
     stats: [
       { label: "Capture system", value: "VICON" },
-      { label: "Lab", value: "ENGG3150 Lab 2" },
+      { label: "Module", value: "ENGG3150 Module 2" },
       { label: "Repository", value: "Not linked" },
     ],
     gallery: [
-      { label: "Lab 2 report overview", image: "/projects/3150l2-1.png" },
+      { label: "Module 2 report overview", image: "/projects/3150l2-1.png" },
       { label: "Joint angular velocity plots", image: "/projects/3150l2-2.png" },
       { label: "Knee adduction comparison", image: "/projects/3150l2-3.png" },
     ],
@@ -706,28 +706,28 @@ export const projects = [
     approach:
       "I processed motion-capture outputs in MATLAB, derived ROM and angular velocity metrics for key joints, aligned landing frames using force-plate events, and compared results across effort distances.",
     outcome:
-      "Delivered a complete biomechanics lab analysis showing clear joint-level trends and a practical framework for evaluating landing mechanics and knee-risk indicators.",
+      "Delivered a complete biomechanics analysis showing clear joint-level trends and a practical framework for evaluating landing mechanics and knee-risk indicators.",
     palette: ["#5A4B9A", "#A08DD8", "#ECE8FA"],
   },
   {
     slug: "engg3150-emg-biceps-curl-lab",
     hidden: false,
-    title: "ENGG3150 EMG Biceps Curl Analysis",
+    title: "EMG Biceps Curl Analysis",
     category: "EMG + Biomechanics Signal Processing",
     year: "2024",
     summary:
       "MATLAB-based EMG analysis of isometric and dynamic elbow contractions, comparing biceps and brachioradialis activation across load, angle, and movement phase.",
     description:
-      "This lab project processes surface EMG and goniometer data from biceps-curl trials. The workflow filters and normalizes EMG signals, computes RMS-based comparisons, and evaluates activation behavior across elbow moments, joint angles, and dynamic repetition phases.",
+      "This project processes surface EMG and goniometer data from biceps-curl trials. The workflow filters and normalizes EMG signals, computes RMS-based comparisons, and evaluates activation behavior across elbow moments, joint angles, and dynamic repetition phases.",
     role: "Biomechanics signal analysis and MATLAB implementation",
-    timeline: "ENGG3150 Lab 3",
+    timeline: "ENGG3150 Module 3",
     image: "/projects/3150l3-1.png",
     heroImage: "/projects/3150l3-1.png",
     services: [
       "EMG filtering + normalization",
       "Joint-angle phase analysis",
       "Dynamic rep segmentation",
-      "Technical lab reporting",
+      "Technical reporting",
     ],
     tools: ["MATLAB", "EMG processing", "Signal Processing Toolbox", "Goniometer data"],
     highlights: [
@@ -737,11 +737,11 @@ export const projects = [
     ],
     stats: [
       { label: "Platform", value: "MATLAB" },
-      { label: "Lab", value: "ENGG3150 Lab 3" },
+      { label: "Module", value: "ENGG3150 Module 3" },
       { label: "Repository", value: "https://github.com/MaxwellM34/EMG_Lab3_Biceps_Curl_Analysis" },
     ],
     gallery: [
-      { label: "Lab 3 report overview", image: "/projects/3150l3-1.png" },
+      { label: "Module 3 report overview", image: "/projects/3150l3-1.png" },
       { label: "EMG normalization trends", image: "/projects/3150l3-2.png" },
       { label: "Dynamic ensemble EMG", image: "/projects/3150l3-3.png" },
     ],
@@ -752,9 +752,109 @@ export const projects = [
     outcome:
       "Delivered a reproducible EMG analysis pipeline and report-ready visual outputs showing clear activation trends for biceps brachii and brachioradialis in isometric and dynamic conditions.",
     palette: ["#8B2C4A", "#C66A8A", "#F7E6ED"],
+  },
+  {
+    slug: "copper-vision-mood-classifier",
+    hidden: false,
+    title: "Copper Vision Mood Classifier",
+    category: "Computer Vision + Applied ML",
+    year: "2026",
+    summary:
+      "Python computer-vision project that detects Copper in-frame and predicts mood states from facial/body cues, then overlays live labels in the camera feed.",
+    description:
+      "Copper Vision is a personal ML project where I used a computer-vision pipeline to identify my son Copper and classify mood states from image features. The model outputs an on-screen label (for example Relaxed, Curious/Annoyed, or Content) with a live bounding box overlay.",
+    role: "ML prototyping, model iteration, and CV pipeline integration",
+    timeline: "Personal project",
+    image: "/projects/coppervision1.png",
+    heroImage: "/projects/coppervision1.png",
+    services: [
+      "Dataset prep + labeling",
+      "Mood-state classification",
+      "Inference overlay UI",
+      "Model iteration",
+    ],
+    tools: [
+      "Python",
+      "OpenCV",
+      "NumPy",
+      "PyTorch",
+      "scikit-learn",
+      "Pandas",
+    ],
+    highlights: [
+      "Built a practical mood-label inference flow with bounding-box visualization.",
+      "Used iterative class definitions to distinguish similar behavior states.",
+      "Implemented with a Python CV/ML stack including OpenCV, NumPy, Pandas, scikit-learn, and PyTorch.",
+    ],
+    stats: [
+      { label: "Primary stack", value: "Python + CV/ML" },
+      { label: "Subject", value: "Copper (cat mood inference)" },
+      { label: "Output", value: "Live label + bounding box" },
+    ],
+    gallery: [
+      { label: "Relaxed prediction", image: "/projects/coppervision1.png" },
+      { label: "Curious/Annoyed prediction", image: "/projects/coppervision2.png" },
+      { label: "Content prediction", image: "/projects/coppervision3.png" },
+    ],
+    challenge:
+      "Translate subtle behavioral cues into consistent mood labels while keeping inference understandable and visually clear in real scenes.",
+    approach:
+      "I used a supervised ML workflow with labeled examples, tuned class boundaries through iteration, and integrated model inference into a vision overlay that displays both detection and predicted mood.",
+    outcome:
+      "Delivered a working end-to-end prototype that can classify and display Copper's likely mood directly on the camera output.",
+    palette: ["#B06A2B", "#E09A58", "#FCE8D3"],
+  },
+  {
+    slug: "a3-pulley-crimp-grip-lab",
+    hidden: false,
+    title: "A3 Pulley Crimp Grip Analysis",
+    category: "Climbing Biomechanics + EMG",
+    year: "2024",
+    summary:
+      "Biomechanics analysis of A3 pulley loading in ring vs middle finger during crimp-grip tasks using VICON, force-plate data, and FDP EMG processing.",
+    description:
+      "This project evaluates finger-tendon loading during rock-climbing crimp grip by combining motion capture, force-plate measurements, and EMG analysis. MATLAB scripts estimate frame-by-frame A3 pulley forces, compare middle and ring finger behavior, and process FDP EMG envelopes for baseline versus active trials.",
+    role: "Biomechanics modeling and MATLAB signal/data analysis",
+    timeline: "ENGG3150 Module 4",
+    image: "/projects/3150l4-1.png",
+    heroImage: "/projects/3150l4-1.png",
+    services: [
+      "Biomechanical force modeling",
+      "EMG envelope processing",
+      "Marker + force-plate integration",
+      "Comparative trial analysis",
+    ],
+    tools: ["MATLAB", "VICON motion capture", "Force plate", "Wireless EMG"],
+    highlights: [
+      "Computed A3 pulley force estimates frame-by-frame from synchronized kinematic and force data.",
+      "Compared ring and middle finger loading patterns using RMS and distribution-based metrics.",
+      "Processed FDP EMG with band-pass filtering and normalized envelope analysis across trials.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Module", value: "ENGG3150 Module 4" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/Measuring-A3-Pulleys-Forces-of-the-Ring-and-Middle-Finger-in-a-Rock-Climbing-Crimp-Grip" },
+    ],
+    gallery: [
+      { label: "Module 4 report overview", image: "/projects/3150l4-1.png" },
+      { label: "MOCAP marker + methods detail", image: "/projects/3150l4-2.png" },
+      { label: "A3 pulley model and anatomy", image: "/projects/3150l4-3.png" },
+    ],
+    challenge:
+      "Estimate pulley loading in a complex hand posture where tendon force, finger geometry, and contact mechanics all interact during crimp grip.",
+    approach:
+      "I combined VICON marker trajectories, force-plate components, and EMG signals in MATLAB, then used biomechanical equations to estimate A3 pulley forces and compare middle versus ring finger trial behavior.",
+    outcome:
+      "Delivered reproducible scripts and report outputs quantifying A3 pulley force behavior and supporting interpretation of finger-specific loading risk in climbing grip mechanics.",
+    palette: ["#2F4F6B", "#6E95B5", "#E1EDF7"],
   },];
 
 export const visibleProjects = projects.filter((project) => !project.hidden);
+
+
+
+
+
 
 
 

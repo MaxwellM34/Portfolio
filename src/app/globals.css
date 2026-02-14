@@ -286,7 +286,47 @@ main {
   overflow: visible;
 }
 
-.hero-card-shell {
+
+.hero-stack-hint {
+  position: absolute;
+  top: -1.65rem;
+  right: 0.5rem;
+  z-index: 250;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 27, 22, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px rgba(20, 18, 15, 0.12);
+  pointer-events: none;
+}
+
+.hero-stack-hint__mobile {
+  display: none;
+}
+
+.hero-stack-hint__arrow {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  animation: hintArrowNudge 1.1s ease-in-out infinite;
+}
+
+@keyframes hintArrowNudge {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(4px, 4px);
+  }
+}.hero-card-shell {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -579,13 +619,13 @@ main {
 
 .about-card {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
+  gap: 1rem;
   padding: 2rem;
   border-radius: 28px;
   border: 1px solid var(--border);
   background: var(--card);
   box-shadow: var(--shadow);
+  max-width: 980px;
 }
 
 .about-stats {
@@ -1232,8 +1272,15 @@ main {
   }
 
   .about-card {
-    grid-template-columns: 1fr;
-  }
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  max-width: 980px;
+}
 
   .next-card {
     flex-direction: column;
@@ -1336,3 +1383,6 @@ main {
     min-height: 240px;
   }
 }
+
+
+

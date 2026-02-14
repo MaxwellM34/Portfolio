@@ -8,8 +8,15 @@ import SiteNav from "../components/SiteNav";
 export default function ProjectDetail({ project, nextProject }) {
   const solidCardColor = project.palette[0];
   const heroImage = project.heroImage || project.image;
+  const heroVideo = project.mediaVideo || null;
   const heroImagePosition = project.heroImagePosition || "center";
   const [activeGalleryItem, setActiveGalleryItem] = useState(null);
+
+  const isLikelyUrl = (value) =>
+    typeof value === "string" && /^(https?:\/\/|www\.|[\w.-]+\.[a-z]{2,}(?:\/.*)?$)/i.test(value);
+
+  const toAbsoluteUrl = (value) =>
+    value.startsWith("http://") || value.startsWith("https://") ? value : `https://${value}`;
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -55,21 +62,46 @@ export default function ProjectDetail({ project, nextProject }) {
             className="detail-hero__image"
             style={{
               backgroundColor: solidCardColor,
-              backgroundImage: `url("${heroImage}")`,
+              backgroundImage: heroVideo ? "none" : `url("${heroImage}")`,
               backgroundSize: "cover",
               backgroundPosition: heroImagePosition,
             }}
-          ></div>
+          >
+            {heroVideo ? (
+              <video
+                className="detail-hero__video"
+                src={heroVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            ) : null}
+          </div>
         </section>
 
         <section className="section section--stats">
           <div className="stats-grid">
-            {project.stats.map((stat) => (
-              <div key={stat.label} className="stat-card">
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
+            {project.stats.map((stat) => {
+              const isLink = isLikelyUrl(stat.value);
+              const href = isLink ? toAbsoluteUrl(stat.value) : "";
+
+              return (
+                <div key={stat.label} className="stat-card">
+                  {isLink ? (
+                    <strong>
+                      <a href={href} target="_blank" rel="noreferrer">
+                        {stat.value}
+                      </a>
+                    </strong>
+                  ) : (
+                    <strong>{stat.value}</strong>
+                  )}
+                  <span>{stat.label}</span>
+                </div>
+              );
+            })}
           </div>
         </section>
 

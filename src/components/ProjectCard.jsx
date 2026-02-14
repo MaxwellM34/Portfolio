@@ -5,9 +5,12 @@ export default function ProjectCard({ project, index }) {
   const solidCardColor = project.palette[0];
   const accent = project.palette[2];
   const cardImage = project.image || project.heroImage;
+  const cardVideo = project.mediaVideo || null;
   const cardImageStyle = {
     backgroundColor: solidCardColor,
-    backgroundImage: `linear-gradient(160deg, rgba(10, 10, 10, 0.08), rgba(10, 10, 10, 0.45)), url("${cardImage}")`,
+    backgroundImage: cardVideo
+      ? "none"
+      : `linear-gradient(160deg, rgba(10, 10, 10, 0.08), rgba(10, 10, 10, 0.45)), url("${cardImage}")`,
     backgroundPosition: "center",
     backgroundSize: "cover",
   };
@@ -19,6 +22,19 @@ export default function ProjectCard({ project, index }) {
       style={{ animationDelay: `${index * 80}ms` }}
     >
       <div className="project-card__image" style={cardImageStyle}>
+        {cardVideo ? (
+          <video
+            className="project-card__video"
+            src={cardVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+        ) : null}
+        <div className="project-card__image-overlay" aria-hidden="true"></div>
         <div className="project-card__badge" style={{ borderColor: accent }}>
           {project.category}
         </div>

@@ -574,6 +574,7 @@ export default function Home() {
 
                 const solidCardColor = project.palette[0];
                 const cardImage = project.heroImage || project.image;
+                const cardVideo = project.mediaVideo || null;
                 const isTopCard = index === frontCardIndex;
                 const brightness = hoverLock
                   ? isTopCard
@@ -628,11 +629,24 @@ export default function Home() {
                         <span>{project.category}</span>
                         <span>{project.year}</span>
                       </div>
-                      <div
-                        className="hero-card__media"
-                        style={{ backgroundImage: `url("${cardImage}")` }}
-                        aria-hidden="true"
-                      ></div>
+                      {cardVideo ? (
+                        <video
+                          className="hero-card__media hero-card__media-video"
+                          src={cardVideo}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <div
+                          className="hero-card__media"
+                          style={{ backgroundImage: `url("${cardImage}")` }}
+                          aria-hidden="true"
+                        ></div>
+                      )}
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
                       <div className="hero-card__actions">
@@ -682,37 +696,43 @@ export default function Home() {
         <section id="services" className="section section--split">
           <div>
             <p className="eyebrow">Services</p>
-            <h2>From strategy to shipped interface.</h2>
+            <h2>Freelance services I currently offer.</h2>
             <p className="section__lead">
-              Current focus areas: biomedical software, lab workflow automation, and
-              practical engineering tools with clean user-facing UX.
+              I offer practical implementation support for individuals and small businesses,
+              from product websites and APIs to operations tooling and coaching.
             </p>
             <div className="service-tags">
               {[
-                "Product strategy",
-                "qPCR workflow automation",
-                "Primer design tooling",
-                "Data pipeline integration",
-                "Front-end engineering",
-                "API integration",
+                "Freelance web development",
+                "API development",
+                "Business automation",
+                "Marketing automation",
+                "Inventory system setup (small business)",
+                "Life coaching",
+                "Gym coaching",
               ].map((item) => (
                 <span key={item}>{item}</span>
               ))}
+            </div>
+            <div className="service-actions">
+              <a className="button button--primary" href="#contact">
+                Contact me
+              </a>
             </div>
           </div>
           <div className="service-cards">
             {[
               {
-                title: "Discovery Sprint",
-                text: "Define workflow constraints, users, and outcomes before writing implementation plans.",
+                title: "Freelance Web + API Delivery",
+                text: "Design and build production-ready websites, dashboards, and APIs tailored to your workflow and business goals.",
               },
               {
-                title: "System Design",
-                text: "Design architecture across UI, APIs, and domain-specific processing modules.",
+                title: "Business + Marketing Automation",
+                text: "Set up small-business workflow automation, marketing automation, and practical inventory tracking systems to reduce manual work and improve consistency.",
               },
               {
-                title: "Build + Validate",
-                text: "Ship usable software quickly, then iterate with real use-cases and direct feedback.",
+                title: "Life + Gym Coaching",
+                text: "Provide structured support for training, consistency, and personal performance habits with practical weekly guidance.",
               },
             ].map((card) => (
               <div key={card.title} className="service-card reveal">

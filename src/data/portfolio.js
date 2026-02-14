@@ -70,7 +70,7 @@ export const site = {
   role: "Biomedical Engineer + Software Builder",
   location: "Mississauga, Ontario, Canada",
   intro:
-    "I build biomedical software and automation tools, with a focus on qPCR workflows, primer design systems, and practical engineering tools.",
+    "I build at the intersection of biomedical engineering, software, and execution: from technical products, APIs, and automation systems to small-business operations tooling and practical coaching that helps people perform better in work and life.",
   email: "maxwellmcinnis123@gmail.com",
   phone: "+1 (289) 923-0540",
   //availability: "Open to collaborations and product engineering roles.",
@@ -213,9 +213,9 @@ export const projects = [
     category: "Health + Nutrition Software",
     year: "2026",
     summary:
-      "A public BMR and TDEE calculator focused on stronger calorie estimates with training, step count, and lifestyle context.",
+      "A live BMR and TDEE app that is publicly available for free, successfully crowdfunded, and actively used while a paid version is in development.",
     description:
-      "BetterBMRCalculator is a web app for estimating daily energy needs. It goes beyond a single activity multiplier by collecting workout and daily movement context and showing an accuracy estimate alongside results.",
+      "BetterBMRCalculator is a live web app for estimating daily energy needs. It goes beyond a single activity multiplier by collecting workout and daily movement context, provides an accuracy estimate alongside results, and is currently available to all users for free.",
     role: "Product design, front-end engineering, full-stack integration",
     timeline: "Ongoing",
     image: "/projects/betterbmrcalculator.png",
@@ -228,14 +228,14 @@ export const projects = [
     ],
     tools: ["React", "Tailwind CSS", "FastAPI", "Python"],
     highlights: [
-      "BMR + TDEE calculations in a public web app flow.",
-      "Accuracy estimation layer to communicate estimate confidence.",
-      "Extended input model for training volume, steps, and job activity.",
+      "Live and publicly accessible application with active real-world use.",
+      "Successfully crowdfunded and available to all users for free.",
+      "Paid version in progress with expanded feature roadmap.",
     ],
     stats: [
-      { label: "Focus", value: "BMR + TDEE" },
-      { label: "Mode", value: "Accuracy-aware estimate" },
-      { label: "Website", value: "betterbmrcalculator.net" },
+      { label: "Status", value: "Live + publicly usable" },
+      { label: "Access", value: "Free for all users" },
+      { label: "Website", value: "https://betterbmrcalculator.net" },
     ],
     gallery: [
       { label: "Calculator workflow", image: "/projects/betterbmrcalculator.png" },
@@ -247,7 +247,7 @@ export const projects = [
     approach:
       "Built an input and calculation flow that captures more relevant context and surfaces a confidence-oriented accuracy estimate.",
     outcome:
-      "A clearer, user-facing energy estimate experience that prioritizes interpretability and practical use.",
+      "The app is live, openly accessible, and supports users today, with a paid version currently in progress.",
     palette: ["#2F6B5F", "#F2C078", "#E07A5F"],
   },
   {
@@ -383,22 +383,183 @@ export const projects = [
       "Delivered a validated capstone prototype and full technical presentation demonstrating feasibility for real-time gait behavior feedback.",
     palette: ["#1A4D8F", "#4DA3FF", "#D6E8FF"],
   },
-  publicPlaceholderProject("placeholder-aurora", "Aurora Placeholder", [
-    "#5B6DF8",
-    "#93C5FD",
-    "#DBEAFE",
-  ]),
-  publicPlaceholderProject("placeholder-mosaic", "Mosaic Placeholder", [
-    "#AD6A2F",
-    "#F4A261",
-    "#FDEBD2",
-  ]),
-  publicPlaceholderProject("placeholder-signal", "Signal Placeholder", [
-    "#7C3AED",
-    "#C4B5FD",
-    "#EDE9FE",
-  ]),
-  placeholderProject(1),
+  {
+    slug: "reverse-engineering-sewing-machine",
+    hidden: false,
+    title: "Reverse Engineering Sewing Machine",
+    category: "Mechanical CAD + Reverse Engineering",
+    year: "2025",
+    summary:
+      "Reverse engineering project where a broken sewing machine was disassembled, missing components were modeled, and a complete SolidWorks assembly was rebuilt to mechanically function.",
+    description:
+      "This project started with a damaged sewing machine and required reconstructing the system geometry, identifying missing parts, and producing a complete CAD-based mechanical assembly. The final SolidWorks model integrated recreated components and restored kinematic compatibility across the mechanism.",
+    role: "Mechanical reverse engineering and CAD reconstruction",
+    timeline: "Course project",
+    image: "/projects/reverse_engg2.png",
+    heroImage: "/projects/reverse_engg2.png",
+    mediaVideo: "/projects/reverse_engineering.mp4",
+    services: [
+      "Mechanical teardown",
+      "Missing part reconstruction",
+      "SolidWorks assembly",
+      "Motion-fit validation",
+    ],
+    tools: ["SolidWorks", "Mechanical design", "Assembly constraints", "Reverse engineering"],
+    highlights: [
+      "Reverse engineered the machine from physical hardware condition and known component interfaces.",
+      "Modeled missing components and integrated them into a full assembly tree.",
+      "Validated the final CAD assembly for mechanical fit and working motion relationships.",
+    ],
+    stats: [
+      { label: "Platform", value: "SolidWorks" },
+      { label: "Project type", value: "Reverse engineering" },
+      { label: "Outcome", value: "Working assembly model" },
+    ],
+    gallery: [
+      { label: "Assembly reference view", image: "/projects/reverse_engg2.png" },
+      { label: "Detailed CAD output", image: "/projects/reverse_engg3.png" },
+      { label: "Final mechanism perspective", image: "/projects/reverse_engg2.png" },
+    ],
+    challenge:
+      "The source hardware was incomplete and damaged, so geometry and interfaces had to be inferred while preserving realistic mechanical behavior.",
+    approach:
+      "I documented the physical system, recreated missing components in CAD, and constrained the full assembly iteratively until movement and part relationships were consistent.",
+    outcome:
+      "Produced a complete SolidWorks assembly that represented a mechanically functional version of the original machine, including reconstructed missing parts.",
+    palette: ["#2E3E56", "#6F8AA9", "#D9E4F0"],
+  },
+  {
+    slug: "food-storage-device",
+    hidden: false,
+    title: "Food Storage Device",
+    category: "Embedded Systems + Arduino",
+    year: "2026",
+    summary:
+      "Arduino joystick-driven LCD menu system for browsing food storage categories with filtered analog input and reliable menu controls.",
+    description:
+      "Food Storage Device is an Arduino project using a 16x2 I2C LCD and joystick input to navigate storage categories. It samples analog joystick data, averages readings to reduce noise, and maps directional actions to menu navigation and capitalization toggling.",
+    role: "Embedded software + hardware integration",
+    timeline: "Prototype",
+    image: "/projects/fooddevicemain.jpg",
+    heroImage: "/projects/fooddevicemain.jpg",
+    services: [
+      "Embedded UI design",
+      "Joystick input handling",
+      "Signal smoothing",
+      "Arduino prototyping",
+    ],
+    tools: ["Arduino", "C++", "I2C LCD", "hd44780 library", "Analog sensing"],
+    highlights: [
+      "Implemented 100 ms sampling with 1-second averaging for stable joystick behavior.",
+      "Built menu navigation with wraparound across Leftovers, Meal Prep, Frozen Food, and Dry Goods.",
+      "Added right-axis behavior to toggle selected label case and serial output for calibration/debugging.",
+    ],
+    stats: [
+      { label: "Platform", value: "Arduino" },
+      { label: "Language", value: "C++" },
+      { label: "Repository", value: "github.com/MaxwellM34/food_storage_device" },
+    ],
+    gallery: [
+      { label: "Main device", image: "/projects/fooddevicemain.jpg" },
+      { label: "Device angle", image: "/projects/fooddevice2.jpg" },
+      { label: "Device detail", image: "/projects/fooddevice3.jpg" },
+    ],
+    challenge:
+      "Raw joystick inputs can be noisy and cause unstable menu behavior in small embedded interfaces.",
+    approach:
+      "Used timed sampling + averaging, threshold-based directional actions, and structured menu logic for predictable navigation on limited hardware.",
+    outcome:
+      "Delivered a working embedded food menu prototype with clear user interaction, lower input jitter, and configurable thresholds for different joystick ranges.",
+    palette: ["#1E4D3E", "#5FA07A", "#D5E8DD"],
+  },
+  {
+    slug: "fea-barbell-bench-capstone",
+    hidden: false,
+    title: "FEA Barbell Bench Analysis",
+    category: "Finite Element Analysis",
+    year: "2025",
+    summary:
+      "Finite element analysis project evaluating barbell loading on a bench rack, with boundary-condition-focused modeling and load-to-damage threshold prediction.",
+    description:
+      "For a finite element analysis course project, I modeled a bench-rack loading scenario inspired by real gym setup constraints. The analysis focused on accurate boundary conditions and load distribution to estimate when structural damage would occur while the bar rests on the rack.",
+    role: "Biomechanics and FEA modeling",
+    timeline: "Final course project",
+    image: "/projects/fea-combined.jpg",
+    heroImage: "/projects/fea-combined.jpg",
+    services: [
+      "Boundary condition modeling",
+      "Structural load analysis",
+      "FEA interpretation",
+      "Engineering reporting",
+    ],
+    tools: ["Finite Element Analysis", "Solid mechanics", "Engineering simulation"],
+    highlights: [
+      "Defined and iterated boundary conditions to match realistic bench rack contact behavior.",
+      "Estimated the load threshold at which rack-bar interaction would cause damage.",
+      "Documented a complete analysis workflow with extensive figure-based reporting.",
+    ],
+    stats: [
+      { label: "Core skill", value: "Boundary condition modeling" },
+      { label: "Analysis focus", value: "Load path + stress interpretation" },
+      { label: "Project type", value: "Finite element analysis capstone" },
+    ],
+    gallery: [
+      { label: "FEA setup and baseline view", image: "/projects/feamain.jpg" },
+      { label: "Bench rack scenario context", image: "/projects/fea2.jpg" },
+      { label: "Detailed result snapshot", image: "/projects/fea3.jpg" },
+    ],
+    challenge:
+      "Simple-looking geometries can still produce misleading outputs unless supports and contact constraints are modeled correctly.",
+    approach:
+      "I treated boundary conditions as the core problem, validated assumptions against the physical setup, and iterated the model until response behavior was consistent.",
+    outcome:
+      "The final model estimated a 267.67 kg damage threshold for the bench-rack loading condition and provided a practical interpretation of safe loading context.",
+    palette: ["#2F3D4A", "#5A6E7F", "#D8DEE5"],
+  },
+  {
+    slug: "research-conference-presentation",
+    hidden: false,
+    title: "Research Conference Presentation",
+    category: "Biomedical Research + Conference",
+    year: "2025",
+    summary:
+      "Prepared and presented a biomedical engineering research project at a University of Guelph conference, covering methodology, results, and practical implications.",
+    description:
+      "This project focused on preparing a complete research presentation for conference delivery at the University of Guelph. The work included consolidating experimental context, structuring the narrative for technical audiences, and presenting outcomes tied to published research.",
+    role: "Research presentation author and presenter",
+    timeline: "Conference presentation",
+    image: "/projects/research_conference_main.jpg",
+    heroImage: "/projects/research_conference_main.jpg",
+    services: [
+      "Research communication",
+      "Technical presentation design",
+      "Data interpretation",
+      "Conference delivery",
+    ],
+    tools: ["Scientific writing", "Data visualization", "Slide design", "Biomedical analysis"],
+    highlights: [
+      "Prepared an end-to-end conference presentation from research material and analysis outputs.",
+      "Presented the work at a University of Guelph research conference setting.",
+      "Connected conference communication to the related published article.",
+    ],
+    stats: [
+      { label: "Venue", value: "University of Guelph" },
+      { label: "Project type", value: "Research conference presentation" },
+      { label: "Publication", value: "https://pubmed.ncbi.nlm.nih.gov/40347002/" },
+    ],
+    gallery: [
+      { label: "Conference presentation main", image: "/projects/research_conference_main.jpg" },
+      { label: "Presentation angle", image: "/projects/research_conference_2.jpg" },
+      { label: "Conference detail view", image: "/projects/research_conference3.jpg" },
+    ],
+    challenge:
+      "Translating technical biomedical research into a concise, understandable conference format while preserving scientific integrity.",
+    approach:
+      "Built a clear story arc from problem to method to results, focused on evidence-backed interpretation, and tailored communication for a mixed technical audience.",
+    outcome:
+      "Delivered a structured conference presentation at the University of Guelph and aligned it with the linked publication record.",
+    palette: ["#1E4D70", "#4E86AF", "#D5E7F5"],
+  },
   placeholderProject(2),
   placeholderProject(3),
 ];

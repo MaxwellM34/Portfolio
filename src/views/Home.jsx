@@ -747,37 +747,70 @@ export default function Home() {
           <div className="section__heading">
             <div>
               <p className="eyebrow">Resume</p>
-              <h2>Resume details are now placeholder-only.</h2>
+              <h2>Experience, skills, and full resume view.</h2>
             </div>
             <p className="section__lead">
-              Replace this section with verified experience and education entries.
+              Scroll the embedded PDF on the left, with detailed role history on the right.
             </p>
           </div>
           <div className="resume-grid">
-            <div className="resume-card reveal">
-              <h3>Resume snapshot</h3>
+            <div className="resume-card resume-card--pdf reveal">
+              <h3>Resume Documents</h3>
+              <div className="resume-doc-list">
+                <article className="resume-doc-card">
+                  <div className="resume-doc-head">
+                    <h4>Resume</h4>
+                    <a href={resume.resumeUrl} target="_blank" rel="noreferrer">
+                      Open
+                    </a>
+                  </div>
+                  <div className="resume-pdf-shell">
+                    <iframe
+                      title="Maxwell McInnis Resume"
+                      src={`${resume.resumeUrl}#toolbar=1&navpanes=0&zoom=page-width&view=FitH`}
+                      className="resume-pdf-frame"
+                    />
+                  </div>
+                </article>
+
+                <article className="resume-doc-card">
+                  <div className="resume-doc-head">
+                    <h4>EU CV</h4>
+                    <a href={resume.cvUrl} target="_blank" rel="noreferrer">
+                      Open
+                    </a>
+                  </div>
+                  <div className="resume-pdf-shell">
+                    <iframe
+                      title="Maxwell McInnis EU CV"
+                      src={`${resume.cvUrl}#toolbar=1&navpanes=0&zoom=page-width&view=FitH`}
+                      className="resume-pdf-frame"
+                    />
+                  </div>
+                </article>
+              </div>
+
               <p>{resume.summary}</p>
               <ul className="resume-highlights">
                 {resume.highlights.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <div className="resume-actions">
-                <a className="button button--primary" href={resume.resumeUrl}>
-                  Download resume
-                </a>
-                <span className="resume-note">Replace /resume.pdf with your real file.</span>
-              </div>
               <div className="skill-grid">
                 {resume.skills.map((skill) => (
                   <span key={skill}>{skill}</span>
                 ))}
               </div>
+              <div className="resume-actions">
+                <span className="resume-note">
+                  If text looks fuzzy in browser preview, use Open for full-quality PDF view.
+                </span>
+              </div>
             </div>
             <div className="experience-stack">
               <h3>Work experience</h3>
               {experience.map((role) => (
-                <div key={role.title} className="experience-card reveal">
+                <div key={`${role.title}-${role.company}`} className="experience-card reveal">
                   <div className="experience-meta">
                     <div>
                       <strong>{role.title}</strong>
@@ -796,18 +829,65 @@ export default function Home() {
                   </ul>
                 </div>
               ))}
-              <div className="education-card reveal">
-                <p className="eyebrow">Education</p>
-                {education.map((item) => (
-                  <div key={item.degree}>
-                    <strong>{item.degree}</strong>
-                    <span>{item.school}</span>
-                    <span>{item.dates}</span>
-                    <p>{item.note}</p>
-                  </div>
-                ))}
-              </div>
             </div>
+          </div>
+        </section>
+
+        <section id="education" className="section section--education">
+          <div className="section__heading">
+            <div>
+              <p className="eyebrow">Education</p>
+              <h2>Academic background and credentials.</h2>
+            </div>
+            <p className="section__lead">
+              Full degree and program details pulled directly from your CV.
+            </p>
+          </div>
+          <div className="education-grid">
+            {education.map((item) => (
+              <article key={`${item.degree}-${item.school}`} className="education-card reveal">
+                <strong>{item.degree}</strong>
+                <span>{item.school}</span>
+                <span>{item.dates}</span>
+                <p>{item.note}</p>
+                <div className="education-detail-grid">
+                  {item.address ? (
+                    <div className="education-detail">
+                      <span>Address</span>
+                      <p>{item.address}</p>
+                    </div>
+                  ) : null}
+                  {item.website ? (
+                    <div className="education-detail">
+                      <span>Website</span>
+                      <a href={item.website} target="_blank" rel="noreferrer">
+                        {item.website}
+                      </a>
+                    </div>
+                  ) : null}
+                  {item.finalGrade ? (
+                    <div className="education-detail">
+                      <span>Final grade</span>
+                      <p>{item.finalGrade}</p>
+                    </div>
+                  ) : null}
+                  {item.eqfLevel ? (
+                    <div className="education-detail">
+                      <span>EQF level</span>
+                      <p>{item.eqfLevel}</p>
+                    </div>
+                  ) : null}
+                  {item.publication ? (
+                    <div className="education-detail education-detail--full">
+                      <span>Publication</span>
+                      <a href={item.publication} target="_blank" rel="noreferrer">
+                        {item.publication}
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 

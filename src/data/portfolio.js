@@ -84,7 +84,8 @@ export const site = {
 export const resume = {
   summary:
     "Biomedical software engineer with experience across device-facing systems, internal engineering platforms, workflow automation, and applied research in biomechanics and biosensing.",
-  resumeUrl: "/projects/MaxwellMcInnisCV.pdf",
+  resumeUrl: "/projects/Resume.pdf",
+  cvUrl: "/projects/MaxwellMcInnisCV.pdf",
   highlights: [
     "Designed and commercialized accessory hardware, and built supporting software systems for engineering and operations.",
     "Built internal tools spanning ERP, CRM, qPCR design automation, and lab workflow data handling.",
@@ -194,7 +195,13 @@ export const education = [
     school: "University of Guelph",
     dates: "Aug 2021 - Jul 2025",
     note:
-      "Training included biomechanics, bioinstrumentation, medical device design, robotics, signal processing, and embedded sensing systems, with research and publication contributions in biomedical engineering.",
+      "Biomedical engineering training covering biomechanics, bioinstrumentation, medical device design, robotics, signal processing, and embedded sensing systems.",
+    address: "50 Stone Rd E, Guelph, ON, N1G 2W1, Canada",
+    website: "https://www.uoguelph.ca/",
+    fieldOfStudy: "Engineering, manufacturing and construction",
+    finalGrade: "A",
+    eqfLevel: "EQF level 6",
+    publication: "https://pubmed.ncbi.nlm.nih.gov/40347002/",
   },
 ];
 

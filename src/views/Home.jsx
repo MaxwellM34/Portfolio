@@ -648,7 +648,6 @@ export default function Home() {
                         ></div>
                       )}
                       <h3>{project.title}</h3>
-                      <p>{project.summary}</p>
                       <div className="hero-card__actions">
                         <Link
                           href={`/work/${project.slug}`}
@@ -946,3 +945,4 @@ export default function Home() {
     </div>
   );
 }
+

@@ -58,6 +58,7 @@ export default function ProjectDetail({ project, nextProject }) {
       ? [project.mediaVideo]
       : [];
   const [activeGalleryItem, setActiveGalleryItem] = useState(null);
+  const heroVideoFitContain = project.heroVideoFit === "contain";
 
   const isLikelyUrl = (value) =>
     typeof value === "string" && /^(https?:\/\/|www\.|[\w.-]+\.[a-z]{2,}(?:\/.*)?$)/i.test(value);
@@ -122,7 +123,7 @@ export default function ProjectDetail({ project, nextProject }) {
             </div>
           </div>
           <div
-            className="detail-hero__image"
+            className={`detail-hero__image${heroVideoFitContain ? " detail-hero__image--video-contain" : ""}`}
             style={{
               backgroundColor: solidCardColor,
               backgroundImage: heroVideoSources.length ? "none" : `url("${heroImage}")`,
@@ -290,3 +291,5 @@ export default function ProjectDetail({ project, nextProject }) {
     </div>
   );
 }
+
+

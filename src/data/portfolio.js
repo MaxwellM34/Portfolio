@@ -398,6 +398,7 @@ export const projects = [
     image: "/projects/reverse_engg2.png",
     heroImage: "/projects/reverse_engg2.png",
     mediaVideo: "/projects/reverse_engineering.mp4",
+    heroVideoFit: "contain",
     services: [
       "Mechanical teardown",
       "Missing part reconstruction",
@@ -663,9 +664,101 @@ export const projects = [
       "Delivered a full lab analysis with reproducible scripts, comparative visualizations, and conclusions on impact peaks, loading behavior, and sampling-rate implications for accuracy.",
     palette: ["#1E3A8A", "#3B82F6", "#DBEAFE"],
   },
-];
+
+  {
+    slug: "engg3150-vicon-jump-kinematics-lab",
+    hidden: false,
+    title: "ENGG3150 VICON Jump Kinematics Lab",
+    category: "Biomechanics Motion Analysis",
+    year: "2024",
+    summary:
+      "VICON-based motion analysis of submaximal and maximal broad-jump trials, quantifying joint ROM, angular velocity, and knee adduction behavior at landing.",
+    description:
+      "This lab project used VICON motion capture and force-plate synchronized analysis to evaluate ankle, knee, and hip mechanics during broad jumping at multiple effort levels. The workflow processed marker trajectories, computed sagittal-plane joint range of motion and angular velocity, and examined frontal-plane knee adduction angles at impact.",
+    role: "Biomechanics analysis and MATLAB processing",
+    timeline: "ENGG3150 Lab 2",
+    image: "/projects/3150l2-1.png",
+    heroImage: "/projects/3150l2-1.png",
+    services: [
+      "VICON kinematic processing",
+      "Joint angle analysis",
+      "Landing mechanics assessment",
+      "Technical reporting",
+    ],
+    tools: ["VICON Nexus", "Visual3D", "MATLAB", "Force-plate integration"],
+    highlights: [
+      "Analyzed joint ROM and angular velocity across ankle, knee, and hip during broad-jump efforts.",
+      "Quantified landing-phase knee adduction behavior to support injury-risk discussion.",
+      "Produced multi-figure lab report outputs linking biomechanics interpretation to measured trends.",
+    ],
+    stats: [
+      { label: "Capture system", value: "VICON" },
+      { label: "Lab", value: "ENGG3150 Lab 2" },
+      { label: "Repository", value: "Not linked" },
+    ],
+    gallery: [
+      { label: "Lab 2 report overview", image: "/projects/3150l2-1.png" },
+      { label: "Joint angular velocity plots", image: "/projects/3150l2-2.png" },
+      { label: "Knee adduction comparison", image: "/projects/3150l2-3.png" },
+    ],
+    challenge:
+      "Measure how jump effort level influences joint mechanics while keeping kinematic calculations and event timing consistent across repeated trials.",
+    approach:
+      "I processed motion-capture outputs in MATLAB, derived ROM and angular velocity metrics for key joints, aligned landing frames using force-plate events, and compared results across effort distances.",
+    outcome:
+      "Delivered a complete biomechanics lab analysis showing clear joint-level trends and a practical framework for evaluating landing mechanics and knee-risk indicators.",
+    palette: ["#5A4B9A", "#A08DD8", "#ECE8FA"],
+  },
+  {
+    slug: "engg3150-emg-biceps-curl-lab",
+    hidden: false,
+    title: "ENGG3150 EMG Biceps Curl Analysis",
+    category: "EMG + Biomechanics Signal Processing",
+    year: "2024",
+    summary:
+      "MATLAB-based EMG analysis of isometric and dynamic elbow contractions, comparing biceps and brachioradialis activation across load, angle, and movement phase.",
+    description:
+      "This lab project processes surface EMG and goniometer data from biceps-curl trials. The workflow filters and normalizes EMG signals, computes RMS-based comparisons, and evaluates activation behavior across elbow moments, joint angles, and dynamic repetition phases.",
+    role: "Biomechanics signal analysis and MATLAB implementation",
+    timeline: "ENGG3150 Lab 3",
+    image: "/projects/3150l3-1.png",
+    heroImage: "/projects/3150l3-1.png",
+    services: [
+      "EMG filtering + normalization",
+      "Joint-angle phase analysis",
+      "Dynamic rep segmentation",
+      "Technical lab reporting",
+    ],
+    tools: ["MATLAB", "EMG processing", "Signal Processing Toolbox", "Goniometer data"],
+    highlights: [
+      "Implemented EMG preprocessing with band-pass filtering and envelope-based signal preparation.",
+      "Normalized activation profiles against isometric reference trials for consistent comparison.",
+      "Analyzed muscle behavior in both static-angle and dynamic biceps-curl contexts.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Lab", value: "ENGG3150 Lab 3" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/EMG_Lab3_Biceps_Curl_Analysis" },
+    ],
+    gallery: [
+      { label: "Lab 3 report overview", image: "/projects/3150l3-1.png" },
+      { label: "EMG normalization trends", image: "/projects/3150l3-2.png" },
+      { label: "Dynamic ensemble EMG", image: "/projects/3150l3-3.png" },
+    ],
+    challenge:
+      "Quantify muscle activation differences across contraction conditions while handling noisy biosignal data and preserving fair normalization between trials.",
+    approach:
+      "I built MATLAB scripts to filter raw EMG, compute normalized RMS metrics, align data to biomechanical phases, and compare activation across load, angle, and repetition segments.",
+    outcome:
+      "Delivered a reproducible EMG analysis pipeline and report-ready visual outputs showing clear activation trends for biceps brachii and brachioradialis in isometric and dynamic conditions.",
+    palette: ["#8B2C4A", "#C66A8A", "#F7E6ED"],
+  },];
 
 export const visibleProjects = projects.filter((project) => !project.hidden);
+
+
+
+
 
 
 

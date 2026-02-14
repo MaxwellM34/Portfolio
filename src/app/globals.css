@@ -309,7 +309,7 @@ main {
 
 .hero-card {
   position: relative;
-  min-height: 238px;
+  min-height: 268px;
   padding: 1.25rem;
   border-radius: 24px;
   clip-path: inset(0 round 24px);
@@ -364,7 +364,7 @@ main {
 
 .hero-card__media {
   width: 100%;
-  height: 78px;
+  height: 112px;
   border-radius: 12px;
   background-size: cover;
   background-position: center;
@@ -374,7 +374,7 @@ main {
 
 .hero-card__media-video {
   width: 100%;
-  height: 78px;
+  height: 112px;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.32);
@@ -1218,12 +1218,12 @@ main {
   }
 
   .hero-card {
-    min-height: 206px;
+    min-height: 230px;
     padding: 1rem;
   }
 
   .hero-card__media {
-    height: 64px;
+    height: 92px;
   }
 
   .section__heading {
@@ -1317,4 +1317,22 @@ main {
   border-radius: 12px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   background: #000;
+}
+
+
+
+
+.detail-hero__image--video-contain {
+  min-height: 320px;
+  background: #eef1f4;
+}
+
+.detail-hero__image--video-contain .detail-hero__video {
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .detail-hero__image--video-contain {
+    min-height: 240px;
+  }
 }

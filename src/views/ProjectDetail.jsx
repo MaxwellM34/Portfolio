@@ -5,11 +5,58 @@ import Link from "next/link";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 
+function SequentialVideo({
+  sources,
+  className,
+  poster,
+  controls = false,
+  muted = true,
+  autoPlay = true,
+  onClick,
+}) {
+  const safeSources = Array.isArray(sources) ? sources.filter(Boolean) : [];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [safeSources.join("|")]);
+
+  if (!safeSources.length) {
+    return null;
+  }
+
+  const source = safeSources[activeIndex];
+
+  return (
+    <video
+      className={className}
+      src={source}
+      poster={poster}
+      autoPlay={autoPlay}
+      muted={muted}
+      controls={controls}
+      playsInline
+      preload="metadata"
+      loop={safeSources.length === 1}
+      onEnded={() => {
+        if (safeSources.length > 1) {
+          setActiveIndex((index) => (index + 1) % safeSources.length);
+        }
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
 export default function ProjectDetail({ project, nextProject }) {
   const solidCardColor = project.palette[0];
   const heroImage = project.heroImage || project.image;
-  const heroVideo = project.mediaVideo || null;
   const heroImagePosition = project.heroImagePosition || "center";
+  const heroVideoSources = Array.isArray(project.mediaVideos) && project.mediaVideos.length
+    ? project.mediaVideos
+    : project.mediaVideo
+      ? [project.mediaVideo]
+      : [];
   const [activeGalleryItem, setActiveGalleryItem] = useState(null);
 
   const isLikelyUrl = (value) =>
@@ -17,6 +64,22 @@ export default function ProjectDetail({ project, nextProject }) {
 
   const toAbsoluteUrl = (value) =>
     value.startsWith("http://") || value.startsWith("https://") ? value : `https://${value}`;
+
+  const getGalleryVideoSources = (item) => {
+    if (Array.isArray(item.mediaVideos) && item.mediaVideos.length) {
+      return item.mediaVideos;
+    }
+
+    if (item.mediaType === "video") {
+      return [item.image];
+    }
+
+    if (typeof item.image === "string" && item.image.toLowerCase().endsWith(".mp4")) {
+      return [item.image];
+    }
+
+    return [];
+  };
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -62,20 +125,18 @@ export default function ProjectDetail({ project, nextProject }) {
             className="detail-hero__image"
             style={{
               backgroundColor: solidCardColor,
-              backgroundImage: heroVideo ? "none" : `url("${heroImage}")`,
+              backgroundImage: heroVideoSources.length ? "none" : `url("${heroImage}")`,
               backgroundSize: "cover",
               backgroundPosition: heroImagePosition,
             }}
           >
-            {heroVideo ? (
-              <video
+            {heroVideoSources.length ? (
+              <SequentialVideo
                 className="detail-hero__video"
-                src={heroVideo}
-                autoPlay
+                sources={heroVideoSources}
+                poster={heroImage}
                 muted
-                loop
-                playsInline
-                preload="metadata"
+                autoPlay
               />
             ) : null}
           </div>
@@ -144,21 +205,39 @@ export default function ProjectDetail({ project, nextProject }) {
             <p className="section__lead">Click any image to expand.</p>
           </div>
           <div className="gallery-grid">
-            {project.gallery.map((item) => (
-              <button
-                key={item.label}
-                type="button"
-                className="gallery-card"
-                style={{
-                  backgroundColor: solidCardColor,
-                  backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.02) 48%, rgba(0, 0, 0, 0.46) 100%), url("${item.image}")`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-                onClick={() => setActiveGalleryItem(item)}
-              >
-              </button>
-            ))}
+            {project.gallery.map((item) => {
+              const videoSources = getGalleryVideoSources(item);
+              const isVideo = videoSources.length > 0;
+
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  className="gallery-card"
+                  style={
+                    isVideo
+                      ? { backgroundColor: solidCardColor }
+                      : {
+                          backgroundColor: solidCardColor,
+                          backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.02) 48%, rgba(0, 0, 0, 0.46) 100%), url("${item.image}")`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }
+                  }
+                  onClick={() => setActiveGalleryItem(item)}
+                >
+                  {isVideo ? (
+                    <SequentialVideo
+                      className="gallery-card__video"
+                      sources={videoSources}
+                      poster={item.image || heroImage}
+                      muted
+                      autoPlay
+                    />
+                  ) : null}
+                </button>
+              );
+            })}
           </div>
         </section>
 
@@ -170,7 +249,7 @@ export default function ProjectDetail({ project, nextProject }) {
               <p>{nextProject.summary}</p>
             </div>
             <Link className="button button--primary" href={`/work/${nextProject.slug}`}>
-              View next case study
+              View next project
             </Link>
           </div>
         </section>
@@ -187,12 +266,24 @@ export default function ProjectDetail({ project, nextProject }) {
           >
             x
           </button>
-          <img
-            className="gallery-modal__image"
-            src={activeGalleryItem.image}
-            alt={activeGalleryItem.label}
-            onClick={(event) => event.stopPropagation()}
-          />
+          {getGalleryVideoSources(activeGalleryItem).length ? (
+            <SequentialVideo
+              className="gallery-modal__video"
+              sources={getGalleryVideoSources(activeGalleryItem)}
+              poster={activeGalleryItem.image || heroImage}
+              controls
+              muted
+              autoPlay
+              onClick={(event) => event.stopPropagation()}
+            />
+          ) : (
+            <img
+              className="gallery-modal__image"
+              src={activeGalleryItem.image}
+              alt={activeGalleryItem.label}
+              onClick={(event) => event.stopPropagation()}
+            />
+          )}
           <p className="gallery-modal__caption">{activeGalleryItem.label}</p>
         </div>
       ) : null}

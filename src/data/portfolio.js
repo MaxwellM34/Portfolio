@@ -560,8 +560,112 @@ export const projects = [
       "Delivered a structured conference presentation at the University of Guelph and aligned it with the linked publication record.",
     palette: ["#1E4D70", "#4E86AF", "#D5E7F5"],
   },
-  placeholderProject(2),
-  placeholderProject(3),
+  {
+    slug: "kinderegg-toy-launcher",
+    hidden: false,
+    title: "Kinder Egg Toy Launcher",
+    category: "Mechanical Design + Product Prototyping",
+    year: "2025",
+    summary:
+      "Designed a Kinder Egg toy concept that launches a toy soldier with parachute up to a 3-meter target while packing all parts inside the egg.",
+    description:
+      "This project focused on designing a compact toy mechanism that fits inside a Kinder Egg and launches a toy/object to approximately 3 meters. Our concept used a toy soldier launcher with a parachute payload, balancing packaging constraints, launch mechanics, and repeatable user interaction.",
+    role: "Mechanical concept design and prototyping",
+    timeline: "Course project",
+    image: "/projects/kinderegg_3.png",
+    heroImage: "/projects/kinderegg_3.png",
+    mediaVideo: "/projects/kinderegg_1.mp4",
+    mediaVideos: ["/projects/kinderegg_1.mp4", "/projects/Kinderegg_2.mp4"],
+    services: [
+      "Toy mechanism concepting",
+      "Compact packaging design",
+      "Prototype testing",
+      "Design iteration",
+    ],
+    tools: [
+      "Mechanical prototyping",
+      "Rapid iteration",
+      "Physical testing",
+      "Product design",
+    ],
+    highlights: [
+      "Designed a launch mechanism to reach a 3-meter target range.",
+      "Packaged launcher + toy soldier + parachute within Kinder Egg constraints.",
+      "Validated launch behavior across iterative physical tests.",
+    ],
+    stats: [
+      { label: "Target launch height", value: "3 m" },
+      { label: "Form factor", value: "Kinder Egg" },
+      { label: "Payload", value: "Toy soldier + parachute" },
+    ],
+    gallery: [
+      {
+        label: "Launcher demo reel",
+        image: "/projects/kinderegg_3.png",
+        mediaType: "video",
+        mediaVideos: ["/projects/kinderegg_1.mp4", "/projects/Kinderegg_2.mp4"],
+      },
+      { label: "Kinder Egg prototype", image: "/projects/kinderegg_3.png" },
+      {
+        label: "Test snapshot",
+        image: "/projects/Screenshot 2026-02-14 165449.png",
+      },
+    ],
+    challenge:
+      "Create a toy that could reliably propel an object to around 3 meters while fitting the complete experience inside a Kinder Egg shell.",
+    approach:
+      "We designed and tested a toy soldier launcher concept with a parachute payload, iterating geometry and mechanism behavior to balance launch force, packaging, and usability.",
+    outcome:
+      "Delivered a functioning Kinder Egg toy concept with full component packaging and repeatable launch demonstrations captured on video.",
+    palette: ["#245C86", "#4E90B8", "#DDECF7"],
+  },
+  {
+    slug: "engg3150-force-plate-fft-lab",
+    hidden: false,
+    title: "ENGG3150 Force Plate FFT Lab",
+    category: "Biomechanics Signal Analysis",
+    year: "2024",
+    summary:
+      "MATLAB analysis of force-plate data comparing shod and barefoot trials using GRF, center-of-pressure trends, loading rate estimation, and FFT frequency analysis.",
+    description:
+      "This project analyzes force-plate CSV trial data from shod and barefoot conditions at high and low sampling rates. The workflow extracts vertical ground reaction force (GRF), estimates loading rate, evaluates center-of-pressure behavior, and uses FFT/PSD to compare frequency content across conditions.",
+    role: "Biomechanics data analysis and MATLAB implementation",
+    timeline: "ENGG3150 Lab 1",
+    image: "/projects/3150l1-1.png",
+    heroImage: "/projects/3150l1-1.png",
+    services: [
+      "Force-plate data processing",
+      "MATLAB signal analysis",
+      "FFT + PSD interpretation",
+      "Biomechanics comparison",
+    ],
+    tools: ["MATLAB", "FFT", "CSV processing", "Force-plate analysis"],
+    highlights: [
+      "Built a complete MATLAB workflow for trial loading, GRF extraction, and derived metrics.",
+      "Compared shod vs barefoot behavior across high and low sampling frequencies.",
+      "Produced report visuals for COP trends, spectra, and loading-rate discussion.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Data type", value: "Force-plate CSV trials" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/ENGG3150-Force-Plate-FFT-Lab" },
+    ],
+    gallery: [
+      { label: "Lab report overview", image: "/projects/3150l1-1.png" },
+      { label: "COP comparison chart", image: "/projects/3150l1-2.png" },
+      { label: "Frequency spectrum comparison", image: "/projects/3150l1-3.png" },
+    ],
+    challenge:
+      "Determine how footwear condition and sampling rate affect measured impact characteristics while preserving signal quality and interpretability.",
+    approach:
+      "I implemented a MATLAB pipeline that ingests selected trials, computes GRF and loading-rate features, maps center-of-pressure behavior, and applies single-sided FFT/PSD analysis for condition-level comparison.",
+    outcome:
+      "Delivered a full lab analysis with reproducible scripts, comparative visualizations, and conclusions on impact peaks, loading behavior, and sampling-rate implications for accuracy.",
+    palette: ["#1E3A8A", "#3B82F6", "#DBEAFE"],
+  },
 ];
 
 export const visibleProjects = projects.filter((project) => !project.hidden);
+
+
+

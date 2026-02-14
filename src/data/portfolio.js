@@ -218,8 +218,8 @@ export const projects = [
       "BetterBMRCalculator is a web app for estimating daily energy needs. It goes beyond a single activity multiplier by collecting workout and daily movement context and showing an accuracy estimate alongside results.",
     role: "Product design, front-end engineering, full-stack integration",
     timeline: "Ongoing",
-    image: "/projects/better-bmr-calculator.svg",
-    heroImage: "/projects/better-bmr-calculator.svg",
+    image: "/projects/betterbmrcalculator.png",
+    heroImage: "/projects/betterbmrcalculator.png",
     services: [
       "Calculation UX",
       "Feature design",
@@ -238,9 +238,9 @@ export const projects = [
       { label: "Website", value: "betterbmrcalculator.net" },
     ],
     gallery: [
-      { label: "Calculator workflow", image: "/projects/better-bmr-calculator.svg" },
-      { label: "Results + accuracy panel", image: "/projects/better-bmr-calculator.svg" },
-      { label: "Project goals and rationale", image: "/projects/better-bmr-calculator.svg" },
+      { label: "Calculator workflow", image: "/projects/betterbmrcalculator.png" },
+      { label: "Results + accuracy panel", image: "/projects/betterbmrcalculator.png" },
+      { label: "Project goals and rationale", image: "/projects/betterbmrcalculator.png" },
     ],
     challenge:
       "Most calorie calculators rely on a generic activity multiplier and do not communicate confidence clearly.",
@@ -262,8 +262,8 @@ export const projects = [
       "A production-ready portfolio frontend that uses Next.js App Router, static generation for project pages, and a single source of truth in a data file for content management.",
     role: "Architecture, front-end implementation, content systems",
     timeline: "Current",
-    image: "/projects/portfolio-site.svg",
-    heroImage: "/projects/portfolio-site.svg",
+    image: "/projects/portfolio.png",
+    heroImage: "/projects/portfolio.png",
     services: [
       "Frontend architecture",
       "UI engineering",
@@ -282,9 +282,9 @@ export const projects = [
       { label: "Data source", value: "src/data/portfolio.js" },
     ],
     gallery: [
-      { label: "Home and project listing", image: "/projects/portfolio-site.svg" },
-      { label: "Dynamic project route", image: "/projects/portfolio-site.svg" },
-      { label: "Content visibility workflow", image: "/projects/portfolio-site.svg" },
+      { label: "Home and project listing", image: "/projects/portfolio.png" },
+      { label: "Dynamic project route", image: "/projects/portfolio.png" },
+      { label: "Content visibility workflow", image: "/projects/portfolio.png" },
     ],
     challenge:
       "Needed a maintainable structure for publishing only verified projects while keeping drafts private.",
@@ -306,8 +306,8 @@ export const projects = [
       "qPCRLabAutomation is a repository focused on end-to-end qPCR workflow automation. It integrates specialized modules for primer design and sequence analysis to support practical lab operations.",
     role: "Project creator and software developer",
     timeline: "Ongoing",
-    image: "/projects/qpcr-lab-automation.svg",
-    heroImage: "/projects/qpcr-lab-automation.svg",
+    image: "/projects/qPCRLabAutomation.jpg",
+    heroImage: "/projects/qPCRLabAutomation.jpg",
     services: [
       "Lab workflow automation",
       "Primer design pipeline integration",
@@ -326,9 +326,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/qPCRLabAutomation" },
     ],
     gallery: [
-      { label: "Workflow architecture", image: "/projects/qpcr-lab-automation.svg" },
-      { label: "Primer design pipeline", image: "/projects/qpcr-lab-automation.svg" },
-      { label: "Consensus/alignment automation", image: "/projects/qpcr-lab-automation.svg" },
+      { label: "Workflow architecture", image: "/projects/qPCRLabAutomation.jpg" },
+      { label: "Primer design pipeline", image: "/projects/qPCRLabAutomation.jpg" },
+      { label: "Consensus/alignment automation", image: "/projects/qPCRLabAutomation.jpg" },
     ],
     challenge:
       "Small labs often need to stitch together multiple manual steps for qPCR design and analysis.",
@@ -337,6 +337,50 @@ export const projects = [
     outcome:
       "A central foundation for scaling qPCR software workflows with less manual handoff across tools.",
     palette: ["#14532D", "#22C55E", "#A7F3D0"],
+  },
+  {
+    slug: "foot-allign-capstone",
+    hidden: false,
+    title: "Foot Allign Capstone",
+    category: "Wearable Biomechanics",
+    year: "2025",
+    summary:
+      "Capstone project focused on out-toeing correction using a wearable feedback device, combining hardware, signal processing, and real-time gait feedback.",
+    description:
+      "Foot Allign is a biomechanics capstone project that detects excessive out-toeing during walking and provides corrective haptic feedback. The build combined embedded sensing, IMU calibration, and validation against reference motion data.",
+    role: "Capstone co-developer (biomedical engineering)",
+    timeline: "Capstone term",
+    image: "/projects/footallign-combined.jpg",
+    heroImage: "/projects/footallign-combined.jpg",
+    services: [
+      "Wearable device prototyping",
+      "Biomechanics validation",
+      "Embedded sensing",
+      "Signal analysis",
+    ],
+    tools: ["IMU", "ESP32", "Arduino", "Data analysis", "Prototype fabrication"],
+    highlights: [
+      "Designed a wearable approach for detecting out-toeing gait behavior and prompting corrective action.",
+      "Built and validated prototype outputs against reference motion capture data.",
+      "Presented full capstone poster with system architecture, device logic, and test outcomes.",
+    ],
+    stats: [
+      { label: "Domain", value: "Gait biomechanics" },
+      { label: "Format", value: "Engineering capstone" },
+      { label: "Output", value: "Wearable prototype + poster" },
+    ],
+    gallery: [
+      { label: "Capstone poster", image: "/projects/footallignbanner.jpg" },
+      { label: "Project presentation", image: "/projects/footallignselfie.jpg" },
+      { label: "Combined preview", image: "/projects/footallign-combined.jpg" },
+    ],
+    challenge:
+      "Excessive out-toeing can increase joint stress and injury risk, but practical real-time corrective tools are limited.",
+    approach:
+      "Developed a compact wearable concept that tracks gait angle and triggers haptic feedback when out-toeing exceeds a calibrated threshold.",
+    outcome:
+      "Delivered a validated capstone prototype and full technical presentation demonstrating feasibility for real-time gait behavior feedback.",
+    palette: ["#1A4D8F", "#4DA3FF", "#D6E8FF"],
   },
   publicPlaceholderProject("placeholder-aurora", "Aurora Placeholder", [
     "#5B6DF8",

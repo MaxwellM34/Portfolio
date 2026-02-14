@@ -4,13 +4,21 @@ import Link from "next/link";
 export default function ProjectCard({ project, index }) {
   const solidCardColor = project.palette[0];
   const accent = project.palette[2];
+  const cardImage = project.image || project.heroImage;
+  const cardImageStyle = {
+    backgroundColor: solidCardColor,
+    backgroundImage: `linear-gradient(160deg, rgba(10, 10, 10, 0.08), rgba(10, 10, 10, 0.45)), url("${cardImage}")`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  };
+
   return (
     <Link
       href={`/work/${project.slug}`}
       className="project-card reveal"
       style={{ animationDelay: `${index * 80}ms` }}
     >
-      <div className="project-card__image" style={{ backgroundColor: solidCardColor }}>
+      <div className="project-card__image" style={cardImageStyle}>
         <div className="project-card__badge" style={{ borderColor: accent }}>
           {project.category}
         </div>

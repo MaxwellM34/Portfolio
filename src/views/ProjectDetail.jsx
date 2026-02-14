@@ -5,6 +5,7 @@ import SiteNav from "../components/SiteNav";
 
 export default function ProjectDetail({ project, nextProject }) {
   const solidCardColor = project.palette[0];
+  const heroImage = project.heroImage || project.image;
 
   return (
     <div className="page">
@@ -37,10 +38,13 @@ export default function ProjectDetail({ project, nextProject }) {
           </div>
           <div
             className="detail-hero__image"
-            style={{ backgroundColor: solidCardColor }}
-          >
-            <div className="detail-hero__label">{project.title}</div>
-          </div>
+            style={{
+              backgroundColor: solidCardColor,
+              backgroundImage: `url("${heroImage}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
         </section>
 
         <section className="section section--stats">

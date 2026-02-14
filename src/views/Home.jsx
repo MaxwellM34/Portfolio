@@ -573,6 +573,7 @@ export default function Home() {
                 };
 
                 const solidCardColor = project.palette[0];
+                const cardImage = project.heroImage || project.image;
                 const isTopCard = index === frontCardIndex;
                 const brightness = hoverLock
                   ? isTopCard
@@ -599,6 +600,10 @@ export default function Home() {
                   "--orbit-s": orbit.scale,
                 };
 
+                const heroCardStyle = {
+                  backgroundColor: solidCardColor,
+                };
+
                 return (
                   <div
                     key={project.slug}
@@ -617,12 +622,17 @@ export default function Home() {
                   >
                     <article
                       className="hero-card"
-                      style={{ backgroundColor: solidCardColor }}
+                      style={heroCardStyle}
                     >
                       <div className="hero-card__top">
                         <span>{project.category}</span>
                         <span>{project.year}</span>
                       </div>
+                      <div
+                        className="hero-card__media"
+                        style={{ backgroundImage: `url("${cardImage}")` }}
+                        aria-hidden="true"
+                      ></div>
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
                       <div className="hero-card__actions">

@@ -28,9 +28,9 @@ export const metadata = {
     follow: true,
   },
   icons: {
-    icon: [{ url: "/projects/Maxwell.png", type: "image/png" }],
-    shortcut: ["/projects/Maxwell.png"],
-    apple: [{ url: "/projects/Maxwell.png" }],
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    shortcut: ["/icon.png"],
+    apple: [{ url: "/apple-icon.png" }],
   },
   openGraph: {
     type: "website",
@@ -38,13 +38,13 @@ export const metadata = {
     title: `${site.name} | Portfolio`,
     description: siteDescription,
     url: SITE_URL,
-    images: [{ url: "/projects/Maxwell.png", alt: "Maxwell McInnis" }],
+    images: [{ url: "/icon.png", alt: "Maxwell McInnis" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | Portfolio`,
     description: siteDescription,
-    images: ["/projects/Maxwell.png"],
+    images: ["/icon.png"],
   },
 };
 
@@ -55,3 +55,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

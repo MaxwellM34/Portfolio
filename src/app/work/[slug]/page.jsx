@@ -20,6 +20,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const projectSocialImage = project.heroImage || project.image || "/projects/portfolio.png";
+
   return {
     title: project.title,
     description: project.summary,
@@ -30,12 +32,12 @@ export async function generateMetadata({ params }) {
       title: `${project.title} | ${site.name}`,
       description: project.summary,
       url: `${SITE_URL}/work/${project.slug}`,
-      images: [{ url: "/og-image.svg", alt: "Portfolio preview" }],
+      images: [{ url: projectSocialImage, alt: `${project.title} preview` }],
     },
     twitter: {
       title: `${project.title} | ${site.name}`,
       description: project.summary,
-      images: ["/og-image.svg"],
+      images: [projectSocialImage],
     },
   };
 }
@@ -53,4 +55,3 @@ export default async function ProjectPage({ params }) {
 
   return <ProjectDetail project={project} nextProject={nextProject} />;
 }
-

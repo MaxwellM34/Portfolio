@@ -4,6 +4,7 @@ import { site } from "../data/portfolio";
 const siteDescription =
   "Maxwell McInnis portfolio: biomedical engineering, software products, automation systems, and technical project case studies.";
 const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
+const SOCIAL_IMAGE = "/projects/portfolio.png";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,13 +39,13 @@ export const metadata = {
     title: `${site.name} | Portfolio`,
     description: siteDescription,
     url: SITE_URL,
-    images: [{ url: "/icon.png", alt: "Maxwell McInnis" }],
+    images: [{ url: SOCIAL_IMAGE, alt: "Maxwell McInnis Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | Portfolio`,
     description: siteDescription,
-    images: ["/icon.png"],
+    images: [SOCIAL_IMAGE],
   },
 };
 
@@ -55,4 +56,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

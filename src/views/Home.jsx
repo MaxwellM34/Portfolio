@@ -18,6 +18,7 @@ import ProjectCard from "../components/ProjectCard";
 const RELEASE_FREEZE_MS = 1000;
 const RELEASE_RAMP_MS = 2800;
 const NAV_LOCK_MS = 1800;
+const TOUCH_RELEASE_MS = 5000;
 
 function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
   const slots = [];
@@ -67,6 +68,7 @@ export default function Home() {
   const hoverLockRef = useRef(null);
   const navigationLockRef = useRef(false);
   const navigationTimeoutRef = useRef(null);
+  const touchReleaseTimeoutRef = useRef(null);
   const activeNavigationRef = useRef("");
   const releaseMotionRef = useRef({ freezeUntil: 0, rampUntil: 0 });
   const orbitPhaseRef = useRef(0);
@@ -76,6 +78,10 @@ export default function Home() {
     () => () => {
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
+      }
+
+      if (touchReleaseTimeoutRef.current) {
+        clearTimeout(touchReleaseTimeoutRef.current);
       }
     },
     []
@@ -370,6 +376,7 @@ export default function Home() {
   }, [hoverLock, orbitStates]);
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const cssFixed = (value, digits = 6) => Number(value).toFixed(digits);
   const isModifiedClick = (event) =>
     event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
   const isPrimaryPlainClick = (event) => event.button === 0 && !isModifiedClick(event);
@@ -431,6 +438,11 @@ export default function Home() {
       return;
     }
 
+    if (touchReleaseTimeoutRef.current) {
+      clearTimeout(touchReleaseTimeoutRef.current);
+      touchReleaseTimeoutRef.current = null;
+    }
+
     if (!hoverLockRef.current) {
       return;
     }
@@ -441,6 +453,21 @@ export default function Home() {
       freezeUntil: now + RELEASE_FREEZE_MS,
       rampUntil: now + RELEASE_FREEZE_MS + RELEASE_RAMP_MS,
     };
+  };
+
+  const scheduleTouchRelease = () => {
+    if (!isTouchInput) {
+      return;
+    }
+
+    if (touchReleaseTimeoutRef.current) {
+      clearTimeout(touchReleaseTimeoutRef.current);
+    }
+
+    touchReleaseTimeoutRef.current = setTimeout(() => {
+      touchReleaseTimeoutRef.current = null;
+      releaseHoverLock();
+    }, TOUCH_RELEASE_MS);
   };
 
   const handleCardHover = (index, event) => {
@@ -482,6 +509,8 @@ export default function Home() {
       scale: currentOrbit.scale,
       tilt: currentOrbit.tilt,
     });
+
+    scheduleTouchRelease();
   };
 
   const handleCardPointerDown = (index, slug, event) => {
@@ -564,7 +593,7 @@ export default function Home() {
             <div className="hero-stack-hint" aria-hidden="true">
               <span className="hero-stack-hint__desktop">Hover your cursor on a card.</span>
               <span className="hero-stack-hint__mobile">Tap a card to focus it.</span>
-              <span className="hero-stack-hint__arrow">-&gt;</span>
+              <span className="hero-stack-hint__arrow">{"\u2193"}</span>
             </div>
             {heroProjects.length > 0 ? (
               heroProjects.map((project, index) => {
@@ -594,16 +623,19 @@ export default function Home() {
                 const shadowStrength = isTopCard ? 0.34 : 0.2 + orbit.depth * 0.12;
 
                 const shellStyle = {
-                  zIndex: depthZIndexMap[index] ?? 1,
+                  zIndex: String(depthZIndexMap[index] ?? 1),
                   pointerEvents: "auto",
-                  opacity: hoverLock ? (isTopCard ? 1 : 0.86) : 0.6 + orbit.depth * 0.4,
-                  filter: `brightness(${brightness}) saturate(${saturate})`,
-                  boxShadow: `0 ${12 + orbit.depth * 14}px ${22 + orbit.depth * 18}px rgba(17, 14, 12, ${shadowStrength})`,
-                  "--orbit-x": `${orbit.x}px`,
-                  "--orbit-y": `${orbit.y}px`,
-                  "--orbit-z": `${orbit.z}px`,
-                  "--orbit-r": `${orbit.tilt}deg`,
-                  "--orbit-s": orbit.scale,
+                  opacity: cssFixed(hoverLock ? (isTopCard ? 1 : 0.86) : 0.6 + orbit.depth * 0.4),
+                  filter: `brightness(${cssFixed(brightness)}) saturate(${cssFixed(saturate)})`,
+                  boxShadow: `0 ${cssFixed(12 + orbit.depth * 14, 4)}px ${cssFixed(
+                    22 + orbit.depth * 18,
+                    4
+                  )}px rgba(17, 14, 12, ${cssFixed(shadowStrength, 4)})`,
+                  "--orbit-x": `${cssFixed(orbit.x, 4)}px`,
+                  "--orbit-y": `${cssFixed(orbit.y, 4)}px`,
+                  "--orbit-z": `${cssFixed(orbit.z, 4)}px`,
+                  "--orbit-r": `${cssFixed(orbit.tilt, 4)}deg`,
+                  "--orbit-s": cssFixed(orbit.scale),
                 };
 
                 const heroCardStyle = {
@@ -935,6 +967,22 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

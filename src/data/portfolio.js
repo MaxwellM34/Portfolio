@@ -847,9 +847,93 @@ export const projects = [
     outcome:
       "Delivered reproducible scripts and report outputs quantifying A3 pulley force behavior and supporting interpretation of finger-specific loading risk in climbing grip mechanics.",
     palette: ["#2F4F6B", "#6E95B5", "#E1EDF7"],
+  },
+  {
+    slug: "gripsense-rsi-prevention-mouse",
+    hidden: false,
+    title: "GripSense RSI Prevention Mouse",
+    category: "Ergonomic Product Design",
+    year: "2024",
+    summary:
+      "Designed GripSense, a low-cost ergonomic mouse concept that prevents wrist and hand repetitive strain injuries using grip-force feedback and timed break reminders.",
+    description:
+      "This project addresses repetitive strain injury risk from chronic computer use by focusing on prevention rather than treatment. The final concept, GripSense, combines ergonomic geometry, force-based vibrational feedback to discourage excessive grip, and periodic break reminders to reduce long-term wrist and hand strain during productivity work.",
+    role: "Product strategy, engineering design, and systems evaluation",
+    timeline: "Design project",
+    image: "/projects/3100-2.png",
+    heroImage: "/projects/3100-2.png",
+    mediaVideo: "/projects/3100-1.mp4",
+    services: [
+      "Ergonomic product design",
+      "Human-factor risk prevention",
+      "Decision-matrix selection",
+      "Lifecycle and impact analysis",
+    ],
+    tools: [
+      "UBC design model",
+      "Weighted decision matrix",
+      "Sensitivity analysis",
+      "Economic input-output LCA",
+      "Gantt planning",
+    ],
+    highlights: [
+      "Developed four alternatives and selected GripSense through weighted decision matrix and sensitivity analysis.",
+      "Designed around prevention constraints including affordability, broad compatibility, maintenance simplicity, and usability.",
+      "Integrated grip-force feedback plus 30-minute break prompts to lower cumulative overuse risk.",
+    ],
+    stats: [
+      { label: "Target lifespan", value: "5-8 years" },
+      { label: "Design budget cap", value: "$20,000 CAD" },
+      { label: "Economic IO impact", value: "$47 per mouse (2021 USD)" },
+    ],
+    gallery: [
+      { label: "GripSense concept demo", image: "/projects/3100-1.mp4", mediaType: "video" },
+      { label: "Design report page 1", image: "/projects/3100-2.png" },
+      { label: "Design report page 2", image: "/projects/3100-3.png" },
+    ],
+    challenge:
+      "Create a practical, affordable product that reduces RSI risk at the source for everyday computer users, rather than only treating symptoms after injury occurs.",
+    approach:
+      "I defined prevention-focused constraints and criteria, iterated concepts using the UBC model, selected the final design through structured tradeoff analysis, and evaluated lifecycle, economic, and implementation factors for a realistic deployment path.",
+    outcome:
+      "Produced a complete prevention-focused design for GripSense with ergonomic geometry, force-feedback behavior control, and scheduled break prompting, plus clear next steps for prototyping and sensor validation.",
+    palette: ["#2E5E63", "#5A8F95", "#DCEEEF"],
   },];
 
-export const visibleProjects = projects.filter((project) => !project.hidden);
+const featuredProjectOrder = [
+  "reverse-engineering-sewing-machine",
+  "better-bmr-calculator",
+  "gripsense-rsi-prevention-mouse",
+  "copper-vision-mood-classifier",
+  "kinderegg-toy-launcher",
+  "fea-barbell-bench-capstone",
+  "foot-allign-capstone",
+];
+
+const featuredProjectRank = new Map(
+  featuredProjectOrder.map((slug, index) => [slug, index])
+);
+
+export const visibleProjects = projects
+  .map((project, index) => ({ project, index }))
+  .filter(({ project }) => !project.hidden)
+  .sort((a, b) => {
+    const rankA = featuredProjectRank.has(a.project.slug)
+      ? featuredProjectRank.get(a.project.slug)
+      : Number.POSITIVE_INFINITY;
+    const rankB = featuredProjectRank.has(b.project.slug)
+      ? featuredProjectRank.get(b.project.slug)
+      : Number.POSITIVE_INFINITY;
+
+    if (rankA !== rankB) {
+      return rankA - rankB;
+    }
+
+    return a.index - b.index;
+  })
+  .map(({ project }) => project);
+
+
 
 
 

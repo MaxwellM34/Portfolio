@@ -324,7 +324,7 @@ main {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(4px, 4px);
+    transform: translateY(5px);
   }
 }.hero-card-shell {
   position: absolute;
@@ -1386,3 +1386,29 @@ main {
 
 
 
+
+
+@media (max-width: 980px) {
+  .hero-stack-hint {
+    top: -1.2rem;
+    right: 0.35rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-stack-hint__desktop {
+    display: none;
+  }
+
+  .hero-stack-hint__mobile {
+    display: inline;
+  }
+
+  .hero-stack-hint {
+    left: 0.2rem;
+    right: auto;
+    top: -1rem;
+    font-size: 0.7rem;
+    padding: 0.38rem 0.62rem;
+  }
+}

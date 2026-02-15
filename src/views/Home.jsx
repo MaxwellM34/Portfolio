@@ -953,11 +953,13 @@ export default function Home() {
               </p>
             </div>
             <div className="contact-actions">
-              <a className="button button--primary" href={`mailto:${site.email}`}>
-                Email {site.email}
+              <a className="button button--primary contact-button" href={`mailto:${site.email}`}>
+                <span className="contact-button__label">Email</span>
+                <span className="contact-button__value">{site.email}</span>
               </a>
-              <a className="button button--ghost" href={`tel:${site.phone}`}>
-                Call {site.phone}
+              <a className="button button--ghost contact-button" href={`tel:${site.phone}`}>
+                <span className="contact-button__label">Call</span>
+                <span className="contact-button__value">{site.phone}</span>
               </a>
             </div>
           </div>
@@ -967,6 +969,7 @@ export default function Home() {
     </div>
   );
 }
+
 
 
 

@@ -2,7 +2,7 @@ import "./globals.css";
 import { site } from "../data/portfolio";
 
 const siteDescription =
-  "Portfolio of product design and front-end work. Explore case studies, services, and collaboration details.";
+  "Maxwell McInnis portfolio: biomedical engineering, software products, automation systems, and technical project case studies.";
 const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
 
 export const metadata = {
@@ -12,6 +12,14 @@ export const metadata = {
     template: `%s | ${site.name}`,
   },
   description: siteDescription,
+  keywords: [
+    "Maxwell McInnis",
+    "Maxwell McInnis portfolio",
+    "biomedical engineer",
+    "software engineer",
+    "automation",
+    "portfolio",
+  ],
   alternates: {
     canonical: "/",
   },
@@ -19,19 +27,24 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [{ url: "/projects/Maxwell.png", type: "image/png" }],
+    shortcut: ["/projects/Maxwell.png"],
+    apple: [{ url: "/projects/Maxwell.png" }],
+  },
   openGraph: {
     type: "website",
     siteName: site.name,
     title: `${site.name} | Portfolio`,
     description: siteDescription,
     url: SITE_URL,
-    images: [{ url: "/og-image.svg", alt: "Portfolio preview" }],
+    images: [{ url: "/projects/Maxwell.png", alt: "Maxwell McInnis" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | Portfolio`,
     description: siteDescription,
-    images: ["/og-image.svg"],
+    images: ["/projects/Maxwell.png"],
   },
 };
 

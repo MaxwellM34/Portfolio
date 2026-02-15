@@ -3,9 +3,10 @@ import { site } from "../data/portfolio";
 
 const siteDescription =
   "Portfolio of product design and front-end work. Explore case studies, services, and collaboration details.";
+const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
 
 export const metadata = {
-  metadataBase: new URL("https://your-portfolio.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${site.name} | Portfolio`,
     template: `%s | ${site.name}`,
@@ -23,7 +24,7 @@ export const metadata = {
     siteName: site.name,
     title: `${site.name} | Portfolio`,
     description: siteDescription,
-    url: "https://your-portfolio.com",
+    url: SITE_URL,
     images: [{ url: "/og-image.svg", alt: "Portfolio preview" }],
   },
   twitter: {

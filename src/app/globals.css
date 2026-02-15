@@ -1300,41 +1300,6 @@ main {
   }
 }
 
-@media (max-width: 720px) {
-  .nav__links {
-    display: none;
-  }
-
-  .nav__cta {
-    display: none;
-  }
-
-  main {
-    padding: 0 8vw 5rem;
-  }
-
-  .hero {
-    padding-top: 2.5rem;
-  }
-
-  .gallery-modal {
-    padding-top: 3.2rem;
-  }
-
-  .gallery-modal__image {
-    width: 96vw;
-    max-height: 72vh;
-  }
-
-  .resume-pdf-shell {
-    height: 360px;
-  }
-
-  .education-detail-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-card-shell,
   .hero-card,
@@ -1410,5 +1375,47 @@ main {
     top: -1rem;
     font-size: 0.7rem;
     padding: 0.38rem 0.62rem;
+  }
+}
+
+
+
+@media (max-width: 720px) {
+  .nav__inner {
+    padding: 0.85rem 6vw 0.7rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.65rem 1rem;
+  }
+
+  .nav__brand {
+    font-size: 1.02rem;
+  }
+
+  .nav__links {
+    display: flex;
+    width: 100%;
+    gap: 0.9rem;
+    font-size: 0.82rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.2rem;
+    scrollbar-width: none;
+  }
+
+  .nav__links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  main {
+    padding: 7.6rem 8vw 5rem;
+  }
+
+  .hero {
+    padding-top: 0.75rem;
   }
 }

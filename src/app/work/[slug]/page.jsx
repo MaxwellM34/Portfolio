@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { site, visibleProjects } from "../../../data/portfolio";
 import ProjectDetail from "../../../views/ProjectDetail";
 
-const SITE_URL = "https://your-portfolio.com";
+const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
 
 export function generateStaticParams() {
   return visibleProjects.map((project) => ({ slug: project.slug }));
@@ -53,3 +53,4 @@ export default async function ProjectPage({ params }) {
 
   return <ProjectDetail project={project} nextProject={nextProject} />;
 }
+

@@ -546,7 +546,7 @@ export default function Home() {
     <div className="page">
       <SiteNav />
       <main>
-        <section className="hero">
+        <section id="home" className="hero">
           <div ref={contentRef} className="hero__content">
             <p className="eyebrow">Portfolio 2026</p>
             <Image
@@ -967,6 +967,8 @@ export default function Home() {
     </div>
   );
 }
+
+
 
 
 

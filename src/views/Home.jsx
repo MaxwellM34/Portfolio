@@ -823,7 +823,7 @@ export default function Home() {
           >
             <div className="hero-stack-hint" aria-hidden="true">
               <span className="hero-stack-hint__desktop">Hover your cursor on a card.</span>
-              <span className="hero-stack-hint__mobile">Scroll to center, then cards stack in.</span>
+              <span className="hero-stack-hint__mobile">Tap cards to view.</span>
               <span className="hero-stack-hint__arrow">{"\u2193"}</span>
             </div>
             {heroProjects.length > 0 ? (

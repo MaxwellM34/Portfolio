@@ -1,4 +1,4 @@
-const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://www.maxwellmcinnis.com").replace(/\/$/, "");
 
 export default function robots() {
   return {

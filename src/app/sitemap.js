@@ -1,6 +1,6 @@
 import { visibleProjects } from "../data/portfolio";
 
-const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://www.maxwellmcinnis.com").replace(/\/$/, "");
 const LAST_MODIFIED = new Date("2026-01-01T00:00:00.000Z");
 
 export default function sitemap() {

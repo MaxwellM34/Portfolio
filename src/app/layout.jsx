@@ -3,7 +3,7 @@ import { site } from "../data/portfolio";
 
 const siteDescription =
   "Maxwell McInnis portfolio: biomedical engineering, software products, automation systems, and technical project case studies.";
-const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
+const SITE_URL = (process.env.SITE_URL || "https://www.maxwellmcinnis.com").replace(/\/$/, "");
 const SOCIAL_IMAGE = "/projects/portfolio.png";
 
 export const metadata = {
@@ -29,9 +29,13 @@ export const metadata = {
     follow: true,
   },
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    shortcut: ["/icon.png"],
-    apple: [{ url: "/apple-icon.png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   openGraph: {
     type: "website",

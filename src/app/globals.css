@@ -1255,6 +1255,8 @@ main {
 
   .hero-card-shell {
     width: min(var(--hero-card-width, 320px), 92vw);
+    will-change: transform, opacity;
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease;
   }
 
   .hero-card {

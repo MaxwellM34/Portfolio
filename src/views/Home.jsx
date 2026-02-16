@@ -19,6 +19,10 @@ const RELEASE_FREEZE_MS = 1000;
 const RELEASE_RAMP_MS = 2800;
 const NAV_LOCK_MS = 1800;
 const TOUCH_RELEASE_MS = 5000;
+const DEFAULT_PHONE_FOCUS_SLUG = "reverse-engineering-sewing-machine";
+const PHONE_DECK_MAX_SPREAD_FACTOR = 1.9;
+const PHONE_DECK_STACK_SCROLL_DISTANCE = 320;
+const PHONE_DECK_TRANSITION_MS = 900;
 
 function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
   const slots = [];
@@ -61,6 +65,8 @@ export default function Home() {
   const [orbitTime, setOrbitTime] = useState(0);
   const [isCompactOrbit, setIsCompactOrbit] = useState(false);
   const [isTouchInput, setIsTouchInput] = useState(false);
+  const isPhoneOrbit = isCompactOrbit && isTouchInput;
+  const [phoneDeckStackProgress, setPhoneDeckStackProgress] = useState(0);
   const [hoverLock, setHoverLock] = useState(null);
   const [contentRightInStackX, setContentRightInStackX] = useState(null);
   const contentRef = useRef(null);
@@ -73,6 +79,43 @@ export default function Home() {
   const releaseMotionRef = useRef({ freezeUntil: 0, rampUntil: 0 });
   const orbitPhaseRef = useRef(0);
   const lastFrameTimeRef = useRef(null);
+  const phoneDeckStackStartScrollRef = useRef(null);
+  const defaultPhoneFocusIndex = useMemo(() => {
+    const defaultIndex = heroProjects.findIndex(
+      (project) => project.slug === DEFAULT_PHONE_FOCUS_SLUG
+    );
+    return defaultIndex >= 0 ? defaultIndex : 0;
+  }, [heroProjects]);
+  const phoneDeckAverageSpreadYOffset = useMemo(() => {
+    const total = heroProjects.length;
+    if (total <= 0) {
+      return 0;
+    }
+
+    const spreadFactor = PHONE_DECK_MAX_SPREAD_FACTOR;
+    const verticalStep = 14 + (spreadFactor - 1) * 11;
+    const centerCompensation = (spreadFactor - 1) * Math.min(12, total * 1.4);
+    const focusedIndex = 0;
+    let ySum = 0;
+
+    for (let i = 0; i < total; i += 1) {
+      const clockwiseDistance = (i - focusedIndex + total) % total;
+      const counterClockwiseDistance = clockwiseDistance - total;
+      const offset =
+        Math.abs(counterClockwiseDistance) < Math.abs(clockwiseDistance)
+          ? counterClockwiseDistance
+          : clockwiseDistance;
+      const spread = Math.abs(offset);
+
+      if (spread === 0) {
+        ySum += -16 - centerCompensation * 0.25;
+      } else {
+        ySum += spread * verticalStep - centerCompensation;
+      }
+    }
+
+    return ySum / total;
+  }, [heroProjects.length]);
 
   useEffect(
     () => () => {
@@ -162,7 +205,7 @@ export default function Home() {
   }, [hoverLock]);
 
   useEffect(() => {
-    if (heroProjects.length <= 1) {
+    if (heroProjects.length <= 1 || isPhoneOrbit) {
       orbitPhaseRef.current = 0;
       lastFrameTimeRef.current = null;
       setOrbitTime(0);
@@ -208,7 +251,7 @@ export default function Home() {
       window.cancelAnimationFrame(animationFrame);
       lastFrameTimeRef.current = null;
     };
-  }, [heroProjects.length, isCompactOrbit]);
+  }, [heroProjects.length, isCompactOrbit, isPhoneOrbit]);
 
   const orbitConfig = useMemo(() => {
     const total = heroProjects.length;
@@ -223,7 +266,9 @@ export default function Home() {
     const verticalScale = isCompactOrbit ? 0.82 : 0.76;
     const slots = buildOrbitSlots(total, baseRadius, ringGap, minSpacing);
     const maxRing = slots.reduce((max, slot) => Math.max(max, slot.ring), 0);
-    const stackHeight = (isCompactOrbit ? 350 : 470) + maxRing * (isCompactOrbit ? 104 : 128);
+    const stackHeight = isPhoneOrbit
+      ? 360
+      : (isCompactOrbit ? 350 : 470) + maxRing * (isCompactOrbit ? 104 : 128);
 
     return {
       cardWidth,
@@ -235,7 +280,7 @@ export default function Home() {
       maxRing,
       stackHeight,
     };
-  }, [heroProjects.length, isCompactOrbit]);
+  }, [heroProjects.length, isCompactOrbit, isPhoneOrbit]);
 
   const leftOrbitPadding = isCompactOrbit ? 12 : 20;
   const leftOrbitEdgeBound =
@@ -246,6 +291,28 @@ export default function Home() {
   const normalOrbitStates = useMemo(() => {
     if (heroProjects.length === 0) {
       return [];
+    }
+
+    if (isPhoneOrbit) {
+      const centerIndex = (heroProjects.length - 1) / 2;
+      const xSpread = Math.min(32, orbitConfig.cardWidth * 0.08);
+      const ySpread = 18;
+      const baseScale = Math.min(0.9, orbitConfig.crowdScale * 0.95);
+
+      return heroProjects.map((_, index) => {
+        const offset = index - centerIndex;
+        const spread = Math.abs(offset);
+        const depth = Math.max(0.2, 0.82 - spread * 0.12);
+
+        return {
+          depth,
+          x: offset * xSpread,
+          y: offset * ySpread,
+          z: -88 - spread * 8,
+          scale: Math.max(0.68, baseScale - spread * 0.05),
+          tilt: offset * -2.4,
+        };
+      });
     }
 
     const baseSpeed = isCompactOrbit ? 0.00016 : 0.00012;
@@ -266,9 +333,171 @@ export default function Home() {
 
       return { depth, x, y, z, scale, tilt };
     });
-  }, [heroProjects.length, isCompactOrbit, leftOrbitEdgeBound, orbitConfig, orbitTime]);
+  }, [
+    heroProjects.length,
+    isCompactOrbit,
+    isPhoneOrbit,
+    leftOrbitEdgeBound,
+    orbitConfig,
+    orbitTime,
+  ]);
+
+  useEffect(() => {
+    if (!isPhoneOrbit || heroProjects.length === 0) {
+      return;
+    }
+
+    if (touchReleaseTimeoutRef.current) {
+      clearTimeout(touchReleaseTimeoutRef.current);
+      touchReleaseTimeoutRef.current = null;
+    }
+
+    setHoverLock((current) => {
+      if (current && current.index < heroProjects.length) {
+        return current;
+      }
+
+      const defaultOrbit = normalOrbitStates[defaultPhoneFocusIndex];
+      if (!defaultOrbit) {
+        return current;
+      }
+
+      releaseMotionRef.current = { freezeUntil: 0, rampUntil: 0 };
+
+      return {
+        index: defaultPhoneFocusIndex,
+        x: defaultOrbit.x,
+        y: defaultOrbit.y,
+        z: defaultOrbit.z,
+        scale: defaultOrbit.scale,
+        tilt: defaultOrbit.tilt,
+      };
+    });
+  }, [defaultPhoneFocusIndex, heroProjects.length, isPhoneOrbit, normalOrbitStates]);
+
+  useEffect(() => {
+    if (!isPhoneOrbit) {
+      phoneDeckStackStartScrollRef.current = null;
+      setPhoneDeckStackProgress((current) => (current !== 0 ? 0 : current));
+      return undefined;
+    }
+
+    let animationFrame = null;
+
+    const updateScrollProgress = () => {
+      animationFrame = null;
+
+      const stackNode = stackRef.current;
+      if (!stackNode) {
+        return;
+      }
+
+      const stackRect = stackNode.getBoundingClientRect();
+      const averageCardCenterY =
+        stackRect.top + stackRect.height / 2 + phoneDeckAverageSpreadYOffset;
+      const viewportCenterY = window.innerHeight / 2;
+
+      if (averageCardCenterY > viewportCenterY) {
+        phoneDeckStackStartScrollRef.current = null;
+        setPhoneDeckStackProgress((current) => (current !== 0 ? 0 : current));
+        return;
+      }
+
+      if (phoneDeckStackStartScrollRef.current === null) {
+        phoneDeckStackStartScrollRef.current = window.scrollY;
+      }
+
+      const distancePastCenter = Math.max(
+        0,
+        window.scrollY - phoneDeckStackStartScrollRef.current
+      );
+      const rawProgress = Math.min(1, distancePastCenter / PHONE_DECK_STACK_SCROLL_DISTANCE);
+      const easedProgress = rawProgress * rawProgress * (3 - 2 * rawProgress);
+
+      setPhoneDeckStackProgress((current) =>
+        Math.abs(current - easedProgress) > 0.002 ? easedProgress : current
+      );
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame !== null) {
+        return;
+      }
+
+      animationFrame = window.requestAnimationFrame(updateScrollProgress);
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [heroProjects.length, isPhoneOrbit, phoneDeckAverageSpreadYOffset]);
 
   const orbitStates = useMemo(() => {
+    if (isPhoneOrbit) {
+      const focusedIndex =
+        hoverLock && hoverLock.index < heroProjects.length
+          ? hoverLock.index
+          : defaultPhoneFocusIndex;
+
+      if (focusedIndex < 0 || focusedIndex >= heroProjects.length) {
+        return normalOrbitStates;
+      }
+
+      const total = heroProjects.length;
+      const spreadFactor =
+        1 + (1 - phoneDeckStackProgress) * (PHONE_DECK_MAX_SPREAD_FACTOR - 1);
+      const horizontalStep = Math.min(34, orbitConfig.cardWidth * 0.12) * spreadFactor;
+      const verticalStep = 14 + (spreadFactor - 1) * 11;
+      const zStep = 18 + (spreadFactor - 1) * 15;
+      const tiltStep = 4.6 + (spreadFactor - 1) * 2.6;
+      const centerCompensation = (spreadFactor - 1) * Math.min(12, total * 1.4);
+
+      return normalOrbitStates.map((orbit, index) => {
+        const clockwiseDistance = (index - focusedIndex + total) % total;
+        const counterClockwiseDistance = clockwiseDistance - total;
+        const offset =
+          Math.abs(counterClockwiseDistance) < Math.abs(clockwiseDistance)
+            ? counterClockwiseDistance
+            : clockwiseDistance;
+        const spread = Math.abs(offset);
+
+        if (spread === 0) {
+          return {
+            depth: 1,
+            x: 0,
+            y: -16 - centerCompensation * 0.25,
+            z: 44,
+            scale: Math.min(1.03, orbit.scale * 1.12),
+            tilt: 0,
+          };
+        }
+
+        const direction = Math.sign(offset);
+        const x = direction * horizontalStep * spread;
+        const y = spread * verticalStep - centerCompensation;
+        const depth = Math.max(0.05, 0.54 - spread * 0.11);
+        const z = -76 - spread * zStep;
+
+        return {
+          depth,
+          x,
+          y,
+          z,
+          scale: Math.max(0.58, orbit.scale - spread * 0.065),
+          tilt: -offset * tiltStep,
+        };
+      });
+    }
+
     if (!hoverLock || hoverLock.index >= heroProjects.length) {
       return normalOrbitStates;
     }
@@ -337,7 +566,18 @@ export default function Home() {
     });
 
     return states;
-  }, [heroProjects.length, hoverLock, isCompactOrbit, leftOrbitEdgeBound, normalOrbitStates, orbitConfig, orbitTime]);
+  }, [
+    heroProjects.length,
+    hoverLock,
+    defaultPhoneFocusIndex,
+    phoneDeckStackProgress,
+    isCompactOrbit,
+    isPhoneOrbit,
+    leftOrbitEdgeBound,
+    normalOrbitStates,
+    orbitConfig,
+    orbitTime,
+  ]);
 
   const depthZIndexMap = useMemo(() => {
     const ranking = orbitStates
@@ -434,7 +674,7 @@ export default function Home() {
   };
 
   const releaseHoverLock = () => {
-    if (navigationLockRef.current) {
+    if (navigationLockRef.current || isPhoneOrbit) {
       return;
     }
 
@@ -456,7 +696,7 @@ export default function Home() {
   };
 
   const scheduleTouchRelease = () => {
-    if (!isTouchInput) {
+    if (!isTouchInput || isPhoneOrbit) {
       return;
     }
 
@@ -484,7 +724,7 @@ export default function Home() {
     let anchorY = currentOrbit.y;
     const point = getEventClientPoint(event);
 
-    if (point && stackRef.current) {
+    if (!isPhoneOrbit && point && stackRef.current) {
       const rect = stackRef.current.getBoundingClientRect();
       const relativeX = point.x - (rect.left + rect.width / 2);
       const relativeY = point.y - (rect.top + rect.height / 2);
@@ -531,15 +771,6 @@ export default function Home() {
       handleCardHover(index, event);
       beginProjectNavigation(slug);
     }
-  };
-
-  const handleCardTouchStart = (index, event) => {
-    const target = event.target;
-    if (target instanceof Element && target.closest(".hero-card__button")) {
-      return;
-    }
-
-    handleCardHover(index, event);
   };
 
   return (
@@ -592,7 +823,7 @@ export default function Home() {
           >
             <div className="hero-stack-hint" aria-hidden="true">
               <span className="hero-stack-hint__desktop">Hover your cursor on a card.</span>
-              <span className="hero-stack-hint__mobile">Tap a card to focus it.</span>
+              <span className="hero-stack-hint__mobile">Scroll to center, then cards stack in.</span>
               <span className="hero-stack-hint__arrow">{"\u2193"}</span>
             </div>
             {heroProjects.length > 0 ? (
@@ -610,27 +841,46 @@ export default function Home() {
                 const cardImage = project.heroImage || project.image;
                 const cardVideo = project.mediaVideo || null;
                 const isTopCard = index === frontCardIndex;
-                const brightness = hoverLock
-                  ? isTopCard
-                    ? 1.05
-                    : 0.94
-                  : 0.82 + orbit.depth * 0.2;
-                const saturate = hoverLock
-                  ? isTopCard
-                    ? 1.06
-                    : 0.96
-                  : 1 + orbit.depth * 0.15;
-                const shadowStrength = isTopCard ? 0.34 : 0.2 + orbit.depth * 0.12;
+                const brightness = isPhoneOrbit
+                  ? 1
+                  : hoverLock
+                    ? isTopCard
+                      ? 1.05
+                      : 0.94
+                    : 0.82 + orbit.depth * 0.2;
+                const saturate = isPhoneOrbit
+                  ? 1
+                  : hoverLock
+                    ? isTopCard
+                      ? 1.06
+                      : 0.96
+                    : 1 + orbit.depth * 0.15;
+                const shadowStrength = isPhoneOrbit
+                  ? 0.24
+                  : isTopCard
+                    ? 0.34
+                    : 0.2 + orbit.depth * 0.12;
 
                 const shellStyle = {
                   zIndex: String(depthZIndexMap[index] ?? 1),
                   pointerEvents: "auto",
-                  opacity: cssFixed(hoverLock ? (isTopCard ? 1 : 0.86) : 0.6 + orbit.depth * 0.4),
-                  filter: `brightness(${cssFixed(brightness)}) saturate(${cssFixed(saturate)})`,
-                  boxShadow: `0 ${cssFixed(12 + orbit.depth * 14, 4)}px ${cssFixed(
-                    22 + orbit.depth * 18,
-                    4
-                  )}px rgba(17, 14, 12, ${cssFixed(shadowStrength, 4)})`,
+                  transition: isPhoneOrbit
+                    ? `transform ${PHONE_DECK_TRANSITION_MS}ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 320ms ease`
+                    : undefined,
+                  opacity: isPhoneOrbit
+                    ? cssFixed(isTopCard ? 1 : 0.42 + orbit.depth * 0.42)
+                    : cssFixed(hoverLock ? (isTopCard ? 1 : 0.86) : 0.6 + orbit.depth * 0.4),
+                  filter: isPhoneOrbit
+                    ? "none"
+                    : `brightness(${cssFixed(brightness)}) saturate(${cssFixed(saturate)})`,
+                  boxShadow: isPhoneOrbit
+                    ? isTopCard
+                      ? "0 16px 30px rgba(17, 14, 12, 0.28)"
+                      : "0 8px 18px rgba(17, 14, 12, 0.18)"
+                    : `0 ${cssFixed(12 + orbit.depth * 14, 4)}px ${cssFixed(
+                        22 + orbit.depth * 18,
+                        4
+                      )}px rgba(17, 14, 12, ${cssFixed(shadowStrength, 4)})`,
                   "--orbit-x": `${cssFixed(orbit.x, 4)}px`,
                   "--orbit-y": `${cssFixed(orbit.y, 4)}px`,
                   "--orbit-z": `${cssFixed(orbit.z, 4)}px`,
@@ -655,7 +905,6 @@ export default function Home() {
                     onPointerDown={(event) =>
                       handleCardPointerDown(index, project.slug, event)
                     }
-                    onTouchStart={(event) => handleCardTouchStart(index, event)}
                     onFocusCapture={(event) => handleCardHover(index, event)}
                   >
                     <article

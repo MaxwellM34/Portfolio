@@ -1,6 +1,10 @@
 import { visibleProjects } from "../data/portfolio";
 
-const SITE_URL = (process.env.SITE_URL || "https://www.maxwellmcinnis.com").replace(/\/$/, "");
+const siteUrl = new URL(process.env.SITE_URL || "https://www.maxwellmcinnis.com");
+if (siteUrl.hostname === "maxwellmcinnis.com") {
+  siteUrl.hostname = "www.maxwellmcinnis.com";
+}
+const SITE_URL = siteUrl.origin;
 const LAST_MODIFIED = new Date("2026-01-01T00:00:00.000Z");
 
 export default function sitemap() {

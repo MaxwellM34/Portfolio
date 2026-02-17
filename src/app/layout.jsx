@@ -3,7 +3,11 @@ import { site } from "../data/portfolio";
 
 const siteDescription =
   "Maxwell McInnis portfolio: biomedical engineering, software products, automation systems, and technical project case studies.";
-const SITE_URL = (process.env.SITE_URL || "https://www.maxwellmcinnis.com").replace(/\/$/, "");
+const siteUrl = new URL(process.env.SITE_URL || "https://www.maxwellmcinnis.com");
+if (siteUrl.hostname === "maxwellmcinnis.com") {
+  siteUrl.hostname = "www.maxwellmcinnis.com";
+}
+const SITE_URL = siteUrl.origin;
 const SOCIAL_IMAGE = "/projects/portfolio.png";
 
 export const metadata = {
@@ -30,11 +34,11 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
     ],
-    shortcut: ["/icon.png"],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-icon.png" }],
   },
   openGraph: {
     type: "website",

@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import { site, visibleProjects } from "../../../data/portfolio";
 import ProjectDetail from "../../../views/ProjectDetail";
 
-const SITE_URL = (process.env.SITE_URL || "https://maxwellmcinnis.com").replace(/\/$/, "");
+const siteUrl = new URL(process.env.SITE_URL || "https://www.maxwellmcinnis.com");
+if (siteUrl.hostname === "maxwellmcinnis.com") {
+  siteUrl.hostname = "www.maxwellmcinnis.com";
+}
+const SITE_URL = siteUrl.origin;
 
 export function generateStaticParams() {
   return visibleProjects.map((project) => ({ slug: project.slug }));

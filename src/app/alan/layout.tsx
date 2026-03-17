@@ -13,31 +13,29 @@ export default function AlanLayout({ children }: { children: React.ReactNode }) 
     <LangProvider>
       <style>{`
         #alan-app {
-          color: #111827;
           background: #f9fafb;
           font-family: system-ui, -apple-system, sans-serif;
         }
-        #alan-app h1, #alan-app h2, #alan-app h3, #alan-app h4 {
+        #alan-app main h1, #alan-app main h2, #alan-app main h3, #alan-app main h4,
+        #alan-app header h1, #alan-app header h2 {
           font-family: system-ui, -apple-system, sans-serif;
           color: #111827;
           margin: 0;
           letter-spacing: normal;
         }
-        #alan-app p {
+        #alan-app main p, #alan-app header p {
           color: inherit;
           margin: 0;
           line-height: 1.5;
         }
-        #alan-app a {
-          color: inherit;
-        }
+        #alan-app main { color: #111827; }
+        #alan-app header { color: #111827; }
       `}</style>
       <div
         id="alan-app"
         style={{
           fontFamily: 'system-ui, -apple-system, sans-serif',
           background: '#f9fafb',
-          color: '#111827',
         }}
       >
         {children}

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { initDb, getDb } from '../../../../alan/_lib/db'
+import { ensureSchema, getDb } from '../../../../alan/_lib/db'
 
 // Column aliases: maps various CSV header names → internal field names
 const COLUMN_ALIASES: Record<string, string> = {
@@ -73,7 +73,7 @@ function parseCategory(val: string): string | null {
 
 export async function POST(req: Request) {
   try {
-    await initDb()
+    await ensureSchema()
     const sql = getDb()
 
     const formData = await req.formData()

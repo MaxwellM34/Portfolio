@@ -67,7 +67,7 @@ export async function ensureSchema(): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// Seed data (only runs when providers table is empty)
+// (Seed data removed — data is loaded via CSV import)
 // ---------------------------------------------------------------------------
 
 const PROVIDERS: Array<[string, Array<[number, number, string, number]>]> = [
@@ -351,5 +351,4 @@ export async function ensureSeed(): Promise<void> {
 
 export async function initDb(): Promise<void> {
   await ensureSchema()
-  await ensureSeed()
 }

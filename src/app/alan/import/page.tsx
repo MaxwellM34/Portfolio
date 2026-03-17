@@ -38,7 +38,7 @@ export default function ImportPage() {
   const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<{ headers: string[]; rows: ParsedRow[] } | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [importedCount, setImportedCount] = useState<number | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -94,7 +94,7 @@ export default function ImportPage() {
     setPreview(null)
     setStatus('idle')
     setErrorMessage(null)
-    setSuccessMessage(null)
+    setImportedCount(null)
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
@@ -106,7 +106,7 @@ export default function ImportPage() {
 
     try {
       const result = await importCSV(file)
-      setSuccessMessage(t.import.importSuccess(result.imported))
+      setImportedCount(result.imported)
       setStatus('success')
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : t.import.importError)
@@ -201,7 +201,7 @@ export default function ImportPage() {
         )}
 
         {/* Success */}
-        {status === 'success' && successMessage && (
+        {status === 'success' && importedCount !== null && (
           <div className="bg-green-50 border border-green-100 rounded-xl p-5">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-full bg-[#2A9D5C]/20 flex items-center justify-center">
@@ -210,7 +210,7 @@ export default function ImportPage() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-bold text-[#2A9D5C] m-0">{successMessage}</p>
+                <p className="text-sm font-bold text-[#2A9D5C] m-0">{t.import.importSuccess(importedCount)}</p>
                 <p className="text-xs text-green-500 mt-0.5 m-0">{t.import.successSubtitle}</p>
               </div>
             </div>

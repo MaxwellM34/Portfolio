@@ -207,6 +207,52 @@ export const education = [
 
 export const projects = [
   {
+    slug: "alan-fraud-detection",
+    hidden: false,
+    title: "Alan Fraud Detection Dashboard",
+    category: "Health Insurance · Fraud Detection",
+    year: "2025",
+    summary:
+      "A full-stack fraud detection dashboard built for Alan health insurance, featuring automated risk scoring across three detection rules, a provider review workflow, and CSV claim import — integrated directly into this portfolio.",
+    description:
+      "A production-style fraud detection platform ported from a FastAPI + Python backend to a fully serverless Next.js architecture. The system analyzes optical claims data across 12 providers, runs three fraud detection rules (monthly billing spikes, dual-product co-billing, repeated identical amounts), and surfaces risk scores to drive analyst review decisions.",
+    role: "Full-stack engineering, fraud algorithm design, database architecture",
+    timeline: "2025",
+    image: "/alan/alanlogo.png",
+    heroImage: "/alan/alanlogo.png",
+    liveUrl: "/alan",
+    services: [
+      "Fraud detection algorithm",
+      "Risk scoring engine",
+      "Provider review workflow",
+      "CSV data import",
+      "Bilingual UI (FR/EN)",
+    ],
+    tools: ["Next.js", "TypeScript", "PostgreSQL", "Neon DB", "Recharts", "Tailwind CSS"],
+    highlights: [
+      "Three-rule fraud engine: monthly spike detection, dual-product co-billing analysis, and repeated-amount flagging.",
+      "Risk scores from 0–100 drive automatic provider triage into four buckets: approved, needs review, held, blacklisted.",
+      "Live dashboard with analyst review panel, audit trail, and CSV import for new claim data.",
+    ],
+    stats: [
+      { label: "Detection rules", value: "3 automated" },
+      { label: "Providers tracked", value: "12 seeded" },
+      { label: "Live demo", value: "/alan" },
+    ],
+    gallery: [
+      { label: "Dashboard overview", image: "/alan/alanlogo.png" },
+      { label: "Provider risk scoring", image: "/alan/alanlogo.png" },
+      { label: "Review workflow", image: "/alan/alanlogo.png" },
+    ],
+    challenge:
+      "Optical claim fraud is hard to detect from raw billing data — patterns only emerge across time windows, product combinations, and repeated amounts.",
+    approach:
+      "Ported a Python fraud detection engine to TypeScript, implemented three detection rules operating over rolling 6–12 month windows, and wired results into a serverless Next.js dashboard with a Neon PostgreSQL backend.",
+    outcome:
+      "A live, self-contained fraud detection platform accessible at /alan — demonstrating full-stack product thinking from algorithm design to UI delivery.",
+    palette: ["#1A2440", "#D62839", "#2A9D5C"],
+  },
+  {
     slug: "better-bmr-calculator",
     hidden: false,
     title: "BetterBMRCalculator",

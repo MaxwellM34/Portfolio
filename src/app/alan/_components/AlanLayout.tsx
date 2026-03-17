@@ -1,6 +1,7 @@
 'use client'
 
 import { AlanSidebar } from './AlanSidebar'
+import { AuthGuard } from './AuthGuard'
 import { useLang } from '../_lib/lang-context'
 import type { Lang } from '../_lib/i18n'
 
@@ -34,6 +35,7 @@ function LangToggle() {
 
 export function AlanLayout({ children, title, subtitle, actions }: LayoutProps) {
   return (
+    <AuthGuard>
     <div className="flex h-screen overflow-hidden bg-gray-50">
       <AlanSidebar />
       <main className="flex-1 flex flex-col overflow-hidden">
@@ -56,5 +58,6 @@ export function AlanLayout({ children, title, subtitle, actions }: LayoutProps) 
         <div className="flex-1 overflow-y-auto px-8 py-6">{children}</div>
       </main>
     </div>
+    </AuthGuard>
   )
 }

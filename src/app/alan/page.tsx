@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function AlanPage() {
-  redirect('/alan/dashboard')
+  redirect('/alan/login')
 }

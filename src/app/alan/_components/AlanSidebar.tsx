@@ -1,13 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useLang } from '../_lib/lang-context'
+import { useAuth } from '../_lib/auth-context'
 import { cn } from '../_lib/utils'
 
 export function AlanSidebar() {
   const pathname = usePathname()
   const { t } = useLang()
+  const { logout } = useAuth()
+  const router = useRouter()
 
   const navItems = [
     {
@@ -84,8 +87,19 @@ export function AlanSidebar() {
         })}
       </nav>
 
-      {/* Back to portfolio */}
-      <div className="px-3 py-4 border-t border-white/10">
+      {/* Bottom actions */}
+      <div className="px-3 py-4 border-t border-white/10 space-y-1">
+        {/* Logout */}
+        <button
+          onClick={() => { logout(); router.push('/alan/login') }}
+          className="flex items-center gap-2 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          {t.nav.logout}
+        </button>
+        {/* Back to portfolio */}
         <Link
           href="/"
           className="flex items-center gap-2 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-white/60 hover:text-white hover:bg-white/10 transition-all"

@@ -52,7 +52,7 @@ export default function ImportPage() {
     setFile(f)
     setStatus('parsing')
     setErrorMessage(null)
-    setSuccessMessage(null)
+    setImportedCount(null)
 
     const reader = new FileReader()
     reader.onload = (e) => {

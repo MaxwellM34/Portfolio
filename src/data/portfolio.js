@@ -296,6 +296,51 @@ export const projects = [
     palette: ["#1A3A5C", "#E63946", "#F4A261"],
   },
   {
+    slug: "asteroids-pygame",
+    hidden: false,
+    title: "Asteroids",
+    category: "Game Development",
+    year: "2025",
+    summary:
+      "A Python + Pygame recreation of the classic 1979 arcade game, built as part of the Boot.dev curriculum with full collision detection, asteroid splitting, and 60 FPS gameplay.",
+    description:
+      "A faithful recreation of the classic Asteroids arcade game built with Python and Pygame. The player pilots a spaceship through an asteroid field, rotating and thrusting to maneuver while firing projectiles to split and destroy asteroids. Built as part of the Boot.dev \"Build Asteroids\" course.",
+    role: "Game development",
+    timeline: "Boot.dev course project",
+    image: "/projects/asteroids1.png",
+    heroImage: "/projects/asteroids1.png",
+    services: [
+      "Game mechanics",
+      "Object-oriented design",
+      "Collision detection",
+    ],
+    tools: ["Python", "Pygame", "UV"],
+    highlights: [
+      "Classic arcade gameplay loop at 60 FPS with rotation, thrust, and shooting.",
+      "Asteroids split into smaller pieces on hit, matching the original arcade behavior.",
+      "Object-oriented architecture with separate classes for ship, asteroids, and shots.",
+      "Built end-to-end through Boot.dev's guided project curriculum.",
+    ],
+    stats: [
+      { label: "Course", value: "Boot.dev — Build Asteroids" },
+      { label: "Language", value: "Python + Pygame" },
+      { label: "Source", value: "https://github.com/MaxwellM34/asteroids" },
+    ],
+    gallery: [
+      { label: "Spaceship and asteroid", image: "/projects/asteroids1.png" },
+      { label: "Multiple asteroid sizes", image: "/projects/asteroids2.png" },
+      { label: "Victory screen", image: "/projects/asteroids3.png" },
+      { label: "Game over screen", image: "/projects/asteroids4.png" },
+    ],
+    challenge:
+      "Implement the full arcade Asteroids experience from scratch — including physics-based movement, asteroid splitting logic, and collision detection — using only Python and Pygame.",
+    approach:
+      "Used an object-oriented architecture with base classes for all game objects. Asteroid splitting is handled recursively by spawning two smaller asteroids on collision. Movement uses vector math for realistic thrust and drift.",
+    outcome:
+      "A fully playable Asteroids clone with authentic arcade feel, completed as a guided project through Boot.dev's Python game development curriculum.",
+    palette: ["#0D0D0D", "#A3E635", "#FACC15"],
+  },
+  {
     slug: "portfolio-site",
     hidden: false,
     title: "Portfolio Website",

@@ -518,6 +518,48 @@ export const projects = [
     palette: ["#1C2B1A", "#4ADE80", "#BBF7D0"],
   },
   {
+    slug: "connect-four",
+    hidden: false,
+    title: "Connect Four",
+    category: "Web Game",
+    year: "2024",
+    summary:
+      "A browser-based Connect Four game built with vanilla HTML, CSS, and JavaScript — two-player local multiplayer with win detection, draw detection, and full keyboard support.",
+    description:
+      "A clean implementation of the classic Connect Four board game built entirely with vanilla HTML, CSS, and JavaScript — no frameworks or dependencies. Players take turns dropping coloured discs into a 6×7 grid, with automatic win detection across all four directions (horizontal, vertical, and both diagonals). Winning discs are highlighted on victory, a draw is detected when the board fills, and a reset button restarts the game. Fully keyboard accessible with ARIA labels throughout.",
+    role: "Sole developer",
+    timeline: "Personal project",
+    services: ["Game logic", "DOM manipulation", "Accessibility"],
+    tools: ["HTML5", "CSS3", "JavaScript"],
+    image: "/projects/connect41.png",
+    heroImage: "/projects/connect41.png",
+    highlights: [
+      "Two-player local multiplayer with turn indicator.",
+      "Win detection across all four directions with disc highlighting.",
+      "Draw detection when the board is full.",
+      "Full keyboard support and ARIA labels for accessibility.",
+      "Bump animation feedback on full-column drops.",
+    ],
+    stats: [
+      { label: "Stack", value: "Vanilla JS / HTML / CSS" },
+      { label: "Grid", value: "6 × 7" },
+      { label: "Source", value: "https://github.com/MaxwellM34/connect_4" },
+    ],
+    gallery: [
+      { label: "Game board", image: "/projects/connect41.png" },
+      { label: "Connect Four grid", image: "/projects/connect42.png" },
+      { label: "Board layout", image: "/projects/connect43.png" },
+      { label: "Classic Connect Four", image: "/projects/connect44.png" },
+    ],
+    challenge:
+      "Build a fully functional Connect Four game with no libraries — clean game-state management, multi-directional win detection, and accessible controls in plain JavaScript.",
+    approach:
+      "Represented the board as a 2D array with values 0 (empty), 1, and 2 for each player. After every move, a single check function scans all four directions from the last-placed disc. Keyboard events map to column drops, and ARIA live regions announce the active player.",
+    outcome:
+      "A lightweight, dependency-free Connect Four game playable in any browser, with solid game logic and accessible controls.",
+    palette: ["#EF4444", "#EAB308", "#1E3A5F"],
+  },
+  {
     slug: "portfolio-site",
     hidden: false,
     title: "Portfolio Website",

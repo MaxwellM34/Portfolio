@@ -385,6 +385,139 @@ export const projects = [
     palette: ["#B45309", "#FCD34D", "#78350F"],
   },
   {
+    slug: "image-quality-mtf",
+    hidden: false,
+    title: "Image Quality & MTF Analysis",
+    category: "Medical Imaging + Signal Processing",
+    year: "2024",
+    summary:
+      "A Python analysis of spatial resolution and Modulation Transfer Function (MTF) in medical imaging systems, evaluating how voxel size, filtering, and projection count affect image quality.",
+    description:
+      "A computational analysis of image quality in medical imaging systems using Modulation Transfer Function (MTF) methodology. The project evaluates how key acquisition parameters — voxel size, filter type, and projection count — affect spatial resolution and contrast preservation in reconstructed images, using both line pair and edge response phantoms.",
+    role: "Signal processing, data analysis, scientific computing",
+    timeline: "University project — ENGG4040",
+    image: "/projects/mtf1.jpg",
+    heroImage: "/projects/mtf1.jpg",
+    services: [
+      "MTF analysis",
+      "Spatial resolution assessment",
+      "Medical imaging evaluation",
+    ],
+    tools: ["Python", "CSV", "Excel", "NumPy", "Matplotlib"],
+    highlights: [
+      "Computed MTF curves from slanted-edge and line pair phantoms to quantify spatial resolution.",
+      "Evaluated the effect of voxel size, filtering parameters, and projection count on image quality.",
+      "Applied both 2D and CT imaging analysis frameworks.",
+    ],
+    stats: [
+      { label: "Domain", value: "Medical imaging / signal processing" },
+      { label: "Methods", value: "MTF · edge response · line pair phantoms" },
+      { label: "Source", value: "https://github.com/MaxwellM34/ENGG4040_Lab1_Image_Quality_MTF" },
+    ],
+    gallery: [
+      { label: "MTF curves vs spatial frequency", image: "/projects/mtf1.jpg" },
+      { label: "LSF and SFR intermediate analysis", image: "/projects/mtf2.jpg" },
+      { label: "Edge angle effects on MTF accuracy", image: "/projects/mtf3.jpg" },
+      { label: "Siemens star resolution test chart", image: "/projects/mtf4.png" },
+    ],
+    challenge:
+      "Quantify spatial resolution in medical imaging systems using only raw measurement data, without direct access to the imaging hardware.",
+    approach:
+      "Applied Modulation Transfer Function methodology with slanted-edge and line pair phantoms, computing MTF curves from CSV measurement profiles and systematically varying acquisition parameters to isolate each variable's effect.",
+    outcome:
+      "Produced MTF curves and resolution metrics demonstrating measurable trade-offs between voxel size, filtering, and projection count in reconstructed medical images.",
+    palette: ["#1E3A5F", "#38BDF8", "#E0F2FE"],
+  },
+  {
+    slug: "spect-reconstruction",
+    hidden: false,
+    title: "SPECT Image Reconstruction",
+    category: "Medical Imaging + Scientific Computing",
+    year: "2024",
+    summary:
+      "A Python implementation of SPECT (Single Photon Emission CT) image reconstruction, applying attenuation correction and filtered back projection to reconstruct emission slices from raw projection profiles.",
+    description:
+      "A Python-based implementation of SPECT image reconstruction for nuclear medicine imaging. The project loads emission and attenuation CSV profiles, computes attenuation correction factors, reconstructs cross-sectional slices using filtered back projection, and performs statistical validation of the output — mirroring the computational pipeline used in clinical SPECT/CT systems.",
+    role: "Medical image reconstruction, scientific computing, data analysis",
+    timeline: "University project — ENGG4040",
+    image: "/projects/spect1.png",
+    heroImage: "/projects/spect1.png",
+    services: [
+      "Image reconstruction",
+      "Attenuation correction",
+      "Nuclear medicine imaging",
+    ],
+    tools: ["Python", "NumPy", "Matplotlib", "CSV"],
+    highlights: [
+      "Implemented attenuation correction factor (ACF) computation from raw emission and attenuation profiles.",
+      "Reconstructed SPECT cross-sectional slices using filtered back projection methodology.",
+      "Validated outputs with statistical analysis (mean and standard deviation) against known phantom geometry.",
+    ],
+    stats: [
+      { label: "Domain", value: "Nuclear medicine / SPECT/CT" },
+      { label: "Methods", value: "FBP · attenuation correction · sinogram" },
+      { label: "Source", value: "https://github.com/MaxwellM34/ENGG4040_Lab4_SPECT_RECONSTRUCTION" },
+    ],
+    gallery: [
+      { label: "Phantom and sinogram projection data", image: "/projects/spect1.png" },
+      { label: "Reconstruction filter frequency responses", image: "/projects/spect2.png" },
+      { label: "Filtered back projection reconstruction", image: "/projects/spect3.png" },
+      { label: "SART iterative reconstruction comparison", image: "/projects/spect4.png" },
+    ],
+    challenge:
+      "Reconstruct a meaningful cross-sectional image from raw 1D emission projection profiles, accounting for photon attenuation through tissue.",
+    approach:
+      "Loaded emission and attenuation CSV profiles, computed per-ray attenuation correction factors, then applied filtered back projection to synthesize reconstructed slices. Output was validated statistically against known phantom values.",
+    outcome:
+      "Successfully reconstructed SPECT slices with attenuation correction, producing results consistent with expected phantom geometry and demonstrating the core computational pipeline of clinical nuclear medicine systems.",
+    palette: ["#1C1917", "#7C3AED", "#C4B5FD"],
+  },
+  {
+    slug: "autonomous-vehicle",
+    hidden: false,
+    title: "Autonomous Maze Vehicle",
+    category: "Embedded Systems + Robotics",
+    year: "2022",
+    summary:
+      "An Arduino-powered autonomous vehicle that navigates mazes using three ultrasonic sensors, proportional wall-following control, and real-time obstacle avoidance — all on a resource-constrained microcontroller.",
+    description:
+      "A compact autonomous vehicle built on an Arduino platform that navigates mazes independently. Using three ultrasonic distance sensors, the vehicle executes a left-wall-following strategy with proportional steering control, detects and avoids obstacles in real time, and maintains a consistent wall offset — all within the tight processing constraints of an Arduino.",
+    role: "Embedded systems programming, sensor integration, control logic",
+    timeline: "First year engineering project",
+    image: "/projects/car1.jpeg",
+    heroImage: "/projects/car1.jpeg",
+    services: [
+      "Embedded programming",
+      "Sensor fusion",
+      "Autonomous navigation",
+    ],
+    tools: ["Arduino", "C++", "Ultrasonic sensors", "PWM motor control", "Servo steering"],
+    highlights: [
+      "Left-wall-following algorithm with proportional control maintains 14 cm wall offset.",
+      "Three ultrasonic sensors provide front, left, and right distance readings with median filtering for noise reduction.",
+      "Obstacle avoidance logic detects objects within 25 cm, reverses, and steers toward the wider opening.",
+      "80 ms control loop with 25 ms sensor timeout — tuned for real-time responsiveness on Arduino hardware.",
+    ],
+    stats: [
+      { label: "Platform", value: "Arduino (C++)" },
+      { label: "Sensors", value: "3× ultrasonic distance sensors" },
+      { label: "Source", value: "https://github.com/MaxwellM34/First_Year_Autonomous_Vehicle" },
+    ],
+    gallery: [
+      { label: "Vehicle build", image: "/projects/car1.jpeg" },
+      { label: "Sensor layout", image: "/projects/car2.jpeg" },
+      { label: "Maze navigation", image: "/projects/car3.jpeg" },
+      { label: "Vehicle detail", image: "/projects/car4.jpeg" },
+    ],
+    challenge:
+      "Navigate an unknown maze autonomously using only local sensor readings, with no external positioning or mapping — on an Arduino with limited processing power.",
+    approach:
+      "Implemented a left-wall-following strategy using proportional control to maintain a target wall distance. Median filtering across three consecutive ultrasonic reads reduces noise, and a backup-and-turn maneuver handles dead ends and head-on obstacles.",
+    outcome:
+      "A fully functional autonomous vehicle capable of navigating maze environments in real time, demonstrating sensor integration, embedded control logic, and practical robotics on constrained hardware.",
+    palette: ["#1C2B1A", "#4ADE80", "#BBF7D0"],
+  },
+  {
     slug: "portfolio-site",
     hidden: false,
     title: "Portfolio Website",

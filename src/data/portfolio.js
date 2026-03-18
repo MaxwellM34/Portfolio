@@ -251,6 +251,51 @@ export const projects = [
     palette: ["#2F6B5F", "#F2C078", "#E07A5F"],
   },
   {
+    slug: "alan-fraud-detection",
+    hidden: false,
+    title: "Alan Fraud Detection Dashboard",
+    category: "FinTech + Healthcare Analytics",
+    year: "2026",
+    summary:
+      "A full-stack fraud detection system for an insurance provider that scores optical care providers 0–100 using four independent detection rules and automatically routes claims to approval, manual review, or hold.",
+    description:
+      "Built for Alan, a French health insurer, this dashboard analyzes optical care claims (eyeglasses and contact lenses) to identify suspicious billing patterns. Four detection engines score each provider, and scores drive automated routing: auto-approve, manual review queue, or payment hold pending audit.",
+    role: "Full-stack engineering, fraud detection algorithm design, data modeling",
+    timeline: "Interview project",
+    image: "/projects/alan1.png",
+    heroImage: "/projects/alan1.png",
+    services: [
+      "Fraud detection algorithms",
+      "Full-stack development",
+      "Data visualization",
+    ],
+    tools: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Recharts", "Tailwind CSS", "Docker"],
+    highlights: [
+      "Four independent fraud detection engines: monthly billing spikes, dual-product co-billing, repeated exact amounts, and round-number bias.",
+      "Risk scores 0–100 drive automated claim routing: auto-approve (<30), manual review (30–70), or payment hold (>70).",
+      "8 of 12 providers flagged across a dataset of 221 claims; 5 automatically held pending audit.",
+      "Live demo deployed on Railway with CSV import and full review workflow.",
+    ],
+    stats: [
+      { label: "Status", value: "Live demo" },
+      { label: "Dataset", value: "12 providers · 221 claims" },
+      { label: "Demo", value: "https://alan-production-0d14.up.railway.app" },
+    ],
+    gallery: [
+      { label: "Dashboard overview", image: "/projects/alan1.png" },
+      { label: "Provider list + risk scores", image: "/projects/alan2.png" },
+      { label: "Claims detail + fraud flags", image: "/projects/alan3.png" },
+      { label: "Review workflow", image: "/projects/alan4.png" },
+    ],
+    challenge:
+      "Identify fraudulent optical care providers from billing data alone, without access to patient records or ground-truth labels, using only statistical patterns in the claims history.",
+    approach:
+      "Designed four rule-based detection engines targeting distinct fraud signals: billing spikes versus a provider's own rolling median, simultaneous glasses and contact lens billing, repeated identical euro amounts, and an abnormally high rate of round-number invoices. Scores are additive and provider-level, enabling transparent explanations for every flag.",
+    outcome:
+      "8 of 12 providers were flagged with evidence-backed risk scores. 5 were automatically held. The system surfaces the exact rules triggered per provider, making audit decisions explainable and defensible.",
+    palette: ["#1A3A5C", "#E63946", "#F4A261"],
+  },
+  {
     slug: "portfolio-site",
     hidden: false,
     title: "Portfolio Website",

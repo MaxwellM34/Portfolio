@@ -341,6 +341,50 @@ export const projects = [
     palette: ["#0D0D0D", "#A3E635", "#FACC15"],
   },
   {
+    slug: "ltrv-django",
+    hidden: false,
+    title: "Lucky Twyn Rivers Variety",
+    category: "Web Development",
+    year: "2024",
+    summary:
+      "A production Django website built for a local Pickering convenience store, containerized with Docker and served through an Nginx reverse proxy.",
+    description:
+      "A production website built for Lucky Twyn Rivers Variety, a convenience store in Pickering, ON. The site was built with Django, containerized via Docker, and deployed behind an Nginx reverse proxy. Designed to give a local small business a professional web presence.",
+    role: "Full-stack development, deployment, infrastructure",
+    timeline: "Completed",
+    image: "/projects/ltrv2.jpg",
+    heroImage: "/projects/ltrv2.jpg",
+    services: [
+      "Web development",
+      "Containerized deployment",
+      "Small business site",
+    ],
+    tools: ["Django", "Python", "Docker", "Nginx", "HTML", "CSS"],
+    highlights: [
+      "Built and deployed a production website for a local Pickering convenience store.",
+      "Containerized with Docker and served behind an Nginx reverse proxy.",
+      "Django backend with static asset management and a clean frontend.",
+    ],
+    stats: [
+      { label: "Client", value: "Lucky Twyn Rivers Variety, Pickering ON" },
+      { label: "Stack", value: "Django + Docker + Nginx" },
+      { label: "Source", value: "https://github.com/MaxwellM34/ltrvDjango" },
+    ],
+    gallery: [
+      { label: "Store exterior", image: "/projects/ltrv2.jpg" },
+      { label: "Store front", image: "/projects/ltrv1.jpg" },
+      { label: "Location — 159 Twyn Rivers Dr, Pickering", image: "/projects/ltrv3.jpg" },
+      { label: "Lucky Twyn Rivers Variety", image: "/projects/ltrv4.jpg" },
+    ],
+    challenge:
+      "Give a local convenience store a professional web presence with a maintainable, containerized stack that's easy to update and deploy.",
+    approach:
+      "Built a Django site with a clean HTML/CSS frontend, packaged the entire application in Docker for reproducible deploys, and configured Nginx as a reverse proxy to handle production traffic.",
+    outcome:
+      "A live, containerized production site delivered for a local Pickering business.",
+    palette: ["#B45309", "#FCD34D", "#78350F"],
+  },
+  {
     slug: "portfolio-site",
     hidden: false,
     title: "Portfolio Website",

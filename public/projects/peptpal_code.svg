@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 804" width="1200" height="804" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1021"/><stop offset="1" stop-color="#141A2E"/></linearGradient></defs>
+<rect x="0" y="0" width="1200" height="804" rx="16" ry="16" fill="url(#bg)"/>
+<rect x="0" y="0" width="1200" height="44" rx="16" ry="16" fill="#0F1528"/>
+<rect x="0" y="22.0" width="1200" height="22.0" fill="#0F1528"/>
+<circle cx="22" cy="22.0" r="7" fill="#FF5F57"/>
+<circle cx="44" cy="22.0" r="7" fill="#FEBC2E"/>
+<circle cx="66" cy="22.0" r="7" fill="#28C840"/>
+<text x="600.0" y="27.0" fill="#8896B2" text-anchor="middle" font-size="13">packages/core/src/doseSafety.ts</text>
+<text x="70" y="87" fill="#384158" text-anchor="end" font-size="13">1</text>
+<text x="80" y="87" xml:space="preserve"><tspan fill="#C792EA">export</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">interface</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">DoseSafetyResult</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="109" fill="#384158" text-anchor="end" font-size="13">2</text>
+<text x="80" y="109" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">safe</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">boolean</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="131" fill="#384158" text-anchor="end" font-size="13">3</text>
+<text x="80" y="131" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">number</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="153" fill="#384158" text-anchor="end" font-size="13">4</text>
+<text x="80" y="153" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">level</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;ok&#x27;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">|</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;caution&#x27;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">|</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;warning&#x27;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">|</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;exceeded&#x27;</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="175" fill="#384158" text-anchor="end" font-size="13">5</text>
+<text x="80" y="175" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">message</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">string</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="197" fill="#384158" text-anchor="end" font-size="13">6</text>
+<text x="80" y="197" xml:space="preserve"><tspan fill="#7FDBCA">}</tspan></text>
+<text x="70" y="219" fill="#384158" text-anchor="end" font-size="13">7</text>
+<text x="70" y="241" fill="#384158" text-anchor="end" font-size="13">8</text>
+<text x="80" y="241" xml:space="preserve"><tspan fill="#5C6B8F">/**</tspan></text>
+<text x="70" y="263" fill="#384158" text-anchor="end" font-size="13">9</text>
+<text x="80" y="263" xml:space="preserve"><tspan fill="#5C6B8F">&#160;*&#160;Check&#160;whether&#160;a&#160;peptide&#160;dose&#160;is&#160;within&#160;documented&#160;reference&#160;limits.</tspan></text>
+<text x="70" y="285" fill="#384158" text-anchor="end" font-size="13">10</text>
+<text x="80" y="285" xml:space="preserve"><tspan fill="#5C6B8F">&#160;*&#160;Weight-scaled&#160;against&#160;trial&#160;cohort&#160;exposure&#160;—&#160;not&#160;medical&#160;advice.</tspan></text>
+<text x="70" y="307" fill="#384158" text-anchor="end" font-size="13">11</text>
+<text x="80" y="307" xml:space="preserve"><tspan fill="#5C6B8F">&#160;*/</tspan></text>
+<text x="70" y="329" fill="#384158" text-anchor="end" font-size="13">12</text>
+<text x="80" y="329" xml:space="preserve"><tspan fill="#C792EA">export</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">function</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">checkDoseSafety</tspan><tspan fill="#7FDBCA">(</tspan></text>
+<text x="70" y="351" fill="#384158" text-anchor="end" font-size="13">13</text>
+<text x="80" y="351" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">doseMcg</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">number</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="373" fill="#384158" text-anchor="end" font-size="13">14</text>
+<text x="80" y="373" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">peptideMaxDoseMcg</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">number</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="395" fill="#384158" text-anchor="end" font-size="13">15</text>
+<text x="80" y="395" xml:space="preserve"><tspan fill="#7FDBCA">)</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">DoseSafetyResult</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="417" fill="#384158" text-anchor="end" font-size="13">16</text>
+<text x="80" y="417" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">doseMcg</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">&lt;=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">0</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">throw</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">new</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#FFCB6B">Error</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#ECC48D">&#x27;doseMcg&#160;must&#160;be&#160;positive&#x27;</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="439" fill="#384158" text-anchor="end" font-size="13">17</text>
+<text x="80" y="439" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">const</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">doseMcg</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">/</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">peptideMaxDoseMcg</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">*</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">100</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="461" fill="#384158" text-anchor="end" font-size="13">18</text>
+<text x="70" y="483" fill="#384158" text-anchor="end" font-size="13">19</text>
+<text x="80" y="483" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">&gt;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">100</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="505" fill="#384158" text-anchor="end" font-size="13">20</text>
+<text x="80" y="505" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#C792EA">return</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="527" fill="#384158" text-anchor="end" font-size="13">21</text>
+<text x="80" y="527" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#D6DEEB">safe</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">false</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="549" fill="#384158" text-anchor="end" font-size="13">22</text>
+<text x="80" y="549" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">round</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">1</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="571" fill="#384158" text-anchor="end" font-size="13">23</text>
+<text x="80" y="571" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#D6DEEB">level</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;exceeded&#x27;</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="593" fill="#384158" text-anchor="end" font-size="13">24</text>
+<text x="80" y="593" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#D6DEEB">message</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">`</tspan><tspan fill="#ECC48D">Dose&#160;exceeds&#160;documented&#160;maximum&#160;by&#160;</tspan><tspan fill="#ECC48D">${</tspan></text>
+<text x="70" y="615" fill="#384158" text-anchor="end" font-size="13">25</text>
+<text x="80" y="615" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#D6DEEB">round</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">-</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">100</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">1</tspan><tspan fill="#7FDBCA">)</tspan></text>
+<text x="70" y="637" fill="#384158" text-anchor="end" font-size="13">26</text>
+<text x="80" y="637" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;&#160;&#160;</tspan><tspan fill="#ECC48D">}</tspan><tspan fill="#ECC48D">%.&#160;Outside&#160;reference&#160;guidelines.</tspan><tspan fill="#ECC48D">`</tspan><tspan fill="#7FDBCA">,</tspan></text>
+<text x="70" y="659" fill="#384158" text-anchor="end" font-size="13">27</text>
+<text x="80" y="659" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#7FDBCA">}</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="681" fill="#384158" text-anchor="end" font-size="13">28</text>
+<text x="80" y="681" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#7FDBCA">}</tspan></text>
+<text x="70" y="703" fill="#384158" text-anchor="end" font-size="13">29</text>
+<text x="80" y="703" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">&gt;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">90</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">return</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">warn</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#ECC48D">&#x27;warning&#x27;</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="725" fill="#384158" text-anchor="end" font-size="13">30</text>
+<text x="80" y="725" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">&gt;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">75</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">return</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">warn</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#ECC48D">&#x27;caution&#x27;</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="747" fill="#384158" text-anchor="end" font-size="13">31</text>
+<text x="80" y="747" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">return</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">safe</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">true</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">percentOfMax</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">level</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;ok&#x27;</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">message</tspan><tspan fill="#89DDFF">:</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&#x27;Within&#160;range.&#x27;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">}</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="769" fill="#384158" text-anchor="end" font-size="13">32</text>
+<text x="80" y="769" xml:space="preserve"><tspan fill="#7FDBCA">}</tspan></text>
+</svg>

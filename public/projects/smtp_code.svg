@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 716" width="1200" height="716" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1021"/><stop offset="1" stop-color="#141A2E"/></linearGradient></defs>
+<rect x="0" y="0" width="1200" height="716" rx="16" ry="16" fill="url(#bg)"/>
+<rect x="0" y="0" width="1200" height="44" rx="16" ry="16" fill="#0F1528"/>
+<rect x="0" y="22.0" width="1200" height="22.0" fill="#0F1528"/>
+<circle cx="22" cy="22.0" r="7" fill="#FF5F57"/>
+<circle cx="44" cy="22.0" r="7" fill="#FEBC2E"/>
+<circle cx="66" cy="22.0" r="7" fill="#28C840"/>
+<text x="600.0" y="27.0" fill="#8896B2" text-anchor="middle" font-size="13">scripts/install_virtualmin.sh</text>
+<text x="70" y="87" fill="#384158" text-anchor="end" font-size="13">1</text>
+<text x="80" y="87" xml:space="preserve"><tspan fill="#5C6B8F">#!/usr/bin/env&#160;bash</tspan></text>
+<text x="70" y="109" fill="#384158" text-anchor="end" font-size="13">2</text>
+<text x="80" y="109" xml:space="preserve"><tspan fill="#5C6B8F">#&#160;Virtualmin&#160;/&#160;Webmin&#160;mail&#160;server&#160;install&#160;for&#160;GCP&#160;Debian&#160;12.</tspan></text>
+<text x="70" y="131" fill="#384158" text-anchor="end" font-size="13">3</text>
+<text x="80" y="131" xml:space="preserve"><tspan fill="#5C6B8F">#&#160;Run&#160;as&#160;root.&#160;No&#160;secrets&#160;committed.</tspan></text>
+<text x="70" y="153" fill="#384158" text-anchor="end" font-size="13">4</text>
+<text x="80" y="153" xml:space="preserve"><tspan fill="#FFCB6B">set</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">-euo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">pipefail</tspan></text>
+<text x="70" y="175" fill="#384158" text-anchor="end" font-size="13">5</text>
+<text x="70" y="197" fill="#384158" text-anchor="end" font-size="13">6</text>
+<text x="80" y="197" xml:space="preserve"><tspan fill="#D6DEEB">HOSTNAME</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#ECC48D">&quot;</tspan><tspan fill="#ECC48D">${</tspan><tspan fill="#D6DEEB">HOSTNAME</tspan><tspan fill="#C792EA">:-</tspan><tspan fill="#D6DEEB">mail</tspan><tspan fill="#7FDBCA">.example.com</tspan><tspan fill="#ECC48D">}</tspan><tspan fill="#ECC48D">&quot;</tspan></text>
+<text x="70" y="219" fill="#384158" text-anchor="end" font-size="13">7</text>
+<text x="70" y="241" fill="#384158" text-anchor="end" font-size="13">8</text>
+<text x="80" y="241" xml:space="preserve"><tspan fill="#FFCB6B">echo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;[1/5]&#160;fixing&#160;/etc/hosts&#160;so&#160;Virtualmin&#160;emits&#160;public&#160;URLs&quot;</tspan></text>
+<text x="70" y="263" fill="#384158" text-anchor="end" font-size="13">9</text>
+<text x="80" y="263" xml:space="preserve"><tspan fill="#D6DEEB">PUB_IP</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#C792EA">$(</tspan><tspan fill="#D6DEEB">curl</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">-s</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">https://ifconfig.me</tspan><tspan fill="#C792EA">)</tspan></text>
+<text x="70" y="285" fill="#384158" text-anchor="end" font-size="13">10</text>
+<text x="80" y="285" xml:space="preserve"><tspan fill="#D6DEEB">cat</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">&gt;/etc/hosts</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&lt;&lt;EOF</tspan></text>
+<text x="70" y="307" fill="#384158" text-anchor="end" font-size="13">11</text>
+<text x="80" y="307" xml:space="preserve"><tspan fill="#ECC48D">127.0.0.1&#160;localhost</tspan></text>
+<text x="70" y="329" fill="#384158" text-anchor="end" font-size="13">12</text>
+<text x="80" y="329" xml:space="preserve"><tspan fill="#ECC48D">${PUB_IP}&#160;${HOSTNAME}&#160;${HOSTNAME%%.*}</tspan></text>
+<text x="70" y="351" fill="#384158" text-anchor="end" font-size="13">13</text>
+<text x="80" y="351" xml:space="preserve"><tspan fill="#ECC48D">EOF</tspan></text>
+<text x="70" y="373" fill="#384158" text-anchor="end" font-size="13">14</text>
+<text x="80" y="373" xml:space="preserve"><tspan fill="#D6DEEB">hostnamectl</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">set-hostname</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;</tspan><tspan fill="#ECC48D">${</tspan><tspan fill="#D6DEEB">HOSTNAME</tspan><tspan fill="#ECC48D">}</tspan><tspan fill="#ECC48D">&quot;</tspan></text>
+<text x="70" y="395" fill="#384158" text-anchor="end" font-size="13">15</text>
+<text x="70" y="417" fill="#384158" text-anchor="end" font-size="13">16</text>
+<text x="80" y="417" xml:space="preserve"><tspan fill="#FFCB6B">echo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;[2/5]&#160;downloading&#160;Virtualmin&#160;installer&quot;</tspan></text>
+<text x="70" y="439" fill="#384158" text-anchor="end" font-size="13">17</text>
+<text x="80" y="439" xml:space="preserve"><tspan fill="#D6DEEB">curl</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">-fsSL</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">https://software.virtualmin.com/gpl/scripts/install.sh</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">-o</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">/tmp/vm.sh</tspan></text>
+<text x="70" y="461" fill="#384158" text-anchor="end" font-size="13">18</text>
+<text x="80" y="461" xml:space="preserve"><tspan fill="#D6DEEB">chmod</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">+x</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">/tmp/vm.sh</tspan></text>
+<text x="70" y="483" fill="#384158" text-anchor="end" font-size="13">19</text>
+<text x="70" y="505" fill="#384158" text-anchor="end" font-size="13">20</text>
+<text x="80" y="505" xml:space="preserve"><tspan fill="#FFCB6B">echo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;[3/5]&#160;running&#160;installer&#160;(LAMP&#160;stack,&#160;no&#160;BIND)&quot;</tspan></text>
+<text x="70" y="527" fill="#384158" text-anchor="end" font-size="13">21</text>
+<text x="80" y="527" xml:space="preserve"><tspan fill="#D6DEEB">/tmp/vm.sh</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--force</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--hostname</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;</tspan><tspan fill="#ECC48D">${</tspan><tspan fill="#D6DEEB">HOSTNAME</tspan><tspan fill="#ECC48D">}</tspan><tspan fill="#ECC48D">&quot;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--bundle</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">LAMP</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--unattended</tspan></text>
+<text x="70" y="549" fill="#384158" text-anchor="end" font-size="13">22</text>
+<text x="70" y="571" fill="#384158" text-anchor="end" font-size="13">23</text>
+<text x="80" y="571" xml:space="preserve"><tspan fill="#FFCB6B">echo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;[4/5]&#160;opening&#160;Webmin&#160;port&#160;in&#160;GCP&#160;firewall&quot;</tspan></text>
+<text x="70" y="593" fill="#384158" text-anchor="end" font-size="13">24</text>
+<text x="80" y="593" xml:space="preserve"><tspan fill="#D6DEEB">gcloud</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">compute</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">firewall-rules</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">create</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">allow-webmin</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">\</tspan></text>
+<text x="70" y="615" fill="#384158" text-anchor="end" font-size="13">25</text>
+<text x="80" y="615" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">--allow</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">tcp:10000</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--source-ranges</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#F78C6C">0</tspan><tspan fill="#D6DEEB">.0.0.0/0</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">--description</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#ECC48D">&quot;Webmin&#160;UI&quot;</tspan></text>
+<text x="70" y="637" fill="#384158" text-anchor="end" font-size="13">26</text>
+<text x="70" y="659" fill="#384158" text-anchor="end" font-size="13">27</text>
+<text x="80" y="659" xml:space="preserve"><tspan fill="#FFCB6B">echo</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#ECC48D">&quot;[5/5]&#160;running&#160;Virtualmin&#160;system&#160;check&quot;</tspan></text>
+<text x="70" y="681" fill="#384158" text-anchor="end" font-size="13">28</text>
+<text x="80" y="681" xml:space="preserve"><tspan fill="#D6DEEB">virtualmin</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">check-config</tspan></text>
+</svg>

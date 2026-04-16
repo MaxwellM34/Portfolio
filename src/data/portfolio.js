@@ -207,6 +207,397 @@ export const education = [
 
 export const projects = [
   {
+    slug: "peptpal",
+    hidden: false,
+    title: "PeptPal",
+    category: "Health + Harm Reduction Mobile App",
+    year: "2026",
+    summary:
+      "A peptide harm-reduction mobile app with an evidence engine, weight-scaled dose recommendations, degradation modeling, and community-weighted consensus across 17 peptides.",
+    description:
+      "PeptPal is a React Native + Expo app backed by FastAPI and PostgreSQL. It tracks inventory, doses, cycles, and biomarkers, while flagging dangerous protocols by comparing user weight against trial cohorts. The core wedge is an evidence engine with trust-tiered citations, harmonic-decayed weighting, and per-peptide hard ceilings.",
+    role: "Full-stack engineering, mobile development, data modeling",
+    timeline: "Ongoing",
+    image: "/projects/peptpal_code.svg",
+    heroImage: "/projects/peptpal_code.svg",
+    services: [
+      "Mobile app development",
+      "Evidence engine + dose scaling",
+      "Pharmacokinetic modeling",
+      "Community consensus weighting",
+    ],
+    tools: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "NativeWind",
+      "FastAPI",
+      "PostgreSQL",
+      "Tortoise ORM",
+      "Turborepo",
+    ],
+    highlights: [
+      "Evidence engine spans 17 peptides x 4 personas with trust-tiered citations (A-F).",
+      "Weight-scales every protocol dose and flags 'dangerous' at 1.4x trial per-kg exposure.",
+      "Per-peptide first-order degradation model with live potency bar and dose compensation math.",
+      "Weighted-median forum consensus: bloodwork-attached posts count 5x, 60+ day logs 2x.",
+      "Passphrase-encrypted JSON backup with no server-side storage of user data.",
+    ],
+    stats: [
+      { label: "Stack", value: "Expo + FastAPI + PostgreSQL" },
+      { label: "Tests", value: "114 passing (Vitest)" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/peptpal" },
+    ],
+    gallery: [
+      { label: "doseSafety.ts — dose scaling logic", image: "/projects/peptpal_code.svg" },
+    ],
+    challenge:
+      "Peptide forums propagate dangerous default doses copied from trial cohorts that are 60+ lb heavier than typical users, with no per-kg scaling and no source quality signal.",
+    approach:
+      "Built a per-kg dose scaling layer over a trust-tiered evidence engine, added a first-order degradation model so live vial potency is part of every injection decision, and wrote a weighted forum consensus that promotes bloodwork-backed posts over anecdote.",
+    outcome:
+      "A working monorepo mobile app with a functional evidence engine, degradation tracking, biomarker panels, and a tested consensus pipeline.",
+    palette: ["#0F766E", "#14B8A6", "#CCFBF1"],
+  },
+  {
+    slug: "imm-sourcing-pipeline",
+    hidden: false,
+    title: "IMM Sourcing Pipeline",
+    category: "Procurement Automation",
+    year: "2026",
+    summary:
+      "A four-stage Python pipeline that pulls injection molding machine quotes from Gmail, downloads supplier PDFs, extracts pricing, and builds a unified comparison document.",
+    description:
+      "IMM is an internal procurement tool that automates an otherwise manual injection molding machine sourcing workflow. It searches Gmail for quotes from a curated supplier list, downloads attachments, extracts text from PDFs, and assembles a comparison-ready report with known-price reference data.",
+    role: "Python automation, pipeline design",
+    timeline: "Internal tool",
+    image: "/projects/imm_code.svg",
+    heroImage: "/projects/imm_code.svg",
+    services: [
+      "Email + attachment automation",
+      "PDF text extraction",
+      "Procurement reporting",
+      "Supplier comparison",
+    ],
+    tools: ["Python", "Gmail API", "Google OAuth", "PDF parsing"],
+    highlights: [
+      "Four-stage pipeline: fetch threads, download PDFs, extract text, build document.",
+      "Searches a curated allowlist of 17+ injection molding machine suppliers.",
+      "Master runner supports re-running individual stages without redoing earlier work.",
+      "Reference price data tracked per-supplier in a structured JSON file.",
+    ],
+    stats: [
+      { label: "Pipeline stages", value: "4" },
+      { label: "Suppliers tracked", value: "17+" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/IMM" },
+    ],
+    gallery: [
+      { label: "01_fetch_emails.py — Gmail ingestion", image: "/projects/imm_code.svg" },
+    ],
+    challenge:
+      "Comparing IMM quotes across many suppliers means manually digging through email threads and PDF attachments with inconsistent formatting and no central reference.",
+    approach:
+      "Split the workflow into four idempotent scripts so each stage can be re-run independently, paired with a Gmail allowlist query and a known-price reference file for sanity checks.",
+    outcome:
+      "Compressed multi-day procurement comparison work into a repeatable pipeline that produces a single comparison document on demand.",
+    palette: ["#475569", "#94A3B8", "#E2E8F0"],
+  },
+  {
+    slug: "resumai",
+    hidden: false,
+    title: "Resumai",
+    category: "AI Resume + Job Application Platform",
+    year: "2026",
+    summary:
+      "A Turborepo monorepo with a Next.js frontend, FastAPI backend, Clerk authentication, and a billing layer for AI-assisted resumes and application tracking.",
+    description:
+      "Resumai is a full-stack resume and job application platform. The web app handles applications, profiles, billing, and admin views, while the FastAPI backend persists data through Alembic migrations and exposes the AI-driven resume tooling.",
+    role: "Full-stack engineering, monorepo architecture",
+    timeline: "In development",
+    image: "/projects/resumai_code.svg",
+    heroImage: "/projects/resumai_code.svg",
+    services: [
+      "Resume generation",
+      "Application tracking",
+      "Billing + auth integration",
+      "Admin tooling",
+    ],
+    tools: [
+      "Next.js",
+      "TypeScript",
+      "FastAPI",
+      "PostgreSQL",
+      "Alembic",
+      "Clerk",
+      "Turborepo",
+      "Docker",
+    ],
+    highlights: [
+      "Turborepo monorepo with separate web and API apps deployed via GitHub Actions.",
+      "Next.js App Router with route groups for auth, app, and Chrome extension auth flows.",
+      "FastAPI backend with Alembic migrations and dedicated profile + application models.",
+      "Clerk-based authentication and billing scaffolding for paid-tier features.",
+    ],
+    stats: [
+      { label: "Architecture", value: "Turborepo monorepo" },
+      { label: "Auth", value: "Clerk" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/Resumai" },
+    ],
+    gallery: [
+      { label: "application.py — SQLAlchemy model", image: "/projects/resumai_code.svg" },
+    ],
+    challenge:
+      "Job seekers tailor resumes per application but lose track of versions, applications, and what was sent where.",
+    approach:
+      "Built a monorepo so the resume tooling and the application tracking dashboard share types and auth, and structured the API around discrete profile and application models that the AI generation flow consumes.",
+    outcome:
+      "A working full-stack base with auth, billing scaffolding, and the data models needed to ship the AI resume + application tracking workflow.",
+    palette: ["#1E40AF", "#60A5FA", "#DBEAFE"],
+  },
+  {
+    slug: "mogbot",
+    hidden: false,
+    title: "Mogbot",
+    category: "Autonomous AI Agent",
+    year: "2026",
+    summary:
+      "A Claude-powered autonomous agent that browses the web with Playwright, executes code, manages files, and chains multi-step plans, with real-time CAD spend tracking and PostgreSQL-backed history.",
+    description:
+      "Mogbot is a self-hosted Manus-style agent. A React UI talks over WebSocket + REST to a FastAPI backend that wraps the Anthropic API, a Playwright browser, and a code execution sandbox. The agent pauses for the user on CAPTCHAs, 2FA, or login walls instead of failing silently.",
+    role: "AI engineering, full-stack architecture, browser automation",
+    timeline: "Personal project",
+    image: "/projects/mogbot_code.svg",
+    heroImage: "/projects/mogbot_code.svg",
+    services: [
+      "AI agent design",
+      "Browser automation",
+      "Code execution sandbox",
+      "Spend + history tracking",
+    ],
+    tools: [
+      "Python",
+      "FastAPI",
+      "TypeScript",
+      "React",
+      "Playwright",
+      "PostgreSQL",
+      "Anthropic API",
+      "Docker",
+    ],
+    highlights: [
+      "WebSocket + REST architecture between React UI and FastAPI control plane.",
+      "Playwright integration handles real browser interactions: click, type, scroll, fill forms.",
+      "Real-time CAD budget enforcement to keep autonomous runs from over-spending.",
+      "PostgreSQL-backed task history and logs for replay and auditing.",
+      "Pauses for human input on CAPTCHAs, 2FA, and login walls.",
+    ],
+    stats: [
+      { label: "Stack", value: "FastAPI + React + Playwright" },
+      { label: "Model", value: "Anthropic Claude" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/Mogbot" },
+    ],
+    gallery: [
+      { label: "browser.py — Playwright automation", image: "/projects/mogbot_code.svg" },
+    ],
+    challenge:
+      "Hosted agent platforms hide cost, can't be paused on auth challenges, and don't give you the full execution history.",
+    approach:
+      "Built a self-hosted control plane with explicit budget tracking, a Playwright browser the user can take over, and PostgreSQL persistence so every run is inspectable.",
+    outcome:
+      "A working autonomous agent that completes browse + code + file workflows end-to-end while staying within a CAD budget and yielding control on human-only steps.",
+    palette: ["#7C2D12", "#F97316", "#FED7AA"],
+  },
+  {
+    slug: "agent-bootdev",
+    hidden: false,
+    title: "Boot.dev Agent Project",
+    category: "AI / LLM Course Project",
+    year: "2026",
+    summary:
+      "Boot.dev coursework building a small Python agent against the Gemini API with a simple tool-calling loop and a calculator example.",
+    description:
+      "A guided Boot.dev project that walks through the basics of LLM tool use. The agent exposes a small set of file and calculator functions to the Gemini API and runs a multi-turn loop until the model returns a final answer.",
+    role: "Course project",
+    timeline: "Boot.dev coursework",
+    image: "/projects/agent_code.svg",
+    heroImage: "/projects/agent_code.svg",
+    services: [
+      "Tool-calling loop",
+      "LLM API integration",
+      "Python project setup",
+    ],
+    tools: ["Python", "Gemini API", "uv"],
+    highlights: [
+      "Implements a basic tool-calling loop against the Gemini API.",
+      "Exposes file inspection and calculator helpers as agent tools.",
+      "Built with uv for reproducible Python environments.",
+    ],
+    stats: [
+      { label: "Course", value: "Boot.dev — Build an Agent" },
+      { label: "Language", value: "Python" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/agent" },
+    ],
+    gallery: [
+      { label: "main.py — Gemini tool-calling loop", image: "/projects/agent_code.svg" },
+    ],
+    challenge:
+      "Build an end-to-end LLM agent loop from scratch without an agent framework.",
+    approach:
+      "Followed the Boot.dev guided project: defined tool schemas, parsed model tool calls, executed each tool, and fed results back into the next model turn until completion.",
+    outcome:
+      "A small but complete agent showing the core tool-use loop pattern that scales up to larger production agents.",
+    palette: ["#0F172A", "#38BDF8", "#E0F2FE"],
+  },
+  {
+    slug: "nova-newborn-care",
+    hidden: false,
+    title: "Nova — Newborn Care Marketplace",
+    category: "Two-Sided Marketplace",
+    year: "2026",
+    summary:
+      "An overnight newborn care marketplace for the DC/MD/VA area, built for NOVA Birth Partners with live availability, verified credentials, and direct booking.",
+    description:
+      "Nova lets families browse vetted night nannies, newborn care specialists, postpartum doulas, and registered nurses. The stack pairs a React + Vite frontend with a FastAPI backend, PostGIS for location queries, Clerk for auth, and Stripe Connect for payouts.",
+    role: "Full-stack engineering, marketplace architecture",
+    timeline: "Client project (NOVA Birth Partners)",
+    image: "/projects/nova_code.svg",
+    heroImage: "/projects/nova_code.svg",
+    services: [
+      "Marketplace product engineering",
+      "Auth + payments integration",
+      "Geospatial search",
+      "Containerized deployment",
+    ],
+    tools: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "FastAPI",
+      "SQLAlchemy 2",
+      "PostgreSQL + PostGIS",
+      "Clerk",
+      "Stripe Connect",
+      "Docker Compose",
+    ],
+    highlights: [
+      "PostGIS-backed geospatial search to surface providers by service area.",
+      "Clerk-based auth with JWT verification through JWKS on the FastAPI side.",
+      "Stripe Connect integration for split payouts between platform and providers.",
+      "Docker Compose dev environment that mirrors production layout.",
+    ],
+    stats: [
+      { label: "Client", value: "NOVA Birth Partners" },
+      { label: "Region", value: "DC / MD / VA" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/Nova" },
+    ],
+    gallery: [
+      { label: "auth.py — Clerk JWT verification", image: "/projects/nova_code.svg" },
+    ],
+    challenge:
+      "Overnight newborn care is hard to find on short notice, and existing platforms don't surface live availability or verified credentials clearly.",
+    approach:
+      "Built a marketplace data model around vetted providers with verified credentials, used PostGIS so families see provider coverage by location, and wired Stripe Connect for direct booking and payout.",
+    outcome:
+      "A production-shaped marketplace stack with auth, geo search, and payments wired end-to-end for the DC/MD/VA region.",
+    palette: ["#2037E8", "#7C9CFF", "#E0E7FF"],
+  },
+  {
+    slug: "webposter",
+    hidden: false,
+    title: "Webposter",
+    category: "Content Publishing API",
+    year: "2025",
+    summary:
+      "A Python + FastAPI web app with Tortoise ORM and Postgres that publishes content, with Google OAuth login, image uploads via ImageKit, and OpenAI-assisted post tooling.",
+    description:
+      "Webposter is a content publishing app that pairs FastAPI with Tortoise ORM and PostgreSQL. It supports Google authentication, image uploads, OpenAI tool integration, and persistent post + user models with iterative migrations.",
+    role: "Backend engineering, integration work",
+    timeline: "Personal project",
+    image: "/projects/webposter_code.svg",
+    heroImage: "/projects/webposter_code.svg",
+    services: [
+      "Backend API design",
+      "Auth + OAuth integration",
+      "Image upload handling",
+      "OpenAI tool integration",
+    ],
+    tools: [
+      "Python",
+      "FastAPI",
+      "Tortoise ORM",
+      "PostgreSQL",
+      "Aerich",
+      "Google OAuth",
+      "ImageKit",
+      "OpenAI",
+    ],
+    highlights: [
+      "FastAPI + Tortoise ORM stack with iterative Aerich migrations across user and post models.",
+      "Google OAuth login flow with a dedicated authentication module.",
+      "Image upload pipeline integrated with ImageKit for hosted media.",
+      "OpenAI tool definitions exposed for content-generation workflows.",
+    ],
+    stats: [
+      { label: "Stack", value: "FastAPI + Tortoise + Postgres" },
+      { label: "Auth", value: "Google OAuth" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/webposter" },
+    ],
+    gallery: [
+      { label: "pablo.py — FastAPI + Tortoise router", image: "/projects/webposter_code.svg" },
+    ],
+    challenge:
+      "Build a content publishing app that handles auth, image uploads, and AI-assisted tooling without stitching together unrelated services.",
+    approach:
+      "Used FastAPI as the single backend, Tortoise ORM with Aerich migrations for evolving user and post models, and integrated Google auth, ImageKit, and OpenAI tool definitions through dedicated modules.",
+    outcome:
+      "A backend that supports authenticated content publishing with image hosting and an OpenAI tool surface, ready to back a frontend or extension.",
+    palette: ["#0E7490", "#22D3EE", "#CFFAFE"],
+  },
+  {
+    slug: "gcp-virtualmin-mailserver",
+    hidden: false,
+    title: "GCP Virtualmin Mail Server",
+    category: "Infrastructure + DevOps",
+    year: "2026",
+    summary:
+      "A documented and scripted setup for a Virtualmin / Webmin mail server on Google Cloud (Debian 12), capturing the real fixes for hosts resolution, GCP firewall rules, ClamAV, and BIND.",
+    description:
+      "This repository documents and partially automates a Virtualmin / Webmin mail server build on GCP Debian 12. It covers the specific issues encountered in practice: incorrect /etc/hosts breaking Virtualmin links, firewall rules for Webmin on port 10000, ClamAV freshclam locks, BIND DNS handling, and Let's Encrypt setup.",
+    role: "Infrastructure engineering, technical writing",
+    timeline: "Self-hosted mail project",
+    image: "/projects/smtp_code.svg",
+    heroImage: "/projects/smtp_code.svg",
+    services: [
+      "Mail server setup",
+      "GCP infrastructure",
+      "Operations runbook",
+      "Shell automation",
+    ],
+    tools: ["Virtualmin", "Webmin", "Postfix", "ClamAV", "BIND", "GCP", "Debian 12", "Bash"],
+    highlights: [
+      "Documents the exact /etc/hosts fix that resolves Virtualmin generating internal-IP links.",
+      "Captures the GCP firewall rule needed to expose Webmin on 0.0.0.0:10000.",
+      "Includes scripts for installing Virtualmin, fixing hosts, installing ClamAV, and restarting services.",
+      "Explicit decision notes for BIND DNS, Let's Encrypt, and mail DNS records.",
+      "Safe to share publicly: no secrets, private keys, or DKIM material committed.",
+    ],
+    stats: [
+      { label: "Platform", value: "GCP Debian 12" },
+      { label: "Stack", value: "Virtualmin + Webmin + Postfix" },
+      { label: "Repository", value: "https://github.com/MaxwellM34/Create_my_own_SMTP_server" },
+    ],
+    gallery: [
+      { label: "install_virtualmin.sh — GCP installer", image: "/projects/smtp_code.svg" },
+    ],
+    challenge:
+      "Standing up a self-hosted mail server on GCP runs into hostname resolution, firewall, and antivirus issues that are not well documented in a single place.",
+    approach:
+      "Captured the working steps as a layered docs + scripts repo so the build is reproducible, and isolated each fix (hosts, firewall, ClamAV, BIND) in its own document and shell script.",
+    outcome:
+      "A reusable runbook plus automation for spinning up a Virtualmin / Webmin mail server on GCP without rediscovering the same gotchas.",
+    palette: ["#1E293B", "#64748B", "#CBD5E1"],
+  },
+  {
     slug: "better-bmr-calculator",
     hidden: false,
     title: "BetterBMRCalculator",

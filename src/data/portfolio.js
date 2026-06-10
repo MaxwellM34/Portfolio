@@ -1598,9 +1598,716 @@ export const projects = [
     outcome:
       "Produced a complete prevention-focused design for GripSense with ergonomic geometry, force-feedback behavior control, and scheduled break prompting, plus clear next steps for prototyping and sensor validation.",
     palette: ["#2E5E63", "#5A8F95", "#DCEEEF"],
+  },
+  {
+    slug: "annotool",
+    hidden: false,
+    title: "Annotool",
+    category: "Internal Web App + Time Tracking",
+    year: "2026",
+    summary:
+      "FastAPI + React annotation tool for an employee to mark up LeBlanc design comparison images, with active time tracking and auto-generated weekly invoices.",
+    description:
+      "Annotool is an internal web app where an authorized employee draws red-rectangle annotations on side-by-side comparison images pushed in from the LeBlanc design loop. It tracks active working time with idle-gap exclusion and produces weekly invoice PDFs at the user's hourly rate.",
+    role: "Full-stack engineering and operations tooling",
+    timeline: "Ongoing",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Annotation UI",
+      "Active time tracking",
+      "Weekly invoice generation",
+      "Google OAuth + allowlist",
+    ],
+    tools: ["FastAPI", "SQLAlchemy", "PostgreSQL", "Vite", "React", "TypeScript", "Tailwind", "ReportLab"],
+    highlights: [
+      "SVG overlay annotation UI with multi-round notes per image.",
+      "Active-time tracker excludes idle gaps over 30 seconds for honest billable hours.",
+      "Automated weekly invoice PDF generation with ReportLab.",
+    ],
+    stats: [
+      { label: "Backend", value: "FastAPI + Postgres" },
+      { label: "Frontend", value: "Vite + React + TS" },
+      { label: "Repository", value: "github.com/MaxwellM34/annotool" },
+    ],
+    gallery: [
+      { label: "Annotation workspace", image: "/og-image.svg" },
+      { label: "Hours dashboard", image: "/og-image.svg" },
+      { label: "Weekly invoice output", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Track an employee's real working time across an open-ended design review loop and bill it accurately without manual timesheets.",
+    approach:
+      "Built a tight annotation UI tied to a server-side activity timer that pauses on idle gaps, then layered weekly invoice generation on top of the tracked totals.",
+    outcome:
+      "A live internal tool that captures annotations, tracks honest billable hours, and ships weekly invoice PDFs without manual reconciliation.",
+    palette: ["#2A4365", "#4299E1", "#BEE3F8"],
+  },
+  {
+    slug: "leblanc-design-loop",
+    hidden: false,
+    title: "LeBlanc Figma-to-Elementor Loop",
+    category: "Design Automation + Agent Loop",
+    year: "2026",
+    summary:
+      "Automation system that converts Figma section designs into Elementor-ready WordPress sections through a repeatable design loop with screenshot diffing.",
+    description:
+      "The LeBlanc project is a long-running design-to-WordPress automation that pulls section-level Figma designs, generates Elementor-ready blocks, captures iteration screenshots, and pushes side-by-side comparisons into Annotool for human review. The loop is driven by structured plans and runs across multiple worktrees.",
+    role: "Architecture, agent loop orchestration, design tooling",
+    timeline: "Ongoing",
+    image: "/projects/leblanc-main.png",
+    heroImage: "/projects/leblanc-main.png",
+    services: [
+      "Figma extraction",
+      "Elementor block generation",
+      "Iteration screenshotting",
+      "Review handoff to Annotool",
+    ],
+    tools: ["Python", "Figma API", "WordPress", "Elementor", "Playwright"],
+    highlights: [
+      "Section-level Figma references drive Elementor block generation rather than full-page guesses.",
+      "Each loop iteration is screenshotted and pushed into Annotool for structured human review.",
+      "Multi-worktree workflow keeps experiments isolated from the main design loop state.",
+    ],
+    stats: [
+      { label: "Pipeline", value: "Figma -> Elementor" },
+      { label: "Review handoff", value: "Annotool side-by-side" },
+      { label: "Repository", value: "github.com/MaxwellM34/leblanc" },
+    ],
+    gallery: [
+      { label: "Homepage rendering option", image: "/projects/leblanc-main.png" },
+      { label: "Hero section detail", image: "/projects/leblanc-hero.png" },
+      { label: "Classes card section", image: "/projects/leblanc-classes.png" },
+    ],
+    challenge:
+      "Convert evolving Figma designs into clean Elementor sections at a rate that a small operation can actually review and approve.",
+    approach:
+      "Treated the conversion as a structured agent loop with explicit plans, isolated worktrees, automatic screenshots, and a human review step routed through the Annotool app.",
+    outcome:
+      "A repeatable pipeline that turns Figma section updates into reviewed Elementor sections with auditable iteration history.",
+    palette: ["#1A365D", "#2C5282", "#BEE3F8"],
+  },
+  {
+    slug: "payitforward-redux",
+    hidden: false,
+    title: "PayItForward Redux",
+    category: "Web + Mobile PWA",
+    year: "2026",
+    summary:
+      "Web + mobile pay-it-forward platform built as a Firebase-backed PWA with a separate mobile app, shared logic, and storage rules.",
+    description:
+      "PayItForward Redux is a multi-surface project including a web PWA, a mobile client, shared logic, and a Firebase backend with cloud functions, Firestore rules, and storage rules. The web surface ships as an installable PWA with full icon and manifest support.",
+    role: "Full-stack engineering across web, mobile, and Firebase",
+    timeline: "Ongoing",
+    image: "/projects/pif-logo.jpg",
+    heroImage: "/projects/pif-logo.jpg",
+    services: [
+      "PWA delivery",
+      "Cross-surface architecture",
+      "Firebase functions + rules",
+      "Shared package design",
+    ],
+    tools: ["Firebase", "Firestore", "Cloud Functions", "PWA", "React", "Mobile"],
+    highlights: [
+      "Web, mobile, shared, and functions split keeps logic reusable across surfaces.",
+      "Full PWA icon set including maskable variants and Apple touch icon.",
+      "Firestore + storage rules defined as code alongside the application.",
+    ],
+    stats: [
+      { label: "Surfaces", value: "Web + mobile + functions" },
+      { label: "Backend", value: "Firebase + Firestore" },
+      { label: "Delivery", value: "Installable PWA" },
+    ],
+    gallery: [
+      { label: "PWA brand mark", image: "/projects/pif-logo.jpg" },
+      { label: "PWA install icon", image: "/projects/pif-pwa.png" },
+      { label: "Cross-surface architecture", image: "/projects/pif-logo.jpg" },
+    ],
+    challenge:
+      "Ship a coordinated web + mobile experience without duplicating business logic or losing offline-friendly behavior on the web surface.",
+    approach:
+      "Split the codebase into web, mobile, shared, and functions packages, and used Firebase for authoritative storage and rules while keeping the web surface installable.",
+    outcome:
+      "A coherent multi-surface platform where web, mobile, and backend share logic and the web app installs as a real PWA.",
+    palette: ["#1B5E20", "#43A047", "#A5D6A7"],
+  },
+  {
+    slug: "chromology-brand",
+    hidden: false,
+    title: "Chromology Brand + Logo System",
+    category: "Brand Design + Logo Iteration",
+    year: "2026",
+    summary:
+      "Brand and logo iteration project for Chromology with a tracked review of saturation, fuzz, and treatment variants leading to a final selected mark.",
+    description:
+      "The Chromology project documents an end-to-end brand and logo iteration cycle, including a structured logo review covering grayscale baselines, fuzz variants, saturation masks, and effects-driven treatments. The selected mark and a white transparent variant ship as the working brand assets.",
+    role: "Brand iteration and asset selection",
+    timeline: "Iteration cycle",
+    image: "/projects/chromology-final.png",
+    heroImage: "/projects/chromology-final.png",
+    services: [
+      "Logo iteration",
+      "Variant comparison",
+      "Asset selection",
+      "Working asset packaging",
+    ],
+    tools: ["Brand iteration", "Asset review", "Image treatments"],
+    highlights: [
+      "Iterated through grayscale baseline, fuzz variants, saturation masks, and effects treatments.",
+      "Locked a single working mark and produced a white transparent variant for varied backgrounds.",
+      "Captured the review as a tracked changelog rather than disposable explorations.",
+    ],
+    stats: [
+      { label: "Project type", value: "Brand iteration" },
+      { label: "Final asset", value: "Selected mark + white transparent" },
+      { label: "Repository", value: "github.com/MaxwellM34/chromology" },
+    ],
+    gallery: [
+      { label: "Final selected mark", image: "/projects/chromology-final.png" },
+      { label: "Working white transparent", image: "/projects/chromology-logo.png" },
+      { label: "Original grayscale baseline", image: "/projects/chromology-original.png" },
+    ],
+    challenge:
+      "Avoid the common brand-iteration trap where dozens of variants are explored but no decision or rationale is ever recorded.",
+    approach:
+      "Ran a side-by-side variant review with labeled treatments, picked the final mark with reasoning, and shipped the working assets in a versioned repo.",
+    outcome:
+      "Delivered a working brand mark plus packaged variants and a written iteration record for future brand decisions.",
+    palette: ["#0F172A", "#475569", "#E2E8F0"],
+  },
+  {
+    slug: "happyface-firebase",
+    hidden: false,
+    title: "HappyFace",
+    category: "Firebase Functions + Testing",
+    year: "2026",
+    summary:
+      "Firebase-backed application with cloud functions, emulator-based local development, and Jest-driven Firestore rules testing.",
+    description:
+      "HappyFace is a Firebase application structured around emulator-driven local development. It uses Cloud Functions for backend logic, Firestore rules for access control, and the @firebase/rules-unit-testing harness with Jest to verify rule behavior automatically.",
+    role: "Full-stack engineering and Firebase architecture",
+    timeline: "Ongoing",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Cloud functions",
+      "Firestore rule design",
+      "Emulator-based dev",
+      "Rules unit testing",
+    ],
+    tools: ["Firebase", "Cloud Functions", "Firestore", "Jest", "TypeScript"],
+    highlights: [
+      "Firebase emulators wire local dev across functions, Firestore, and rules.",
+      "Jest + @firebase/rules-unit-testing enforces correct security rules.",
+      "Functions package compiled and shipped as a standalone workspace.",
+    ],
+    stats: [
+      { label: "Backend", value: "Firebase + functions" },
+      { label: "Testing", value: "Jest rules unit tests" },
+      { label: "Local dev", value: "Firebase emulators" },
+    ],
+    gallery: [
+      { label: "Backend structure", image: "/og-image.svg" },
+      { label: "Emulator workflow", image: "/og-image.svg" },
+      { label: "Rules testing", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Avoid the common Firebase trap of shipping rules and functions that pass manual testing but break under realistic access patterns.",
+    approach:
+      "Adopted emulators as the dev loop and built rules-unit-testing coverage with Jest so access behavior is verified before deploy.",
+    outcome:
+      "A Firebase project with backend functions, locked-down Firestore rules, and an automated test pass on the rules.",
+    palette: ["#7C2D12", "#EA580C", "#FED7AA"],
+  },
+  {
+    slug: "coppercrm",
+    hidden: false,
+    title: "CopperCRM",
+    category: "Internal CRM System",
+    year: "2026",
+    summary:
+      "Python-based CRM project exploring lightweight contact, pipeline, and follow-up tracking suited to small internal teams.",
+    description:
+      "CopperCRM is a Python project focused on the small-team CRM use case: managing contacts, tracking pipeline state, and surfacing follow-up actions without the overhead of large enterprise CRM platforms.",
+    role: "Backend engineering and CRM data modeling",
+    timeline: "Ongoing",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "CRM data modeling",
+      "Pipeline state tracking",
+      "Follow-up surfacing",
+      "Lightweight internal tooling",
+    ],
+    tools: ["Python", "SQL", "FastAPI"],
+    highlights: [
+      "Targeted at small-team CRM use, not enterprise feature bloat.",
+      "Pipeline state and follow-up logic modeled explicitly in the data layer.",
+      "Designed as a foundation for AI-augmented CRM workflows.",
+    ],
+    stats: [
+      { label: "Primary language", value: "Python" },
+      { label: "Use case", value: "Small-team CRM" },
+      { label: "Repository", value: "github.com/MaxwellM34/CopperCRM" },
+    ],
+    gallery: [
+      { label: "Pipeline view", image: "/og-image.svg" },
+      { label: "Contact record", image: "/og-image.svg" },
+      { label: "Follow-up queue", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Most CRM tools optimize for enterprise sales and become heavy for small teams that need lightweight pipeline visibility.",
+    approach:
+      "Modeled the smallest viable CRM data shape with explicit pipeline states and follow-up cues, and built it in Python for easy extension.",
+    outcome:
+      "A working CRM foundation that small teams can run and extend, including downstream AI augmentation.",
+    palette: ["#B45309", "#D97706", "#FDE68A"],
+  },
+  {
+    slug: "out-toe-gait-correction",
+    hidden: false,
+    title: "Out-Toe Gait Correction (ESP32 + IMU)",
+    category: "Wearable Embedded Systems",
+    year: "2025",
+    summary:
+      "Paired ESP32 boards with BNO055 IMUs that measure relative foot rotation, stream over ESP-NOW, and trigger LED or vibration feedback when out-toeing exceeds threshold.",
+    description:
+      "This repo is the embedded firmware for the out-toe gait correction system underlying the Foot Allign capstone. A slave board broadcasts cumulative yaw over ESP-NOW; the master unwraps its own yaw, compares the relative angle to a threshold, and drives an LED or vibration motor. WiFi/TCP variants stream live angle data into Dash dashboards with CSV logging.",
+    role: "Embedded firmware and live telemetry engineering",
+    timeline: "Capstone-era work",
+    image: "/projects/footallignbanner.jpg",
+    heroImage: "/projects/footallignbanner.jpg",
+    services: [
+      "ESP32 firmware",
+      "BNO055 IMU integration",
+      "ESP-NOW pairing",
+      "Live telemetry dashboards",
+    ],
+    tools: ["ESP32", "C++", "BNO055", "ESP-NOW", "WiFi", "Dash", "CSV logging"],
+    highlights: [
+      "Paired-board architecture using ESP-NOW for low-latency relative yaw signaling.",
+      "Threshold-driven LED and vibration feedback for real-time gait correction.",
+      "WiFi/TCP variants stream IMU data into Dash dashboards with CSV recording.",
+    ],
+    stats: [
+      { label: "Platform", value: "ESP32 + BNO055" },
+      { label: "Comms", value: "ESP-NOW + WiFi/TCP" },
+      { label: "Repository", value: "github.com/MaxwellM34/out_toe_gait_correction" },
+    ],
+    gallery: [
+      { label: "Wearable form factor", image: "/projects/footallignbanner.jpg" },
+      { label: "Validation context", image: "/projects/footallignselfie.jpg" },
+      { label: "Team validation", image: "/projects/mikoselfie.jpg" },
+    ],
+    challenge:
+      "Measure real-time foot rotation reliably between two independent moving boards without expensive motion capture hardware.",
+    approach:
+      "Used BNO055 IMUs for stable orientation, ESP-NOW for low-latency board-to-board comms, and a threshold-based feedback loop tied to LED and vibration output.",
+    outcome:
+      "Delivered a working paired ESP32 system that detects excessive out-toeing in real time and provides haptic feedback, with WiFi telemetry for offline analysis.",
+    palette: ["#1A4D8F", "#4DA3FF", "#D6E8FF"],
+  },
+  {
+    slug: "engg4040-ct-radon-reconstruction",
+    hidden: false,
+    title: "CT Radon Reconstruction",
+    category: "Medical Imaging Lab",
+    year: "2025",
+    summary:
+      "MATLAB exploration of Radon-based CT reconstruction with sinogram corruption, limited-angle Hamming filtering, and noise-test recovery using spatial filters.",
+    description:
+      "This ENGG4040 lab uses MATLAB to explore Radon-based CT reconstruction. It examines sinogram corruption, limited-angle projection effects under Hamming filtering, and noise scenarios (salt and pepper, Gaussian) with average, Gaussian, and median spatial filters.",
+    role: "Medical imaging analysis and MATLAB implementation",
+    timeline: "ENGG4040 Lab 3",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Radon-based CT reconstruction",
+      "Sinogram analysis",
+      "Limited-angle reconstruction",
+      "Noise filtering studies",
+    ],
+    tools: ["MATLAB", "Radon transform", "Image filtering"],
+    highlights: [
+      "Investigated sinogram corruption impact on CT reconstruction quality.",
+      "Compared limited-angle reconstruction behavior using Hamming filtering.",
+      "Benchmarked average, Gaussian, and median spatial filters against synthetic noise.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Module", value: "ENGG4040 Lab 3" },
+      { label: "Repository", value: "github.com/MaxwellM34/ENGG4040_Lab3_CT_Radon_Reconstruction" },
+    ],
+    gallery: [
+      { label: "Sinogram corruption", image: "/og-image.svg" },
+      { label: "Filtered reconstruction", image: "/og-image.svg" },
+      { label: "Noise filter comparison", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Understand how sinogram quality, limited angles, and noise interact with reconstruction filters in practical CT imaging.",
+    approach:
+      "Built MATLAB scripts to corrupt sinograms, apply Hamming-filtered reconstructions over restricted angles, and benchmark spatial filters under controlled noise.",
+    outcome:
+      "Delivered a hands-on understanding of CT reconstruction sensitivity to acquisition and filtering choices.",
+    palette: ["#0F172A", "#0EA5E9", "#BAE6FD"],
+  },
+  {
+    slug: "engg4040-fourier-transform",
+    hidden: false,
+    title: "DICOM 2D Fourier Transform Analysis",
+    category: "Medical Imaging Lab",
+    year: "2025",
+    summary:
+      "MATLAB analysis applying 2D FFT to DICOM medical images - resolution and SNR studies, rotation in the frequency domain, plus low- and high-pass filtering.",
+    description:
+      "This ENGG4040 assignment applies 2D Fourier Transforms to medical DICOM images in MATLAB. The workflow examines how resolution and voxel size affect image quality, compares SNR across regions, demonstrates rotation effects in the frequency domain, and applies low-pass and high-pass filtering to modify image detail.",
+    role: "Medical imaging analysis and MATLAB implementation",
+    timeline: "ENGG4040 assignment",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "DICOM image handling",
+      "2D FFT analysis",
+      "SNR comparison",
+      "Frequency-domain filtering",
+    ],
+    tools: ["MATLAB", "DICOM", "FFT", "Image processing"],
+    highlights: [
+      "Worked directly with DICOM-format medical imaging data.",
+      "Demonstrated how rotation in the spatial domain manifests in the frequency domain.",
+      "Applied targeted low-pass and high-pass filters to modify perceived detail.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Format", value: "DICOM" },
+      { label: "Repository", value: "github.com/MaxwellM34/ENGG4040_Fourier_Transform_Assignment" },
+    ],
+    gallery: [
+      { label: "FFT magnitude view", image: "/og-image.svg" },
+      { label: "Filtered image output", image: "/og-image.svg" },
+      { label: "Rotation in frequency", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Connect frequency-domain behavior to practical medical image quality and filtering decisions.",
+    approach:
+      "Built MATLAB scripts to apply 2D FFTs on DICOM images, then ran SNR, rotation, and filtering studies in the frequency domain.",
+    outcome:
+      "Delivered a complete frequency-domain analysis of medical images that ties theoretical FFT behavior to visible image quality outcomes.",
+    palette: ["#312E81", "#6366F1", "#C7D2FE"],
+  },
+  {
+    slug: "spring-vs-sleeve-knee-brace",
+    hidden: false,
+    title: "Spring vs Sleeve Knee Brace Lab",
+    category: "Biomechanics Comparative Study",
+    year: "2024",
+    summary:
+      "MATLAB workflow comparing a spring-loaded knee brace, a sleeve brace, and no brace across balance and squat tasks for a single participant.",
+    description:
+      "This single-participant biomechanics lab compares Brace 1 (spring-loaded), Brace 2 (sleeve), and a no-brace condition during balance and squat tasks. MATLAB scripts process force-plate and kinematic exports, generate resultant force vectors, and plot stability, mobility, and peak-force metrics.",
+    role: "Biomechanics analysis and MATLAB implementation",
+    timeline: "Biomechanics lab",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Force-plate analysis",
+      "Kinematic processing",
+      "Resultant vector computation",
+      "Comparative biomechanics",
+    ],
+    tools: ["MATLAB", "Force plate", "Kinematics"],
+    highlights: [
+      "Single-participant repeated-condition design with consistent task framing.",
+      "Generated resultant force vectors from raw force-plate data.",
+      "Produced comparative plots for stability, mobility, and peak forces across braces.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Conditions", value: "Spring + sleeve + control" },
+      { label: "Repository", value: "github.com/MaxwellM34/Spring-Loaded_vs_Sleeve_Knee_Brace" },
+    ],
+    gallery: [
+      { label: "Resultant vector output", image: "/og-image.svg" },
+      { label: "Stability comparison", image: "/og-image.svg" },
+      { label: "Peak force comparison", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Compare two brace types against a no-brace baseline with limited subjects while keeping the analysis honest.",
+    approach:
+      "Standardized tasks and processing across conditions in MATLAB and reported comparative metrics rather than absolute claims.",
+    outcome:
+      "Delivered a reproducible MATLAB comparison of spring vs sleeve knee bracing across stability, mobility, and peak loading.",
+    palette: ["#0F766E", "#14B8A6", "#99F6E4"],
+  },
+  {
+    slug: "yellow-fanuc-tests",
+    hidden: false,
+    title: "FANUC Arm Python Control",
+    category: "Industrial Robotics + Python",
+    year: "2025",
+    summary:
+      "Python tools and Jupyter notebooks to drive a FANUC arm via the PCDK TCP bridge - jogging in multiple coordinate spaces, pose reading, and gripper actuation.",
+    description:
+      "This repo provides Python tools and notebooks for controlling a FANUC arm through the PCDK TCP bridge. Capabilities include connecting to the server, jogging in joint, world, and linear space, adjusting speed, reading current pose, and actuating the gripper. Lab safety guidance is embedded in the workflow.",
+    role: "Robotics scripting and lab tooling",
+    timeline: "Robotics lab",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "FANUC PCDK integration",
+      "Multi-frame jogging",
+      "Pose telemetry",
+      "Lab safety scripting",
+    ],
+    tools: ["Python", "Jupyter", "FANUC PCDK", "TCP bridge"],
+    highlights: [
+      "Drives the FANUC arm directly from Python via the PCDK TCP bridge.",
+      "Supports joint, world, and linear jogging plus speed adjustment.",
+      "Provides pose telemetry and gripper actuation with safety guidance.",
+    ],
+    stats: [
+      { label: "Platform", value: "FANUC PCDK" },
+      { label: "Format", value: "Python + Jupyter" },
+      { label: "Repository", value: "github.com/MaxwellM34/yellow_fanuc_tests" },
+    ],
+    gallery: [
+      { label: "Connection setup", image: "/og-image.svg" },
+      { label: "Jogging script", image: "/og-image.svg" },
+      { label: "Gripper actuation", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Make FANUC arm control accessible from a Python notebook environment for lab use without losing safety discipline.",
+    approach:
+      "Wrapped the PCDK TCP bridge in Python helpers, exposed multi-frame jogging and pose reads, and embedded safety conventions directly in the workflow.",
+    outcome:
+      "A working Python toolkit that lets a student safely operate a FANUC arm from notebooks for lab tasks.",
+    palette: ["#854D0E", "#EAB308", "#FEF08A"],
+  },
+  {
+    slug: "fanuc-lab-tp",
+    hidden: false,
+    title: "FANUC Teach Pendant Programs",
+    category: "Industrial Robotics + TP Programming",
+    year: "2025",
+    summary:
+      "Five FANUC TP examples - HOME_READY, PICK_PLACE, WAVE_GREETING, DRAW_SQUARE, PUSH_BUTTON - with shared frames and reusable lab structure.",
+    description:
+      "This repo contains five FANUC teach-pendant (TP) programs: HOME_READY, PICK_PLACE, WAVE_GREETING, DRAW_SQUARE, and PUSH_BUTTON. Each sets UFRAME and UTOOL #1 and includes safe approaches. Behaviors include gripper DO[1] actuation, wave loops, square tracing, and dwell-based button presses, all suitable for lab templates.",
+    role: "Robotics lab content and TP programming",
+    timeline: "Robotics lab",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "FANUC TP programming",
+      "Frame and tool setup",
+      "Safe-approach trajectories",
+      "Lab template authoring",
+    ],
+    tools: ["FANUC TP", "UFRAME/UTOOL", "Robotics"],
+    highlights: [
+      "Five reusable TP examples covering core lab motions.",
+      "Consistent UFRAME and UTOOL #1 setup across all programs.",
+      "Includes safe approaches and dwell-based behaviors for shared lab use.",
+    ],
+    stats: [
+      { label: "Programs", value: "5 TP examples" },
+      { label: "Frames", value: "UFRAME/UTOOL #1" },
+      { label: "Repository", value: "github.com/MaxwellM34/Fanuc_Lab" },
+    ],
+    gallery: [
+      { label: "Program list", image: "/og-image.svg" },
+      { label: "Square trace", image: "/og-image.svg" },
+      { label: "Pick and place", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Give students a clean set of FANUC TP examples that demonstrate core lab behaviors without unsafe shortcuts.",
+    approach:
+      "Authored five reusable TP programs with consistent frame setup and safe approaches, ready to drop into a teach pendant.",
+    outcome:
+      "A drop-in template set for FANUC lab work covering home, pick-place, wave, draw, and button-press behaviors.",
+    palette: ["#92400E", "#F59E0B", "#FDE68A"],
+  },
+  {
+    slug: "emg-lab-foundation",
+    hidden: false,
+    title: "EMG Signal Processing Lab",
+    category: "Biosignal Processing",
+    year: "2024",
+    summary:
+      "Foundational MATLAB lab for EMG signal processing - rectification, integration, spectra, high-pass artifact removal, and grasp-force correlation.",
+    description:
+      "This MATLAB lab covers core EMG signal processing for bicep and wrist recordings: rectification, integration, spectral exploration, designing and applying high-pass filters to reduce motion artifacts, visualizing fatigue, and correlating EMG features to grasp force using provided CSV data.",
+    role: "Biosignal analysis and MATLAB implementation",
+    timeline: "Biosignal lab",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "EMG rectification + integration",
+      "Spectral analysis",
+      "Artifact-removal filtering",
+      "Force correlation",
+    ],
+    tools: ["MATLAB", "EMG processing", "Filter design"],
+    highlights: [
+      "Rectifies and integrates raw EMG to derive activation envelopes.",
+      "Designs and applies high-pass filters to reduce motion artifacts.",
+      "Correlates EMG features with grasp force using lab CSV data.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Signals", value: "Bicep + wrist EMG" },
+      { label: "Repository", value: "github.com/MaxwellM34/EMG_Lab" },
+    ],
+    gallery: [
+      { label: "Rectified EMG", image: "/og-image.svg" },
+      { label: "Filter design", image: "/og-image.svg" },
+      { label: "Force vs EMG", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Build a clean foundation for EMG processing that handles realistic artifacts and supports physiology-level interpretation.",
+    approach:
+      "Implemented rectification, integration, spectral inspection, and artifact-removal filtering as MATLAB building blocks tied to clear physiology questions.",
+    outcome:
+      "A reusable MATLAB foundation for downstream EMG projects, with documented behavior on motion artifacts and force correlation.",
+    palette: ["#9F1239", "#E11D48", "#FECDD3"],
+  },
+  {
+    slug: "math2130-root-finding",
+    hidden: false,
+    title: "MATH*2130 Root-Finding Methods",
+    category: "Numerical Methods",
+    year: "2024",
+    summary:
+      "MATLAB implementations of bisection, false position, Newton, secant, and fixed-point root-finding methods with terminal-driven workflows.",
+    description:
+      "This MATH*2130 assignment contains MATLAB implementations of bisection, false position, Newton, secant, and fixed-point root-finding methods. Each method is paired with a terminal driver that lets the user pick a function, tolerance, and initial guesses, with PDFs of the writeups and earlier checkpoints kept in-repo.",
+    role: "Numerical methods implementation",
+    timeline: "MATH*2130 assignment",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Numerical root-finding",
+      "Terminal-driven workflows",
+      "Convergence reporting",
+      "Documentation packaging",
+    ],
+    tools: ["MATLAB", "Numerical methods"],
+    highlights: [
+      "Five root-finding methods implemented from scratch in MATLAB.",
+      "Terminal drivers expose function, tolerance, and initial-guess controls.",
+      "Repository keeps writeup PDFs and earlier checkpoints for reference.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Methods", value: "5 root-finders" },
+      { label: "Repository", value: "github.com/MaxwellM34/math2130_root_finding_methods" },
+    ],
+    gallery: [
+      { label: "Bisection driver", image: "/og-image.svg" },
+      { label: "Newton method", image: "/og-image.svg" },
+      { label: "Convergence comparison", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Build the classic root-finding methods cleanly enough that they can be compared against each other on the same problem.",
+    approach:
+      "Implemented each method in MATLAB with a shared terminal driver and consistent convergence reporting.",
+    outcome:
+      "A working numerical-methods toolkit ready to use as a reference for future coursework.",
+    palette: ["#1F2937", "#4B5563", "#D1D5DB"],
+  },
+  {
+    slug: "goniometer-calibration-refresher",
+    hidden: false,
+    title: "Goniometer Calibration Refresher",
+    category: "Sensor Calibration",
+    year: "2024",
+    summary:
+      "MATLAB refresher that loads eight goniometer calibration CSVs, averages voltages per angle, and fits slope, intercept, and R-squared.",
+    description:
+      "This MATLAB refresher loads eight goniometer calibration CSVs, averages measured voltages per angle, and runs a small linear regression helper to compute slope, intercept, and R-squared. PDF/doc instructions and optional plotting are included for quick sensor calibration checks.",
+    role: "Sensor calibration tooling",
+    timeline: "Lab refresher",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "Calibration CSV loading",
+      "Per-angle averaging",
+      "Linear regression fit",
+      "Calibration reporting",
+    ],
+    tools: ["MATLAB", "Linear regression"],
+    highlights: [
+      "Loads and averages voltages from eight calibration CSVs.",
+      "Returns slope, intercept, and R-squared for quick sanity checks.",
+      "Includes PDF instructions and optional plotting hooks.",
+    ],
+    stats: [
+      { label: "Platform", value: "MATLAB" },
+      { label: "Inputs", value: "8 calibration CSVs" },
+      { label: "Repository", value: "github.com/MaxwellM34/MAMATLAB_Goniometer_Calibration_Refresher." },
+    ],
+    gallery: [
+      { label: "Calibration data", image: "/og-image.svg" },
+      { label: "Regression fit", image: "/og-image.svg" },
+      { label: "Linearity check", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Provide a fast, reliable sanity-check routine for goniometer calibration without re-deriving the math each lab.",
+    approach:
+      "Wrote a small MATLAB helper that averages voltages per angle and runs a single linear regression for slope/intercept/R-squared.",
+    outcome:
+      "A drop-in calibration check that turns eight CSV files into a clear linear fit and reusable parameters.",
+    palette: ["#7C2D12", "#C2410C", "#FED7AA"],
+  },
+  {
+    slug: "running-mocap-dataset",
+    hidden: false,
+    title: "Running Motion Capture Dataset",
+    category: "Biomechanics Dataset",
+    year: "2024",
+    summary:
+      "200 Hz running gait dataset for one participant - calibration plus running trials at four labeled speeds with c3d, GRF, and joint exports.",
+    description:
+      "A curated single-participant running gait dataset, including static calibration and running trials at labeled speeds 25/50/75/100 with three repeats each. Exports include c3d marker/analog files, Kistler GRF CSVs, joint angle and velocity text exports, plus camera and session metadata, all captured at 200 Hz.",
+    role: "Dataset preparation and biomechanics curation",
+    timeline: "Lab dataset",
+    image: "/og-image.svg",
+    heroImage: "/og-image.svg",
+    services: [
+      "MOCAP dataset prep",
+      "GRF export curation",
+      "Joint angle exports",
+      "Session metadata packaging",
+    ],
+    tools: ["VICON Nexus", "Visual3D", "Kistler force plate"],
+    highlights: [
+      "200 Hz capture rate with consistent calibration across trials.",
+      "Four labeled speeds with three repeats each for repeated-measures work.",
+      "Includes c3d, GRF, joint angles, and metadata for downstream analysis.",
+    ],
+    stats: [
+      { label: "Capture rate", value: "200 Hz" },
+      { label: "Conditions", value: "4 speeds x 3 repeats" },
+      { label: "Repository", value: "github.com/MaxwellM34/Running_Motion_Capture_Dataset" },
+    ],
+    gallery: [
+      { label: "Dataset layout", image: "/og-image.svg" },
+      { label: "Calibration files", image: "/og-image.svg" },
+      { label: "Joint exports", image: "/og-image.svg" },
+    ],
+    challenge:
+      "Package a usable running gait dataset that other students or researchers can analyze without reverse-engineering missing metadata.",
+    approach:
+      "Captured a structured single-participant protocol at 200 Hz, exported across c3d, GRF, and joint formats, and documented session metadata explicitly.",
+    outcome:
+      "A reusable, multi-format running gait dataset suitable for repeated-measures biomechanics work.",
+    palette: ["#581C87", "#9333EA", "#E9D5FF"],
   },];
 
 const featuredProjectOrder = [
+  "annotool",
+  "leblanc-design-loop",
+  "payitforward-redux",
   "reverse-engineering-sewing-machine",
   "better-bmr-calculator",
   "gripsense-rsi-prevention-mouse",
@@ -1608,6 +2315,10 @@ const featuredProjectOrder = [
   "kinderegg-toy-launcher",
   "fea-barbell-bench-capstone",
   "foot-allign-capstone",
+  "out-toe-gait-correction",
+  "chromology-brand",
+  "happyface-firebase",
+  "coppercrm",
 ];
 
 const featuredProjectRank = new Map(

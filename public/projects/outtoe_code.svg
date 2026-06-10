@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 804" width="1200" height="804" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1021"/><stop offset="1" stop-color="#141A2E"/></linearGradient></defs>
+<rect x="0" y="0" width="1200" height="804" rx="16" ry="16" fill="url(#bg)"/>
+<rect x="0" y="0" width="1200" height="44" rx="16" ry="16" fill="#0F1528"/>
+<rect x="0" y="22.0" width="1200" height="22.0" fill="#0F1528"/>
+<circle cx="22" cy="22.0" r="7" fill="#FF5F57"/>
+<circle cx="44" cy="22.0" r="7" fill="#FEBC2E"/>
+<circle cx="66" cy="22.0" r="7" fill="#28C840"/>
+<text x="600.0" y="27.0" fill="#8896B2" text-anchor="middle" font-size="13">master/src/main.cpp</text>
+<text x="70" y="87" fill="#384158" text-anchor="end" font-size="13">1</text>
+<text x="80" y="87" xml:space="preserve"><tspan fill="#C792EA">void</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#FFCB6B">loop</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="109" fill="#384158" text-anchor="end" font-size="13">2</text>
+<text x="80" y="109" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#5C6B8F">//&#160;1.&#160;Read&#160;the&#160;slave's&#160;yaw&#160;via&#160;ESP-NOW&#160;(updated&#160;in&#160;onDataRecv&#160;callback)</tspan></text>
+<text x="70" y="131" fill="#384158" text-anchor="end" font-size="13">3</text>
+<text x="80" y="131" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#82AAFF">float</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">slave_yaw</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">latest_slave_yaw</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="153" fill="#384158" text-anchor="end" font-size="13">4</text>
+<text x="70" y="175" fill="#384158" text-anchor="end" font-size="13">5</text>
+<text x="80" y="175" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#5C6B8F">//&#160;2.&#160;Read&#160;our&#160;own&#160;yaw&#160;from&#160;the&#160;BNO055</tspan></text>
+<text x="70" y="197" fill="#384158" text-anchor="end" font-size="13">6</text>
+<text x="80" y="197" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#D6DEEB">imu</tspan><tspan fill="#7FDBCA">:</tspan><tspan fill="#7FDBCA">:</tspan><tspan fill="#82AAFF">Vector</tspan><tspan fill="#89DDFF">&lt;</tspan><tspan fill="#F78C6C">3</tspan><tspan fill="#89DDFF">&gt;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">euler</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">bno</tspan><tspan fill="#7FDBCA">.</tspan><tspan fill="#FFCB6B">getVector</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">Adafruit_BNO055</tspan><tspan fill="#7FDBCA">:</tspan><tspan fill="#7FDBCA">:</tspan><tspan fill="#82AAFF">VECTOR_EULER</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="219" fill="#384158" text-anchor="end" font-size="13">7</text>
+<text x="80" y="219" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#82AAFF">float</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">master_yaw</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#FFCB6B">unwrap_yaw</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">euler</tspan><tspan fill="#7FDBCA">.</tspan><tspan fill="#FFCB6B">x</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="241" fill="#384158" text-anchor="end" font-size="13">8</text>
+<text x="70" y="263" fill="#384158" text-anchor="end" font-size="13">9</text>
+<text x="80" y="263" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#5C6B8F">//&#160;3.&#160;Compute&#160;the&#160;relative&#160;angle&#160;between&#160;feet</tspan></text>
+<text x="70" y="285" fill="#384158" text-anchor="end" font-size="13">10</text>
+<text x="80" y="285" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#82AAFF">float</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">diff</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">=</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#FFCB6B">wrap180</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">master_yaw</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">-</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">slave_yaw</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="307" fill="#384158" text-anchor="end" font-size="13">11</text>
+<text x="70" y="329" fill="#384158" text-anchor="end" font-size="13">12</text>
+<text x="80" y="329" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#5C6B8F">//&#160;4.&#160;Drive&#160;feedback&#160;if&#160;out-toeing&#160;exceeds&#160;the&#160;threshold</tspan></text>
+<text x="70" y="351" fill="#384158" text-anchor="end" font-size="13">13</text>
+<text x="80" y="351" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#FFCB6B">fabsf</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">diff</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#89DDFF">&gt;</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#82AAFF">OUT_TOE_THRESHOLD_DEG</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="373" fill="#384158" text-anchor="end" font-size="13">14</text>
+<text x="80" y="373" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#FFCB6B">digitalWrite</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">LED_PIN</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#82AAFF">HIGH</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="395" fill="#384158" text-anchor="end" font-size="13">15</text>
+<text x="80" y="395" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#FFCB6B">analogWrite</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">VIBE_PIN</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">180</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="417" fill="#384158" text-anchor="end" font-size="13">16</text>
+<text x="80" y="417" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#7FDBCA">}</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#C792EA">else</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">{</tspan></text>
+<text x="70" y="439" fill="#384158" text-anchor="end" font-size="13">17</text>
+<text x="80" y="439" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#FFCB6B">digitalWrite</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">LED_PIN</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#82AAFF">LOW</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="461" fill="#384158" text-anchor="end" font-size="13">18</text>
+<text x="80" y="461" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;&#160;&#160;</tspan><tspan fill="#FFCB6B">analogWrite</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">VIBE_PIN</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#F78C6C">0</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="483" fill="#384158" text-anchor="end" font-size="13">19</text>
+<text x="80" y="483" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#7FDBCA">}</tspan></text>
+<text x="70" y="505" fill="#384158" text-anchor="end" font-size="13">20</text>
+<text x="70" y="527" fill="#384158" text-anchor="end" font-size="13">21</text>
+<text x="80" y="527" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#5C6B8F">//&#160;5.&#160;Stream&#160;to&#160;dashboard&#160;if&#160;WiFi&#160;is&#160;up</tspan></text>
+<text x="70" y="549" fill="#384158" text-anchor="end" font-size="13">22</text>
+<text x="80" y="549" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#C792EA">if</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">wifi_connected</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#FFCB6B">push_sample</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#D6DEEB">master_yaw</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">slave_yaw</tspan><tspan fill="#7FDBCA">,</tspan><tspan fill="#D6DEEB">&#160;</tspan><tspan fill="#D6DEEB">diff</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="571" fill="#384158" text-anchor="end" font-size="13">23</text>
+<text x="70" y="593" fill="#384158" text-anchor="end" font-size="13">24</text>
+<text x="80" y="593" xml:space="preserve"><tspan fill="#D6DEEB">&#160;&#160;</tspan><tspan fill="#FFCB6B">delay</tspan><tspan fill="#7FDBCA">(</tspan><tspan fill="#82AAFF">LOOP_PERIOD_MS</tspan><tspan fill="#7FDBCA">)</tspan><tspan fill="#7FDBCA">;</tspan></text>
+<text x="70" y="615" fill="#384158" text-anchor="end" font-size="13">25</text>
+<text x="80" y="615" xml:space="preserve"><tspan fill="#7FDBCA">}</tspan></text>
+</svg>

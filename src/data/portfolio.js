@@ -629,9 +629,9 @@ export const projects = [
       { label: "Website", value: "https://betterbmrcalculator.net" },
     ],
     gallery: [
-      { label: "Calculator workflow", image: "/projects/betterbmrcalculator.png" },
-      { label: "Results + accuracy panel", image: "/projects/betterbmrcalculator.png" },
-      { label: "Project goals and rationale", image: "/projects/betterbmrcalculator.png" },
+      { label: "Live calculator with accuracy panel", image: "/projects/bbmr-app.png" },
+      { label: "Basics input section", image: "/projects/bbmr-basics.png" },
+      { label: "Brand mark", image: "/projects/betterbmrcalculator.png" },
     ],
     challenge:
       "Most calorie calculators rely on a generic activity multiplier and do not communicate confidence clearly.",
@@ -982,9 +982,9 @@ export const projects = [
       { label: "Data source", value: "src/data/portfolio.js" },
     ],
     gallery: [
+      { label: "Live home page", image: "/projects/portfolio-live.png" },
       { label: "Home and project listing", image: "/projects/portfolio.png" },
       { label: "Dynamic project route", image: "/projects/portfolio.png" },
-      { label: "Content visibility workflow", image: "/projects/portfolio.png" },
     ],
     challenge:
       "Needed a maintainable structure for publishing only verified projects while keeping drafts private.",
@@ -1611,8 +1611,8 @@ export const projects = [
       "Annotool is an internal web app where an authorized employee draws red-rectangle annotations on side-by-side comparison images pushed in from the LeBlanc design loop. It tracks active working time with idle-gap exclusion and produces weekly invoice PDFs at the user's hourly rate.",
     role: "Full-stack engineering and operations tooling",
     timeline: "Ongoing",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/annotool-login.png",
+    heroImage: "/projects/annotool-login.png",
     services: [
       "Annotation UI",
       "Active time tracking",
@@ -1631,9 +1631,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/annotool" },
     ],
     gallery: [
-      { label: "Annotation workspace", image: "/og-image.svg" },
-      { label: "Hours dashboard", image: "/og-image.svg" },
-      { label: "Weekly invoice output", image: "/og-image.svg" },
+      { label: "Live sign-in screen", image: "/projects/annotool-login.png" },
+      { label: "Active-time tracking + invoice service", image: "/projects/annotool_code.svg" },
+      { label: "Pushed comparison handoff from LeBlanc", image: "/projects/leblanc-classes.png" },
     ],
     challenge:
       "Track an employee's real working time across an open-ended design review loop and bill it accurately without manual timesheets.",
@@ -1677,7 +1677,7 @@ export const projects = [
     gallery: [
       { label: "Homepage rendering option", image: "/projects/leblanc-main.png" },
       { label: "Hero section detail", image: "/projects/leblanc-hero.png" },
-      { label: "Classes card section", image: "/projects/leblanc-classes.png" },
+      { label: "Section iteration loop", image: "/projects/leblanc_code.svg" },
     ],
     challenge:
       "Convert evolving Figma designs into clean Elementor sections at a rate that a small operation can actually review and approve.",
@@ -1721,7 +1721,7 @@ export const projects = [
     gallery: [
       { label: "PWA brand mark", image: "/projects/pif-logo.jpg" },
       { label: "PWA install icon", image: "/projects/pif-pwa.png" },
-      { label: "Cross-surface architecture", image: "/projects/pif-logo.jpg" },
+      { label: "Match-ranking logic", image: "/projects/payitforward_code.svg" },
     ],
     challenge:
       "Ship a coordinated web + mobile experience without duplicating business logic or losing offline-friendly behavior on the web surface.",
@@ -1765,7 +1765,7 @@ export const projects = [
     gallery: [
       { label: "Final selected mark", image: "/projects/chromology-final.png" },
       { label: "Working white transparent", image: "/projects/chromology-logo.png" },
-      { label: "Original grayscale baseline", image: "/projects/chromology-original.png" },
+      { label: "Variant review code", image: "/projects/chromology_code.svg" },
     ],
     challenge:
       "Avoid the common brand-iteration trap where dozens of variants are explored but no decision or rationale is ever recorded.",
@@ -1787,8 +1787,8 @@ export const projects = [
       "HappyFace is a Firebase application structured around emulator-driven local development. It uses Cloud Functions for backend logic, Firestore rules for access control, and the @firebase/rules-unit-testing harness with Jest to verify rule behavior automatically.",
     role: "Full-stack engineering and Firebase architecture",
     timeline: "Ongoing",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/happyface_code.svg",
+    heroImage: "/projects/happyface_code.svg",
     services: [
       "Cloud functions",
       "Firestore rule design",
@@ -1807,9 +1807,9 @@ export const projects = [
       { label: "Local dev", value: "Firebase emulators" },
     ],
     gallery: [
-      { label: "Backend structure", image: "/og-image.svg" },
-      { label: "Emulator workflow", image: "/og-image.svg" },
-      { label: "Rules testing", image: "/og-image.svg" },
+      { label: "Firestore rules unit tests", image: "/projects/happyface_code.svg" },
+      { label: "Emulator workflow", image: "/projects/happyface_code.svg" },
+      { label: "Backend structure", image: "/projects/happyface_code.svg" },
     ],
     challenge:
       "Avoid the common Firebase trap of shipping rules and functions that pass manual testing but break under realistic access patterns.",
@@ -1831,8 +1831,8 @@ export const projects = [
       "CopperCRM is a Python project focused on the small-team CRM use case: managing contacts, tracking pipeline state, and surfacing follow-up actions without the overhead of large enterprise CRM platforms.",
     role: "Backend engineering and CRM data modeling",
     timeline: "Ongoing",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/coppercrm_code.svg",
+    heroImage: "/projects/coppercrm_code.svg",
     services: [
       "CRM data modeling",
       "Pipeline state tracking",
@@ -1851,9 +1851,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/CopperCRM" },
     ],
     gallery: [
-      { label: "Pipeline view", image: "/og-image.svg" },
-      { label: "Contact record", image: "/og-image.svg" },
-      { label: "Follow-up queue", image: "/og-image.svg" },
+      { label: "Pipeline stages + follow-up logic", image: "/projects/coppercrm_code.svg" },
+      { label: "Stage definitions", image: "/projects/coppercrm_code.svg" },
+      { label: "Follow-up queue computation", image: "/projects/coppercrm_code.svg" },
     ],
     challenge:
       "Most CRM tools optimize for enterprise sales and become heavy for small teams that need lightweight pipeline visibility.",
@@ -1896,7 +1896,7 @@ export const projects = [
     ],
     gallery: [
       { label: "Wearable form factor", image: "/projects/footallignbanner.jpg" },
-      { label: "Validation context", image: "/projects/footallignselfie.jpg" },
+      { label: "ESP-NOW master loop", image: "/projects/outtoe_code.svg" },
       { label: "Team validation", image: "/projects/mikoselfie.jpg" },
     ],
     challenge:

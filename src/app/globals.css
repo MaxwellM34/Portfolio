@@ -473,6 +473,23 @@ main {
   gap: 1.8rem;
 }
 
+.project-group {
+  margin-top: 2.4rem;
+}
+
+.project-group:first-of-type {
+  margin-top: 0;
+}
+
+.project-group__heading {
+  margin: 0 0 1.2rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted, #6b7280);
+  font-weight: 600;
+}
+
 .project-card {
   display: grid;
   gap: 1.2rem;

@@ -209,6 +209,7 @@ export const projects = [
   {
     slug: "peptpal",
     hidden: false,
+    kind: "personal",
     title: "PeptPal",
     category: "Health + Harm Reduction Mobile App",
     year: "2026",
@@ -260,51 +261,9 @@ export const projects = [
     palette: ["#0F766E", "#14B8A6", "#CCFBF1"],
   },
   {
-    slug: "imm-sourcing-pipeline",
-    hidden: false,
-    title: "IMM Sourcing Pipeline",
-    category: "Procurement Automation",
-    year: "2026",
-    summary:
-      "A four-stage Python pipeline that pulls injection molding machine quotes from Gmail, downloads supplier PDFs, extracts pricing, and builds a unified comparison document.",
-    description:
-      "IMM is an internal procurement tool that automates an otherwise manual injection molding machine sourcing workflow. It searches Gmail for quotes from a curated supplier list, downloads attachments, extracts text from PDFs, and assembles a comparison-ready report with known-price reference data.",
-    role: "Python automation, pipeline design",
-    timeline: "Internal tool",
-    image: "/projects/imm_code.svg",
-    heroImage: "/projects/imm_code.svg",
-    services: [
-      "Email + attachment automation",
-      "PDF text extraction",
-      "Procurement reporting",
-      "Supplier comparison",
-    ],
-    tools: ["Python", "Gmail API", "Google OAuth", "PDF parsing"],
-    highlights: [
-      "Four-stage pipeline: fetch threads, download PDFs, extract text, build document.",
-      "Searches a curated allowlist of 17+ injection molding machine suppliers.",
-      "Master runner supports re-running individual stages without redoing earlier work.",
-      "Reference price data tracked per-supplier in a structured JSON file.",
-    ],
-    stats: [
-      { label: "Pipeline stages", value: "4" },
-      { label: "Suppliers tracked", value: "17+" },
-      { label: "Repository", value: "https://github.com/MaxwellM34/IMM" },
-    ],
-    gallery: [
-      { label: "01_fetch_emails.py — Gmail ingestion", image: "/projects/imm_code.svg" },
-    ],
-    challenge:
-      "Comparing IMM quotes across many suppliers means manually digging through email threads and PDF attachments with inconsistent formatting and no central reference.",
-    approach:
-      "Split the workflow into four idempotent scripts so each stage can be re-run independently, paired with a Gmail allowlist query and a known-price reference file for sanity checks.",
-    outcome:
-      "Compressed multi-day procurement comparison work into a repeatable pipeline that produces a single comparison document on demand.",
-    palette: ["#475569", "#94A3B8", "#E2E8F0"],
-  },
-  {
     slug: "resumai",
     hidden: false,
+    kind: "personal",
     title: "Resumai",
     category: "AI Resume + Job Application Platform",
     year: "2026",
@@ -357,6 +316,7 @@ export const projects = [
   {
     slug: "mogbot",
     hidden: false,
+    kind: "personal",
     title: "Mogbot",
     category: "Autonomous AI Agent",
     year: "2026",
@@ -410,6 +370,7 @@ export const projects = [
   {
     slug: "agent-bootdev",
     hidden: false,
+    kind: "personal",
     title: "Boot.dev Agent Project",
     category: "AI / LLM Course Project",
     year: "2026",
@@ -451,6 +412,7 @@ export const projects = [
   {
     slug: "nova-newborn-care",
     hidden: false,
+    kind: "personal",
     title: "Nova — Newborn Care Marketplace",
     category: "Two-Sided Marketplace",
     year: "2026",
@@ -504,6 +466,7 @@ export const projects = [
   {
     slug: "webposter",
     hidden: false,
+    kind: "personal",
     title: "Webposter",
     category: "Content Publishing API",
     year: "2025",
@@ -556,6 +519,7 @@ export const projects = [
   {
     slug: "gcp-virtualmin-mailserver",
     hidden: false,
+    kind: "personal",
     title: "GCP Virtualmin Mail Server",
     category: "Infrastructure + DevOps",
     year: "2026",
@@ -600,6 +564,7 @@ export const projects = [
   {
     slug: "better-bmr-calculator",
     hidden: false,
+    kind: "work",
     title: "BetterBMRCalculator",
     category: "Health + Nutrition Software",
     year: "2026",
@@ -644,6 +609,7 @@ export const projects = [
   {
     slug: "alan-fraud-detection",
     hidden: false,
+    kind: "personal",
     title: "Alan Fraud Detection Dashboard",
     category: "FinTech + Healthcare Analytics",
     year: "2026",
@@ -689,6 +655,7 @@ export const projects = [
   {
     slug: "asteroids-pygame",
     hidden: false,
+    kind: "personal",
     title: "Asteroids",
     category: "Game Development",
     year: "2025",
@@ -734,6 +701,7 @@ export const projects = [
   {
     slug: "ltrv-django",
     hidden: false,
+    kind: "personal",
     title: "Lucky Twyn Rivers Variety",
     category: "Web Development",
     year: "2024",
@@ -778,6 +746,7 @@ export const projects = [
   {
     slug: "image-quality-mtf",
     hidden: false,
+    kind: "academic",
     title: "Image Quality & MTF Analysis",
     category: "Medical Imaging + Signal Processing",
     year: "2024",
@@ -822,6 +791,7 @@ export const projects = [
   {
     slug: "spect-reconstruction",
     hidden: false,
+    kind: "academic",
     title: "SPECT Image Reconstruction",
     category: "Medical Imaging + Scientific Computing",
     year: "2024",
@@ -866,6 +836,7 @@ export const projects = [
   {
     slug: "autonomous-vehicle",
     hidden: false,
+    kind: "academic",
     title: "Autonomous Maze Vehicle",
     category: "Embedded Systems + Robotics",
     year: "2022",
@@ -911,6 +882,7 @@ export const projects = [
   {
     slug: "connect-four",
     hidden: false,
+    kind: "personal",
     title: "Connect Four",
     category: "Web Game",
     year: "2024",
@@ -953,6 +925,7 @@ export const projects = [
   {
     slug: "portfolio-site",
     hidden: false,
+    kind: "personal",
     title: "Portfolio Website",
     category: "Personal Engineering Portfolio",
     year: "2026",
@@ -995,52 +968,9 @@ export const projects = [
     palette: ["#1E3A8A", "#38BDF8", "#E2E8F0"],
   },
   {
-    slug: "qpcr-lab-automation",
-    hidden: false,
-    title: "qPCRLabAutomation",
-    category: "qPCR Workflow Automation",
-    year: "2026",
-    summary:
-      "A Python-based qPCR automation platform aimed at covering workflow steps and reducing operational overhead in small labs.",
-    description:
-      "qPCRLabAutomation is a repository focused on end-to-end qPCR workflow automation. It integrates specialized modules for primer design and sequence analysis to support practical workflow operations.",
-    role: "Project creator and software developer",
-    timeline: "Ongoing",
-    image: "/projects/qPCRLabAutomation.jpg",
-    heroImage: "/projects/qPCRLabAutomation.jpg",
-    services: [
-      "Workflow automation",
-      "Primer design pipeline integration",
-      "Sequence analysis integration",
-      "Tooling architecture",
-    ],
-    tools: ["Python", "primer3", "NUPACK (planned)", "Entrez", "Git submodules"],
-    highlights: [
-      "Structured as a full qPCR workflow automation project.",
-      "Includes `primerPlus` submodule for constrained primer design and scoring.",
-      "Includes `PrimeSpecPCR` submodule for consensus/alignment via Entrez.",
-    ],
-    stats: [
-      { label: "Primary language", value: "Python" },
-      { label: "Submodules", value: "2" },
-      { label: "Repository", value: "github.com/MaxwellM34/qPCRLabAutomation" },
-    ],
-    gallery: [
-      { label: "Workflow architecture", image: "/projects/qPCRLabAutomation.jpg" },
-      { label: "Primer design pipeline", image: "/projects/qPCRLabAutomation.jpg" },
-      { label: "Consensus/alignment automation", image: "/projects/qPCRLabAutomation.jpg" },
-    ],
-    challenge:
-      "Small labs often need to stitch together multiple manual steps for qPCR design and analysis.",
-    approach:
-      "Built a unified automation repo and linked focused tooling repos through submodules for primer design and sequence processing.",
-    outcome:
-      "A central foundation for scaling qPCR software workflows with less manual handoff across tools.",
-    palette: ["#14532D", "#22C55E", "#A7F3D0"],
-  },
-  {
     slug: "foot-allign-capstone",
     hidden: false,
+    kind: "academic",
     title: "Foot Allign Capstone",
     category: "Wearable Biomechanics",
     year: "2025",
@@ -1086,6 +1016,7 @@ export const projects = [
   {
     slug: "reverse-engineering-sewing-machine",
     hidden: false,
+    kind: "academic",
     title: "Reverse Engineering Sewing Machine",
     category: "Mechanical CAD + Reverse Engineering",
     year: "2025",
@@ -1132,6 +1063,7 @@ export const projects = [
   {
     slug: "food-storage-device",
     hidden: false,
+    kind: "personal",
     title: "Food Storage Device",
     category: "Embedded Systems + Arduino",
     year: "2026",
@@ -1176,6 +1108,7 @@ export const projects = [
   {
     slug: "fea-barbell-bench-capstone",
     hidden: false,
+    kind: "academic",
     title: "FEA Barbell Bench Analysis",
     category: "Finite Element Analysis",
     year: "2025",
@@ -1220,6 +1153,7 @@ export const projects = [
   {
     slug: "research-conference-presentation",
     hidden: false,
+    kind: "academic",
     title: "Research Conference Presentation",
     category: "Biomedical Research + Conference",
     year: "2025",
@@ -1264,6 +1198,7 @@ export const projects = [
   {
     slug: "kinderegg-toy-launcher",
     hidden: false,
+    kind: "academic",
     title: "Kinder Egg Toy Launcher",
     category: "Mechanical Design + Product Prototyping",
     year: "2025",
@@ -1323,6 +1258,7 @@ export const projects = [
   {
     slug: "engg3150-force-plate-fft-lab",
     hidden: false,
+    kind: "academic",
     title: "Force Plate FFT Analysis",
     category: "Biomechanics Signal Analysis",
     year: "2024",
@@ -1368,6 +1304,7 @@ export const projects = [
   {
     slug: "engg3150-vicon-jump-kinematics-lab",
     hidden: false,
+    kind: "academic",
     title: "VICON Jump Kinematics Analysis",
     category: "Biomechanics Motion Analysis",
     year: "2024",
@@ -1412,6 +1349,7 @@ export const projects = [
   {
     slug: "engg3150-emg-biceps-curl-lab",
     hidden: false,
+    kind: "academic",
     title: "EMG Biceps Curl Analysis",
     category: "EMG + Biomechanics Signal Processing",
     year: "2024",
@@ -1456,6 +1394,7 @@ export const projects = [
   {
     slug: "copper-vision-mood-classifier",
     hidden: false,
+    kind: "personal",
     title: "Copper Vision Mood Classifier",
     category: "Computer Vision + Applied ML",
     year: "2026",
@@ -1507,6 +1446,7 @@ export const projects = [
   {
     slug: "a3-pulley-crimp-grip-lab",
     hidden: false,
+    kind: "academic",
     title: "A3 Pulley Crimp Grip Analysis",
     category: "Climbing Biomechanics + EMG",
     year: "2024",
@@ -1551,6 +1491,7 @@ export const projects = [
   {
     slug: "gripsense-rsi-prevention-mouse",
     hidden: false,
+    kind: "academic",
     title: "GripSense RSI Prevention Mouse",
     category: "Ergonomic Product Design",
     year: "2024",
@@ -1602,6 +1543,7 @@ export const projects = [
   {
     slug: "annotool",
     hidden: false,
+    kind: "work",
     title: "Annotool",
     category: "Internal Web App + Time Tracking",
     year: "2026",
@@ -1646,6 +1588,7 @@ export const projects = [
   {
     slug: "leblanc-design-loop",
     hidden: false,
+    kind: "work",
     title: "LeBlanc Figma-to-Elementor Loop",
     category: "Design Automation + Agent Loop",
     year: "2026",
@@ -1690,6 +1633,7 @@ export const projects = [
   {
     slug: "payitforward-redux",
     hidden: false,
+    kind: "personal",
     title: "PayItForward Redux",
     category: "Web + Mobile PWA",
     year: "2026",
@@ -1734,6 +1678,7 @@ export const projects = [
   {
     slug: "chromology-brand",
     hidden: false,
+    kind: "personal",
     title: "Chromology Brand + Logo System",
     category: "Brand Design + Logo Iteration",
     year: "2026",
@@ -1778,6 +1723,7 @@ export const projects = [
   {
     slug: "happyface-firebase",
     hidden: false,
+    kind: "personal",
     title: "HappyFace",
     category: "Firebase Functions + Testing",
     year: "2026",
@@ -1822,6 +1768,7 @@ export const projects = [
   {
     slug: "coppercrm",
     hidden: false,
+    kind: "personal",
     title: "CopperCRM",
     category: "Internal CRM System",
     year: "2026",
@@ -1843,7 +1790,7 @@ export const projects = [
     highlights: [
       "Targeted at small-team CRM use, not enterprise feature bloat.",
       "Pipeline state and follow-up logic modeled explicitly in the data layer.",
-      "Designed as a foundation for AI-augmented CRM workflows.",
+      "Personal exploration with no proprietary logic from any prior role.",
     ],
     stats: [
       { label: "Primary language", value: "Python" },
@@ -1866,6 +1813,7 @@ export const projects = [
   {
     slug: "out-toe-gait-correction",
     hidden: false,
+    kind: "academic",
     title: "Out-Toe Gait Correction (ESP32 + IMU)",
     category: "Wearable Embedded Systems",
     year: "2025",
@@ -1910,6 +1858,7 @@ export const projects = [
   {
     slug: "engg4040-ct-radon-reconstruction",
     hidden: false,
+    kind: "academic",
     title: "CT Radon Reconstruction",
     category: "Medical Imaging Lab",
     year: "2025",
@@ -1954,6 +1903,7 @@ export const projects = [
   {
     slug: "engg4040-fourier-transform",
     hidden: false,
+    kind: "academic",
     title: "DICOM 2D Fourier Transform Analysis",
     category: "Medical Imaging Lab",
     year: "2025",
@@ -1998,6 +1948,7 @@ export const projects = [
   {
     slug: "spring-vs-sleeve-knee-brace",
     hidden: false,
+    kind: "academic",
     title: "Spring vs Sleeve Knee Brace Lab",
     category: "Biomechanics Comparative Study",
     year: "2024",
@@ -2042,6 +1993,7 @@ export const projects = [
   {
     slug: "yellow-fanuc-tests",
     hidden: false,
+    kind: "academic",
     title: "FANUC Arm Python Control",
     category: "Industrial Robotics + Python",
     year: "2025",
@@ -2086,6 +2038,7 @@ export const projects = [
   {
     slug: "fanuc-lab-tp",
     hidden: false,
+    kind: "academic",
     title: "FANUC Teach Pendant Programs",
     category: "Industrial Robotics + TP Programming",
     year: "2025",
@@ -2130,6 +2083,7 @@ export const projects = [
   {
     slug: "emg-lab-foundation",
     hidden: false,
+    kind: "academic",
     title: "EMG Signal Processing Lab",
     category: "Biosignal Processing",
     year: "2024",
@@ -2174,6 +2128,7 @@ export const projects = [
   {
     slug: "math2130-root-finding",
     hidden: false,
+    kind: "academic",
     title: "MATH*2130 Root-Finding Methods",
     category: "Numerical Methods",
     year: "2024",
@@ -2218,6 +2173,7 @@ export const projects = [
   {
     slug: "goniometer-calibration-refresher",
     hidden: false,
+    kind: "academic",
     title: "Goniometer Calibration Refresher",
     category: "Sensor Calibration",
     year: "2024",
@@ -2262,6 +2218,7 @@ export const projects = [
   {
     slug: "running-mocap-dataset",
     hidden: false,
+    kind: "academic",
     title: "Running Motion Capture Dataset",
     category: "Biomechanics Dataset",
     year: "2024",
@@ -2344,16 +2301,39 @@ export const visibleProjects = projects
   })
   .map(({ project }) => project);
 
+const ORBIT_SLUGS = [
+  "annotool",
+  "leblanc-design-loop",
+  "better-bmr-calculator",
+  "payitforward-redux",
+  "chromology-brand",
+  "copper-vision-mood-classifier",
+  "portfolio-site",
+  "food-storage-device",
+  "reverse-engineering-sewing-machine",
+  "kinderegg-toy-launcher",
+  "foot-allign-capstone",
+  "gripsense-rsi-prevention-mouse",
+];
 
+export const orbitProjects = ORBIT_SLUGS
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter(Boolean)
+  .filter((p) => !p.hidden)
+  .slice(0, 12);
 
+const KIND_ORDER = { work: 0, personal: 1, academic: 2 };
 
+export const groupedProjects = [...visibleProjects].sort((a, b) => {
+  const ka = KIND_ORDER[a.kind] ?? 99;
+  const kb = KIND_ORDER[b.kind] ?? 99;
+  if (ka !== kb) return ka - kb;
+  return 0;
+});
 
-
-
-
-
-
-
-
-
+export const projectGroups = [
+  { kind: "work",     label: "Work + Client Projects",      projects: groupedProjects.filter((p) => p.kind === "work") },
+  { kind: "personal", label: "Personal + Side Projects",    projects: groupedProjects.filter((p) => p.kind === "personal") },
+  { kind: "academic", label: "Academic + Coursework",       projects: groupedProjects.filter((p) => p.kind === "academic") },
+];
 

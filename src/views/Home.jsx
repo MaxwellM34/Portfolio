@@ -6,6 +6,8 @@ import Link from "next/link";
 import {
   education,
   experience,
+  orbitProjects,
+  projectGroups,
   projects,
   resume,
   site,
@@ -60,7 +62,7 @@ function buildOrbitSlots(total, startRadius, ringGap, minSpacing) {
 }
 
 export default function Home() {
-  const heroProjects = visibleProjects;
+  const heroProjects = orbitProjects;
   const hiddenProjectCount = Math.max(0, projects.length - heroProjects.length);
   const [orbitTime, setOrbitTime] = useState(0);
   const [isCompactOrbit, setIsCompactOrbit] = useState(false);
@@ -970,12 +972,28 @@ export default function Home() {
             <div>
               <h2>Projects</h2>
             </div>
+            <p className="section__lead">
+              Everything below is personal, course, or client work owned by me.
+              Anything that overlaps with a prior role is a clean-room
+              reproduction with no proprietary code or IP carried over.
+            </p>
           </div>
-          <div className="project-grid">
-            {visibleProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </div>
+          {projectGroups.map((group) =>
+            group.projects.length > 0 ? (
+              <div key={group.kind} className="project-group">
+                <h3 className="project-group__heading">{group.label}</h3>
+                <div className="project-grid">
+                  {group.projects.map((project, index) => (
+                    <ProjectCard
+                      key={project.slug}
+                      project={project}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null
+          )}
         </section>
 
         <section id="services" className="section section--split">

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="goniometer cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#59200d"/>
+      <stop offset="0.55" stop-color="#7C2D12"/>
+      <stop offset="1" stop-color="#99350f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#C2410C" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#C2410C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FED7AA" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FED7AA" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#FED7AA" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <path d="M330 620 A 300 300 0 0 1 930 620 Z" fill="#C2410C" fill-opacity="0.3"/>
+  <path d="M330 620 A 300 300 0 0 1 930 620" fill="none" stroke="#FED7AA" stroke-opacity="0.7" stroke-width="12"/>
+  <line x1="384" y1="620" x2="330" y2="620" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="402.7256350022235" y1="525.8598756381879" x2="352.836140246614" y2="505.19497029047307" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="456.0517318281093" y1="446.05173182810927" x2="417.86796564403573" y2="407.86796564403573" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="535.859875638188" y1="392.7256350022235" x2="515.1949702904731" y2="342.836140246614" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="630" y1="374" x2="630" y2="320" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="724.1401243618121" y1="392.7256350022235" x2="744.8050297095269" y2="342.836140246614" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="803.9482681718907" y1="446.0517318281093" x2="842.1320343559643" y2="407.86796564403573" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="857.2743649977765" y1="525.8598756381879" x2="907.1638597533861" y2="505.19497029047307" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="876" y1="620" x2="930" y2="620" stroke="#FED7AA" stroke-opacity="0.55" stroke-width="9"/>
+  <line x1="630" y1="620" x2="330" y2="620" stroke="#FED7AA" stroke-width="16" stroke-linecap="round"/>
+  <line x1="630" y1="620" x2="836" y2="402" stroke="#FED7AA" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="630" cy="620" r="34" fill="#FED7AA"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="emg-lab cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#720d29"/>
+      <stop offset="0.55" stop-color="#9F1239"/>
+      <stop offset="1" stop-color="#bb173f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#E11D48" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#E11D48" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FECDD3" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FECDD3" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#FECDD3" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <line x1="170" y1="400" x2="1050" y2="400" stroke="#FECDD3" stroke-opacity="0.25" stroke-width="8"/>
+  <path d="M170 400 L170 384 L181 423 L193 369 L204 420 L215 372 L227 437 L238 375 L249 435 L260 353 L272 433 L283 354 L294 430 L306 356 L317 462 L328 358 L340 461 L351 316 L362 459 L373 315 L385 454 L396 317 L407 515 L419 323 L430 512 L441 248 L453 505 L464 252 L475 595 L486 263 L498 586 L509 281 L520 570 L532 175 L543 547 L554 197 L566 660 L577 227 L588 629 L599 262 L611 593 L622 153 L633 553 L645 195 L656 654 L667 239 L679 607 L690 282 L701 560 L712 201 L724 517 L735 248 L746 583 L758 290 L769 538 L780 239 L792 499 L803 280 L814 468 L825 314 L837 502 L848 341 L859 473 L871 315 L882 451 L893 338 L905 434 L916 356 L927 452 L938 370 L950 438 L961 355 L972 428 L984 366 L995 419 L1006 374 L1018 432 L1029 381 L1040 426" fill="none" stroke="#FECDD3" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M170 400 C 330 400 300 152 600 152 C 900 152 870 400 1050 400" fill="none" stroke="#E11D48" stroke-opacity="0.6" stroke-width="12" stroke-dasharray="30 26"/>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="ct-radon cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b111e"/>
+      <stop offset="0.55" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#0f537a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#0EA5E9" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#BAE6FD" stop-opacity="0"/>
+      <stop offset="1" stop-color="#BAE6FD" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#BAE6FD" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <circle cx="600" cy="400" r="248" fill="#0EA5E9" fill-opacity="0.35"/>
+  <circle cx="600" cy="400" r="248" fill="none" stroke="#BAE6FD" stroke-opacity="0.7" stroke-width="10"/>
+  <line x1="270" y1="400" x2="930" y2="400" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="302.6802735922017" y1="256.8183660912058" x2="897.3197264077983" y2="543.1816339087942" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="394.24836538661793" y1="141.99561078555018" x2="805.7516346133821" y2="658.0043892144498" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="526.5680917944162" y1="78.27378897999819" x2="673.4319082055838" y2="721.7262110200018" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="673.4319082055838" y1="78.27378897999819" x2="526.5680917944162" y2="721.7262110200018" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="805.7516346133821" y1="141.99561078555013" x2="394.24836538661793" y2="658.0043892144499" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <line x1="897.3197264077983" y1="256.8183660912058" x2="302.68027359220173" y2="543.1816339087942" stroke="#BAE6FD" stroke-opacity="0.42" stroke-width="9"/>
+  <circle cx="600" cy="400" r="96" fill="#BAE6FD"/>
+</svg>

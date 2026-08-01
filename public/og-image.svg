@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Maxwell McInnis">
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151d1a"/>
+      <stop offset="0.55" stop-color="#23433c"/>
+      <stop offset="1" stop-color="#2f6b5f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.3" r="0.62">
+      <stop offset="0" stop-color="#f2c078" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f2c078" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#f4f0e6" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <g transform="translate(600 400)">
+    <circle cx="0" cy="0" r="188" fill="none" stroke="#f4f0e6" stroke-opacity="0.28" stroke-width="10"/>
+    <circle cx="0" cy="0" r="118" fill="#f4f0e6" fill-opacity="0.1"/>
+    <path d="M-104 74 L-104 -74 L0 26 L104 -74 L104 74" fill="none" stroke="#f4f0e6" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="504" y="640" width="192" height="10" rx="5" fill="#f2c078" fill-opacity="0.75"/>
+</svg>

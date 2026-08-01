@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="knee-brace cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b554f"/>
+      <stop offset="0.55" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#119286"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#14B8A6" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#99F6E4" stop-opacity="0"/>
+      <stop offset="1" stop-color="#99F6E4" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#99F6E4" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <path d="M240 640 C 400 260 800 260 960 640" fill="none" stroke="#99F6E4" stroke-width="26" stroke-linecap="round"/>
+  <path d="M240 660 C 420 420 780 420 960 660" fill="none" stroke="#14B8A6" stroke-width="26" stroke-linecap="round" stroke-dasharray="54 40"/>
+  <circle cx="240" cy="640" r="34" fill="#99F6E4"/>
+  <circle cx="960" cy="640" r="34" fill="#99F6E4"/>
+  <circle cx="600" cy="322" r="46" fill="#99F6E4"/>
+  <circle cx="600" cy="440" r="38" fill="#14B8A6"/>
+</svg>

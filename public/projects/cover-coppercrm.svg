@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="coppercrm cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#823c06"/>
+      <stop offset="0.55" stop-color="#B45309"/>
+      <stop offset="1" stop-color="#c46208"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#D97706" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FDE68A" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FDE68A" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#FDE68A" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <rect x="228" y="214" width="316" height="118" rx="26" fill="#FDE68A" fill-opacity="0.92"/>
+  <circle cx="294" cy="273" r="32" fill="#D97706"/>
+  <rect x="348" y="254" width="148" height="19" rx="10" fill="#D97706" fill-opacity="0.75"/>
+  <rect x="348" y="286" width="100" height="17" rx="9" fill="#D97706" fill-opacity="0.45"/>
+  <rect x="228" y="358" width="316" height="118" rx="26" fill="#FDE68A" fill-opacity="0.92"/>
+  <circle cx="294" cy="417" r="32" fill="#D97706"/>
+  <rect x="348" y="398" width="148" height="19" rx="10" fill="#D97706" fill-opacity="0.75"/>
+  <rect x="348" y="430" width="100" height="17" rx="9" fill="#D97706" fill-opacity="0.45"/>
+  <rect x="228" y="502" width="316" height="118" rx="26" fill="#FDE68A" fill-opacity="0.92"/>
+  <circle cx="294" cy="561" r="32" fill="#D97706"/>
+  <rect x="348" y="542" width="148" height="19" rx="10" fill="#D97706" fill-opacity="0.75"/>
+  <rect x="348" y="574" width="100" height="17" rx="9" fill="#D97706" fill-opacity="0.45"/>
+  <path d="M544 273 C 672 273 716 400 844 400" fill="none" stroke="#FDE68A" stroke-opacity="0.55" stroke-width="10"/>
+  <path d="M544 417 C 672 417 716 400 844 400" fill="none" stroke="#FDE68A" stroke-opacity="0.55" stroke-width="10"/>
+  <path d="M544 561 C 672 561 716 400 844 400" fill="none" stroke="#FDE68A" stroke-opacity="0.55" stroke-width="10"/>
+  <circle cx="884" cy="400" r="66" fill="#FDE68A"/>
+  <circle cx="884" cy="400" r="96" fill="none" stroke="#FDE68A" stroke-opacity="0.4" stroke-width="8"/>
+</svg>

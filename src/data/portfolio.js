@@ -67,10 +67,10 @@ const publicPlaceholderProject = (slug, title, palette) => ({
 
 export const site = {
   name: "Maxwell McInnis",
-  role: "Biomedical Engineer + Software Builder",
+  role: "Software Engineer + Automation Builder",
   location: "Mississauga, Ontario, Canada",
   intro:
-    "I build at the intersection of biomedical engineering, software, and execution: from technical products, APIs, and automation systems to small-business operations tooling and practical coaching that helps people perform better in work and life.",
+    "I build software that removes manual work: business process automation, internal platforms and APIs, data and reporting pipelines, and full-stack products. I work end to end, from the data model to the interface the team actually operates.",
   email: "maxwellmcinnis123@gmail.com",
   phone: "+1 (289) 923-0540",
   //availability: "Open to collaborations and product engineering roles.",
@@ -83,17 +83,21 @@ export const site = {
 
 export const resume = {
   summary:
-    "Biomedical software engineer with experience across device-facing systems, internal engineering platforms, workflow automation, and applied research in biomechanics and biosensing.",
+    "Software engineer working across business process automation, internal platforms, full-stack product development, and data and reporting pipelines.",
   resumeUrl: "/projects/Resume.pdf",
   cvUrl: "/projects/MaxwellMcInnisCV.pdf",
   highlights: [
-    "Designed and commercialized accessory hardware, and built supporting software systems for engineering and operations.",
-    "Built internal tools spanning ERP, CRM, qPCR design automation, and lab workflow data handling.",
-    "Contributed to peer-reviewed biomedical research and conference-level publications.",
+    "Automated seven manual intake processes end to end for a client platform, replacing an email and spreadsheet workflow with structured forms, rule-based routing, a searchable request inbox, and CRM sync.",
+    "Software engineer at HappyFace Platform Inc. on a social giving platform, shipping trust and safety, GDPR compliance, security hardening, observability, accessibility and performance work across web and mobile.",
+    "Sole developer on a 1,141-commit platform rebuild: a 27,000-line custom plugin, 8 data models, a member portal, and an attendance system replacing Google Sheets.",
+    "Took a client site from 22 of 30 pages invisible to search to a perfect Lighthouse SEO score across all 31, tracing 10 separate defects to one architectural root cause.",
+    "Built internal platforms at Kraken Sense spanning ERP, an AI-automated CRM, and qPCR primer design with Python, FastAPI, PostgreSQL and Redis.",
+    "Converted manual engineering planning into near real-time KPI reporting on SQL data models and Power BI dashboards.",
   ],
   skills: [
-    "Biomedical software",
+    "Process automation",
     "Python",
+    "TypeScript",
     "Node.js",
     "React",
     "Next.js",
@@ -102,8 +106,9 @@ export const resume = {
     "SQL",
     "PostgreSQL",
     "Power BI",
-    "qPCR workflows",
-    "Lab automation",
+    "PHP / WordPress",
+    "Playwright",
+    "CI / CD",
     "Embedded systems",
   ],
 };
@@ -219,8 +224,8 @@ export const projects = [
       "PeptPal is a React Native + Expo app backed by FastAPI and PostgreSQL. It tracks inventory, doses, cycles, and biomarkers, while flagging dangerous protocols by comparing user weight against trial cohorts. The core wedge is an evidence engine with trust-tiered citations, harmonic-decayed weighting, and per-peptide hard ceilings.",
     role: "Full-stack engineering, mobile development, data modeling",
     timeline: "Ongoing",
-    image: "/projects/peptpal_code.svg",
-    heroImage: "/projects/peptpal_code.svg",
+    image: "/projects/cover-peptpal.svg",
+    heroImage: "/projects/cover-peptpal.svg",
     services: [
       "Mobile app development",
       "Evidence engine + dose scaling",
@@ -250,7 +255,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/peptpal" },
     ],
     gallery: [
-      { label: "doseSafety.ts — dose scaling logic", image: "/projects/peptpal_code.svg" },
+      { label: "doseSafety.ts — dose scaling logic", image: "/projects/cover-peptpal.svg" },
     ],
     challenge:
       "Peptide forums propagate dangerous default doses copied from trial cohorts that are 60+ lb heavier than typical users, with no per-kg scaling and no source quality signal.",
@@ -273,8 +278,8 @@ export const projects = [
       "Resumai is a full-stack resume and job application platform. The web app handles applications, profiles, billing, and admin views, while the FastAPI backend persists data through Alembic migrations and exposes the AI-driven resume tooling.",
     role: "Full-stack engineering, monorepo architecture",
     timeline: "In development",
-    image: "/projects/resumai_code.svg",
-    heroImage: "/projects/resumai_code.svg",
+    image: "/projects/cover-resumai.svg",
+    heroImage: "/projects/cover-resumai.svg",
     services: [
       "Resume generation",
       "Application tracking",
@@ -303,7 +308,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/Resumai" },
     ],
     gallery: [
-      { label: "application.py — SQLAlchemy model", image: "/projects/resumai_code.svg" },
+      { label: "application.py — SQLAlchemy model", image: "/projects/cover-resumai.svg" },
     ],
     challenge:
       "Job seekers tailor resumes per application but lose track of versions, applications, and what was sent where.",
@@ -326,8 +331,8 @@ export const projects = [
       "Mogbot is a self-hosted Manus-style agent. A React UI talks over WebSocket + REST to a FastAPI backend that wraps the Anthropic API, a Playwright browser, and a code execution sandbox. The agent pauses for the user on CAPTCHAs, 2FA, or login walls instead of failing silently.",
     role: "AI engineering, full-stack architecture, browser automation",
     timeline: "Personal project",
-    image: "/projects/mogbot_code.svg",
-    heroImage: "/projects/mogbot_code.svg",
+    image: "/projects/cover-mogbot.svg",
+    heroImage: "/projects/cover-mogbot.svg",
     services: [
       "AI agent design",
       "Browser automation",
@@ -357,7 +362,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/Mogbot" },
     ],
     gallery: [
-      { label: "browser.py — Playwright automation", image: "/projects/mogbot_code.svg" },
+      { label: "browser.py — Playwright automation", image: "/projects/cover-mogbot.svg" },
     ],
     challenge:
       "Hosted agent platforms hide cost, can't be paused on auth challenges, and don't give you the full execution history.",
@@ -380,8 +385,8 @@ export const projects = [
       "A guided Boot.dev project that walks through the basics of LLM tool use. The agent exposes a small set of file and calculator functions to the Gemini API and runs a multi-turn loop until the model returns a final answer.",
     role: "Course project",
     timeline: "Boot.dev coursework",
-    image: "/projects/agent_code.svg",
-    heroImage: "/projects/agent_code.svg",
+    image: "/projects/cover-agent.svg",
+    heroImage: "/projects/cover-agent.svg",
     services: [
       "Tool-calling loop",
       "LLM API integration",
@@ -399,7 +404,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/agent" },
     ],
     gallery: [
-      { label: "main.py — Gemini tool-calling loop", image: "/projects/agent_code.svg" },
+      { label: "main.py — Gemini tool-calling loop", image: "/projects/cover-agent.svg" },
     ],
     challenge:
       "Build an end-to-end LLM agent loop from scratch without an agent framework.",
@@ -422,8 +427,8 @@ export const projects = [
       "Nova lets families browse vetted night nannies, newborn care specialists, postpartum doulas, and registered nurses. The stack pairs a React + Vite frontend with a FastAPI backend, PostGIS for location queries, Clerk for auth, and Stripe Connect for payouts.",
     role: "Full-stack engineering, marketplace architecture",
     timeline: "Client project (NOVA Birth Partners)",
-    image: "/projects/nova_code.svg",
-    heroImage: "/projects/nova_code.svg",
+    image: "/projects/cover-nova.svg",
+    heroImage: "/projects/cover-nova.svg",
     services: [
       "Marketplace product engineering",
       "Auth + payments integration",
@@ -453,7 +458,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/Nova" },
     ],
     gallery: [
-      { label: "auth.py — Clerk JWT verification", image: "/projects/nova_code.svg" },
+      { label: "auth.py — Clerk JWT verification", image: "/projects/cover-nova.svg" },
     ],
     challenge:
       "Overnight newborn care is hard to find on short notice, and existing platforms don't surface live availability or verified credentials clearly.",
@@ -476,8 +481,8 @@ export const projects = [
       "Webposter is a content publishing app that pairs FastAPI with Tortoise ORM and PostgreSQL. It supports Google authentication, image uploads, OpenAI tool integration, and persistent post + user models with iterative migrations.",
     role: "Backend engineering, integration work",
     timeline: "Personal project",
-    image: "/projects/webposter_code.svg",
-    heroImage: "/projects/webposter_code.svg",
+    image: "/projects/cover-webposter.svg",
+    heroImage: "/projects/cover-webposter.svg",
     services: [
       "Backend API design",
       "Auth + OAuth integration",
@@ -506,7 +511,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/webposter" },
     ],
     gallery: [
-      { label: "pablo.py — FastAPI + Tortoise router", image: "/projects/webposter_code.svg" },
+      { label: "pablo.py — FastAPI + Tortoise router", image: "/projects/cover-webposter.svg" },
     ],
     challenge:
       "Build a content publishing app that handles auth, image uploads, and AI-assisted tooling without stitching together unrelated services.",
@@ -529,8 +534,8 @@ export const projects = [
       "This repository documents and partially automates a Virtualmin / Webmin mail server build on GCP Debian 12. It covers the specific issues encountered in practice: incorrect /etc/hosts breaking Virtualmin links, firewall rules for Webmin on port 10000, ClamAV freshclam locks, BIND DNS handling, and Let's Encrypt setup.",
     role: "Infrastructure engineering, technical writing",
     timeline: "Self-hosted mail project",
-    image: "/projects/smtp_code.svg",
-    heroImage: "/projects/smtp_code.svg",
+    image: "/projects/cover-smtp.svg",
+    heroImage: "/projects/cover-smtp.svg",
     services: [
       "Mail server setup",
       "GCP infrastructure",
@@ -551,7 +556,7 @@ export const projects = [
       { label: "Repository", value: "https://github.com/MaxwellM34/Create_my_own_SMTP_server" },
     ],
     gallery: [
-      { label: "install_virtualmin.sh — GCP installer", image: "/projects/smtp_code.svg" },
+      { label: "install_virtualmin.sh — GCP installer", image: "/projects/cover-smtp.svg" },
     ],
     challenge:
       "Standing up a self-hosted mail server on GCP runs into hostname resolution, firewall, and antivirus issues that are not well documented in a single place.",
@@ -1016,7 +1021,7 @@ export const projects = [
   {
     slug: "reverse-engineering-sewing-machine",
     hidden: false,
-    kind: "academic",
+    kind: "work",
     title: "Reverse Engineering Sewing Machine",
     category: "Mechanical CAD + Reverse Engineering",
     year: "2025",
@@ -1491,7 +1496,7 @@ export const projects = [
   {
     slug: "gripsense-rsi-prevention-mouse",
     hidden: false,
-    kind: "academic",
+    kind: "work",
     title: "GripSense RSI Prevention Mouse",
     category: "Ergonomic Product Design",
     year: "2024",
@@ -1543,7 +1548,7 @@ export const projects = [
   {
     slug: "annotool",
     hidden: false,
-    kind: "work",
+    kind: "personal",
     title: "Annotool",
     category: "Internal Web App + Time Tracking",
     year: "2026",
@@ -1589,59 +1594,73 @@ export const projects = [
     slug: "leblanc-design-loop",
     hidden: false,
     kind: "work",
-    title: "LeBlanc Figma-to-Elementor Loop",
-    category: "Design Automation + Agent Loop",
+    title: "LeBlanc School of Acting Platform",
+    category: "Full Platform Build + Process Automation",
     year: "2026",
     summary:
-      "Automation system that converts Figma section designs into Elementor-ready WordPress sections through a repeatable design loop with screenshot diffing.",
+      "Complete rebuild of an online acting school: 13 public pages, a gated member portal, a custom attendance system, and seven automated intake workflows replacing an email-and-spreadsheet process.",
     description:
-      "The LeBlanc project is a long-running design-to-WordPress automation that pulls section-level Figma designs, generates Elementor-ready blocks, captures iteration screenshots, and pushes side-by-side comparisons into Annotool for human review. The loop is driven by structured plans and runs across multiple worktrees.",
-    role: "Architecture, agent loop orchestration, design tooling",
-    timeline: "Ongoing",
-    image: "/projects/leblanc-main.png",
-    heroImage: "/projects/leblanc-main.png",
+      "A two-month solo build replacing a fragmented stack (third-party auth, manual email booking, Google Sheets attendance) with one integrated WordPress system. All membership logic sits on native platform primitives so it works independently of any paid plugin, then integrates cleanly with the commercial membership product. The front end was produced through a Figma-to-Elementor loop that generates blocks section by section, screenshots each iteration, and routes side-by-side comparisons into Annotool for human review.",
+    role: "Sole developer: architecture, backend, front end, automation, QA and client documentation",
+    timeline: "Two months, ongoing",
+    // Three different crops on purpose: the listing card is ~2.1:1, the detail
+    // hero is ~1.45:1, and gallery tiles are ~1.07:1. One file cannot serve all
+    // three without cropping something mid-word.
+    image: "/projects/lb-card.png",
+    heroImage: "/projects/lb-hero.png",
+    mediaVideo: "/projects/lb-globe-spin.mp4",
     services: [
-      "Figma extraction",
-      "Elementor block generation",
-      "Iteration screenshotting",
-      "Review handoff to Annotool",
+      "Membership portal + access control",
+      "Attendance + roster system",
+      "Business process automation",
+      "Custom data modelling",
+      "Figma-to-Elementor pipeline",
+      "Accessibility, SEO + performance",
     ],
-    tools: ["Python", "Figma API", "WordPress", "Elementor", "Playwright"],
+    tools: ["PHP", "WordPress", "MySQL", "Python", "Elementor Pro", "MemberPress", "Fluent Forms", "Playwright"],
     highlights: [
-      "Section-level Figma references drive Elementor block generation rather than full-page guesses.",
-      "Each loop iteration is screenshotted and pushed into Annotool for structured human review.",
-      "Multi-worktree workflow keeps experiments isolated from the main design loop state.",
+      "27,000 lines across one custom plugin: 8 custom post types, 58 shortcodes and 1,141 commits in two months.",
+      "Member portal with role-based gating, family accounts, child logins and timezone-aware class times, built on native primitives so it runs with or without the paid membership plugin.",
+      "Replaced a Google Sheets attendance workflow with an in-app system covering terms, sessions, class switches and per-student retention signals.",
+      "Automated seven manual intake processes with rule-based routing, a searchable request inbox, CRM sync and consent capture meeting PIPEDA, COPPA and CASL.",
+      "486 Python automation scripts for deployment, auditing, screenshot capture and verification.",
+      "Moved site chrome into 2 global Elementor templates across 52 pages, cutting a routine header edit from 52 operations to 1.",
     ],
     stats: [
-      { label: "Pipeline", value: "Figma -> Elementor" },
-      { label: "Review handoff", value: "Annotool side-by-side" },
-      { label: "Repository", value: "github.com/MaxwellM34/leblanc" },
+      { label: "Commits", value: "1,141" },
+      { label: "Custom plugin", value: "~27,000 lines" },
+      { label: "Processes automated", value: "7" },
     ],
     gallery: [
-      { label: "Homepage rendering option", image: "/projects/leblanc-main.png" },
-      { label: "Hero section detail", image: "/projects/leblanc-hero.png" },
-      { label: "Section iteration loop", image: "/projects/leblanc_code.svg" },
+      { label: "Animated globe of network partners", mediaVideo: "/projects/lb-globe-spin.mp4", image: "/projects/lb-globe.png" },
+      { label: "Classes page, live filters over the class data model", image: "/projects/lb-classes.png" },
+      { label: "Workshop card, editable by school staff", image: "/projects/lb-workshop.png" },
+      { label: "Instructor profiles", image: "/projects/lb-team.png" },
+      { label: "CSV bulk import with dry-run preview", image: "/projects/lb-admin.png" },
+      { label: "Member approval queue", image: "/projects/lb-approvals.png" },
+      { label: "Seven automated intake forms", image: "/projects/lb-forms.png" },
+      { label: "Instructor schedule and attendance", image: "/projects/lb-schedule.png" },
     ],
     challenge:
-      "Convert evolving Figma designs into clean Elementor sections at a rate that a small operation can actually review and approve.",
+      "A small school ran enrolment, attendance and every request by email and spreadsheet, and needed non-technical staff to operate the whole system after handoff without a developer. Three people also wrote to the same live site at once.",
     approach:
-      "Treated the conversion as a structured agent loop with explicit plans, isolated worktrees, automatic screenshots, and a human review step routed through the Annotool app.",
+      "Modelled every business concept on native platform primitives rather than plugin-specific ones, automated each manual intake path end to end, introduced a pull-before-deploy drift check to protect concurrent editors, and wrote an operator manual for each staff role.",
     outcome:
-      "A repeatable pipeline that turns Figma section updates into reviewed Elementor sections with auditable iteration history.",
-    palette: ["#1A365D", "#2C5282", "#BEE3F8"],
+      "One integrated system where staff run enrolment, attendance, approvals and content edits themselves, with a documented cutover plan and a rolling job that keeps a year of sessions scheduled without anyone touching it.",
+    palette: ["#4A1D6B", "#8B3FBF", "#E9D5FF"],
   },
   {
     slug: "payitforward-redux",
     hidden: false,
-    kind: "personal",
-    title: "PayItForward Redux",
-    category: "Web + Mobile PWA",
+    kind: "work",
+    title: "HappyFace.io",
+    category: "Professional Work + Web/Mobile Platform",
     year: "2026",
     summary:
-      "Web + mobile pay-it-forward platform built as a Firebase-backed PWA with a separate mobile app, shared logic, and storage rules.",
+      "HappyFace.io, the social giving platform I build as a software engineer at HappyFace Platform Inc.: a Firebase-backed web PWA and a separate mobile app sharing one logic layer, covering trust and safety, privacy compliance, security, observability and performance.",
     description:
-      "PayItForward Redux is a multi-surface project including a web PWA, a mobile client, shared logic, and a Firebase backend with cloud functions, Firestore rules, and storage rules. The web surface ships as an installable PWA with full icon and manifest support.",
-    role: "Full-stack engineering across web, mobile, and Firebase",
+      "HappyFace.io is a multi-surface project including a web PWA, a mobile client, shared logic, and a Firebase backend with cloud functions, Firestore rules, and storage rules. The web surface ships as an installable PWA with full icon and manifest support.",
+    role: "Software Engineer at HappyFace Platform Inc.",
     timeline: "Ongoing",
     image: "/projects/pif-logo.jpg",
     heroImage: "/projects/pif-logo.jpg",
@@ -1733,8 +1752,8 @@ export const projects = [
       "HappyFace is a Firebase application structured around emulator-driven local development. It uses Cloud Functions for backend logic, Firestore rules for access control, and the @firebase/rules-unit-testing harness with Jest to verify rule behavior automatically.",
     role: "Full-stack engineering and Firebase architecture",
     timeline: "Ongoing",
-    image: "/projects/happyface_code.svg",
-    heroImage: "/projects/happyface_code.svg",
+    image: "/projects/cover-happyface.svg",
+    heroImage: "/projects/cover-happyface.svg",
     services: [
       "Cloud functions",
       "Firestore rule design",
@@ -1753,9 +1772,9 @@ export const projects = [
       { label: "Local dev", value: "Firebase emulators" },
     ],
     gallery: [
-      { label: "Firestore rules unit tests", image: "/projects/happyface_code.svg" },
-      { label: "Emulator workflow", image: "/projects/happyface_code.svg" },
-      { label: "Backend structure", image: "/projects/happyface_code.svg" },
+      { label: "Firestore rules unit tests", image: "/projects/cover-happyface.svg" },
+      { label: "Emulator workflow", image: "/projects/cover-happyface.svg" },
+      { label: "Backend structure", image: "/projects/cover-happyface.svg" },
     ],
     challenge:
       "Avoid the common Firebase trap of shipping rules and functions that pass manual testing but break under realistic access patterns.",
@@ -1778,8 +1797,8 @@ export const projects = [
       "CopperCRM is a Python project focused on the small-team CRM use case: managing contacts, tracking pipeline state, and surfacing follow-up actions without the overhead of large enterprise CRM platforms.",
     role: "Backend engineering and CRM data modeling",
     timeline: "Ongoing",
-    image: "/projects/coppercrm_code.svg",
-    heroImage: "/projects/coppercrm_code.svg",
+    image: "/projects/cover-coppercrm.svg",
+    heroImage: "/projects/cover-coppercrm.svg",
     services: [
       "CRM data modeling",
       "Pipeline state tracking",
@@ -1798,9 +1817,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/CopperCRM" },
     ],
     gallery: [
-      { label: "Pipeline stages + follow-up logic", image: "/projects/coppercrm_code.svg" },
-      { label: "Stage definitions", image: "/projects/coppercrm_code.svg" },
-      { label: "Follow-up queue computation", image: "/projects/coppercrm_code.svg" },
+      { label: "Pipeline stages + follow-up logic", image: "/projects/cover-coppercrm.svg" },
+      { label: "Stage definitions", image: "/projects/cover-coppercrm.svg" },
+      { label: "Follow-up queue computation", image: "/projects/cover-coppercrm.svg" },
     ],
     challenge:
       "Most CRM tools optimize for enterprise sales and become heavy for small teams that need lightweight pipeline visibility.",
@@ -1868,8 +1887,8 @@ export const projects = [
       "This ENGG4040 lab uses MATLAB to explore Radon-based CT reconstruction. It examines sinogram corruption, limited-angle projection effects under Hamming filtering, and noise scenarios (salt and pepper, Gaussian) with average, Gaussian, and median spatial filters.",
     role: "Medical imaging analysis and MATLAB implementation",
     timeline: "ENGG4040 Lab 3",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-ct-radon.svg",
+    heroImage: "/projects/cover-ct-radon.svg",
     services: [
       "Radon-based CT reconstruction",
       "Sinogram analysis",
@@ -1888,9 +1907,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/ENGG4040_Lab3_CT_Radon_Reconstruction" },
     ],
     gallery: [
-      { label: "Sinogram corruption", image: "/og-image.svg" },
-      { label: "Filtered reconstruction", image: "/og-image.svg" },
-      { label: "Noise filter comparison", image: "/og-image.svg" },
+      { label: "Sinogram corruption", image: "/projects/cover-ct-radon.svg" },
+      { label: "Filtered reconstruction", image: "/projects/cover-ct-radon.svg" },
+      { label: "Noise filter comparison", image: "/projects/cover-ct-radon.svg" },
     ],
     challenge:
       "Understand how sinogram quality, limited angles, and noise interact with reconstruction filters in practical CT imaging.",
@@ -1913,8 +1932,8 @@ export const projects = [
       "This ENGG4040 assignment applies 2D Fourier Transforms to medical DICOM images in MATLAB. The workflow examines how resolution and voxel size affect image quality, compares SNR across regions, demonstrates rotation effects in the frequency domain, and applies low-pass and high-pass filtering to modify image detail.",
     role: "Medical imaging analysis and MATLAB implementation",
     timeline: "ENGG4040 assignment",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-fourier.svg",
+    heroImage: "/projects/cover-fourier.svg",
     services: [
       "DICOM image handling",
       "2D FFT analysis",
@@ -1933,9 +1952,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/ENGG4040_Fourier_Transform_Assignment" },
     ],
     gallery: [
-      { label: "FFT magnitude view", image: "/og-image.svg" },
-      { label: "Filtered image output", image: "/og-image.svg" },
-      { label: "Rotation in frequency", image: "/og-image.svg" },
+      { label: "FFT magnitude view", image: "/projects/cover-fourier.svg" },
+      { label: "Filtered image output", image: "/projects/cover-fourier.svg" },
+      { label: "Rotation in frequency", image: "/projects/cover-fourier.svg" },
     ],
     challenge:
       "Connect frequency-domain behavior to practical medical image quality and filtering decisions.",
@@ -1958,8 +1977,8 @@ export const projects = [
       "This single-participant biomechanics lab compares Brace 1 (spring-loaded), Brace 2 (sleeve), and a no-brace condition during balance and squat tasks. MATLAB scripts process force-plate and kinematic exports, generate resultant force vectors, and plot stability, mobility, and peak-force metrics.",
     role: "Biomechanics analysis and MATLAB implementation",
     timeline: "Biomechanics lab",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-knee-brace.svg",
+    heroImage: "/projects/cover-knee-brace.svg",
     services: [
       "Force-plate analysis",
       "Kinematic processing",
@@ -1978,9 +1997,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/Spring-Loaded_vs_Sleeve_Knee_Brace" },
     ],
     gallery: [
-      { label: "Resultant vector output", image: "/og-image.svg" },
-      { label: "Stability comparison", image: "/og-image.svg" },
-      { label: "Peak force comparison", image: "/og-image.svg" },
+      { label: "Resultant vector output", image: "/projects/cover-knee-brace.svg" },
+      { label: "Stability comparison", image: "/projects/cover-knee-brace.svg" },
+      { label: "Peak force comparison", image: "/projects/cover-knee-brace.svg" },
     ],
     challenge:
       "Compare two brace types against a no-brace baseline with limited subjects while keeping the analysis honest.",
@@ -2003,8 +2022,8 @@ export const projects = [
       "This repo provides Python tools and notebooks for controlling a FANUC arm through the PCDK TCP bridge. Capabilities include connecting to the server, jogging in joint, world, and linear space, adjusting speed, reading current pose, and actuating the gripper. Lab safety guidance is embedded in the workflow.",
     role: "Robotics scripting and lab tooling",
     timeline: "Robotics lab",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-fanuc-python.svg",
+    heroImage: "/projects/cover-fanuc-python.svg",
     services: [
       "FANUC PCDK integration",
       "Multi-frame jogging",
@@ -2023,9 +2042,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/yellow_fanuc_tests" },
     ],
     gallery: [
-      { label: "Connection setup", image: "/og-image.svg" },
-      { label: "Jogging script", image: "/og-image.svg" },
-      { label: "Gripper actuation", image: "/og-image.svg" },
+      { label: "Connection setup", image: "/projects/cover-fanuc-python.svg" },
+      { label: "Jogging script", image: "/projects/cover-fanuc-python.svg" },
+      { label: "Gripper actuation", image: "/projects/cover-fanuc-python.svg" },
     ],
     challenge:
       "Make FANUC arm control accessible from a Python notebook environment for lab use without losing safety discipline.",
@@ -2048,8 +2067,8 @@ export const projects = [
       "This repo contains five FANUC teach-pendant (TP) programs: HOME_READY, PICK_PLACE, WAVE_GREETING, DRAW_SQUARE, and PUSH_BUTTON. Each sets UFRAME and UTOOL #1 and includes safe approaches. Behaviors include gripper DO[1] actuation, wave loops, square tracing, and dwell-based button presses, all suitable for lab templates.",
     role: "Robotics lab content and TP programming",
     timeline: "Robotics lab",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-fanuc-tp.svg",
+    heroImage: "/projects/cover-fanuc-tp.svg",
     services: [
       "FANUC TP programming",
       "Frame and tool setup",
@@ -2068,9 +2087,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/Fanuc_Lab" },
     ],
     gallery: [
-      { label: "Program list", image: "/og-image.svg" },
-      { label: "Square trace", image: "/og-image.svg" },
-      { label: "Pick and place", image: "/og-image.svg" },
+      { label: "Program list", image: "/projects/cover-fanuc-tp.svg" },
+      { label: "Square trace", image: "/projects/cover-fanuc-tp.svg" },
+      { label: "Pick and place", image: "/projects/cover-fanuc-tp.svg" },
     ],
     challenge:
       "Give students a clean set of FANUC TP examples that demonstrate core lab behaviors without unsafe shortcuts.",
@@ -2093,8 +2112,8 @@ export const projects = [
       "This MATLAB lab covers core EMG signal processing for bicep and wrist recordings: rectification, integration, spectral exploration, designing and applying high-pass filters to reduce motion artifacts, visualizing fatigue, and correlating EMG features to grasp force using provided CSV data.",
     role: "Biosignal analysis and MATLAB implementation",
     timeline: "Biosignal lab",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-emg-lab.svg",
+    heroImage: "/projects/cover-emg-lab.svg",
     services: [
       "EMG rectification + integration",
       "Spectral analysis",
@@ -2113,9 +2132,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/EMG_Lab" },
     ],
     gallery: [
-      { label: "Rectified EMG", image: "/og-image.svg" },
-      { label: "Filter design", image: "/og-image.svg" },
-      { label: "Force vs EMG", image: "/og-image.svg" },
+      { label: "Rectified EMG", image: "/projects/cover-emg-lab.svg" },
+      { label: "Filter design", image: "/projects/cover-emg-lab.svg" },
+      { label: "Force vs EMG", image: "/projects/cover-emg-lab.svg" },
     ],
     challenge:
       "Build a clean foundation for EMG processing that handles realistic artifacts and supports physiology-level interpretation.",
@@ -2138,8 +2157,8 @@ export const projects = [
       "This MATH*2130 assignment contains MATLAB implementations of bisection, false position, Newton, secant, and fixed-point root-finding methods. Each method is paired with a terminal driver that lets the user pick a function, tolerance, and initial guesses, with PDFs of the writeups and earlier checkpoints kept in-repo.",
     role: "Numerical methods implementation",
     timeline: "MATH*2130 assignment",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-root-finding.svg",
+    heroImage: "/projects/cover-root-finding.svg",
     services: [
       "Numerical root-finding",
       "Terminal-driven workflows",
@@ -2158,9 +2177,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/math2130_root_finding_methods" },
     ],
     gallery: [
-      { label: "Bisection driver", image: "/og-image.svg" },
-      { label: "Newton method", image: "/og-image.svg" },
-      { label: "Convergence comparison", image: "/og-image.svg" },
+      { label: "Bisection driver", image: "/projects/cover-root-finding.svg" },
+      { label: "Newton method", image: "/projects/cover-root-finding.svg" },
+      { label: "Convergence comparison", image: "/projects/cover-root-finding.svg" },
     ],
     challenge:
       "Build the classic root-finding methods cleanly enough that they can be compared against each other on the same problem.",
@@ -2183,8 +2202,8 @@ export const projects = [
       "This MATLAB refresher loads eight goniometer calibration CSVs, averages measured voltages per angle, and runs a small linear regression helper to compute slope, intercept, and R-squared. PDF/doc instructions and optional plotting are included for quick sensor calibration checks.",
     role: "Sensor calibration tooling",
     timeline: "Lab refresher",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-goniometer.svg",
+    heroImage: "/projects/cover-goniometer.svg",
     services: [
       "Calibration CSV loading",
       "Per-angle averaging",
@@ -2203,9 +2222,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/MAMATLAB_Goniometer_Calibration_Refresher." },
     ],
     gallery: [
-      { label: "Calibration data", image: "/og-image.svg" },
-      { label: "Regression fit", image: "/og-image.svg" },
-      { label: "Linearity check", image: "/og-image.svg" },
+      { label: "Calibration data", image: "/projects/cover-goniometer.svg" },
+      { label: "Regression fit", image: "/projects/cover-goniometer.svg" },
+      { label: "Linearity check", image: "/projects/cover-goniometer.svg" },
     ],
     challenge:
       "Provide a fast, reliable sanity-check routine for goniometer calibration without re-deriving the math each lab.",
@@ -2228,8 +2247,8 @@ export const projects = [
       "A curated single-participant running gait dataset, including static calibration and running trials at labeled speeds 25/50/75/100 with three repeats each. Exports include c3d marker/analog files, Kistler GRF CSVs, joint angle and velocity text exports, plus camera and session metadata, all captured at 200 Hz.",
     role: "Dataset preparation and biomechanics curation",
     timeline: "Lab dataset",
-    image: "/og-image.svg",
-    heroImage: "/og-image.svg",
+    image: "/projects/cover-mocap-running.svg",
+    heroImage: "/projects/cover-mocap-running.svg",
     services: [
       "MOCAP dataset prep",
       "GRF export curation",
@@ -2248,9 +2267,9 @@ export const projects = [
       { label: "Repository", value: "github.com/MaxwellM34/Running_Motion_Capture_Dataset" },
     ],
     gallery: [
-      { label: "Dataset layout", image: "/og-image.svg" },
-      { label: "Calibration files", image: "/og-image.svg" },
-      { label: "Joint exports", image: "/og-image.svg" },
+      { label: "Dataset layout", image: "/projects/cover-mocap-running.svg" },
+      { label: "Calibration files", image: "/projects/cover-mocap-running.svg" },
+      { label: "Joint exports", image: "/projects/cover-mocap-running.svg" },
     ],
     challenge:
       "Package a usable running gait dataset that other students or researchers can analyze without reverse-engineering missing metadata.",
@@ -2261,13 +2280,42 @@ export const projects = [
     palette: ["#581C87", "#9333EA", "#E9D5FF"],
   },];
 
+export const openSource = {
+  summary:
+    "Pull requests I have had merged into repositories maintained by other people and organisations. Every one is listed, with what it actually changed.",
+  profileUrl: "https://github.com/MaxwellM34",
+  stats: [
+    { label: "Merged pull requests", value: "15" },
+    { label: "Projects contributed to", value: "15" },
+    { label: "Languages touched", value: "Go, Rust, Python, TS, JS, C++" },
+  ],
+  merges: [
+    { repo: "untemps/react-vocal", name: "react-vocal", url: "https://github.com/untemps/react-vocal", lang: "JavaScript", area: "Documentation", date: "2026-06-01", did: "Corrected typos in the README 'Special cases' section.", title: "fix: correct typos in README 'Special cases' section" },
+    { repo: "elastic/beats", name: "Beats", url: "https://github.com/elastic/beats", lang: "Go", area: "Documentation", date: "2026-06-02", did: "Fixed typos in the Kubernetes README and extended the surrounding docs.", title: "fix: correct typos in kubernetes README and extend docs" },
+    { repo: "apache/doris-website", name: "Doris website", url: "https://github.com/apache/doris-website", lang: "Docs", area: "Documentation", date: "2026-06-06", did: "Corrected errors in the Fluent Bit and Logstash configuration examples.", title: "fix(docs): correct typos in Fluent Bit and Logstash config examples" },
+    { repo: "piscinajs/piscina", name: "Piscina", url: "https://github.com/piscinajs/piscina", lang: "JavaScript", area: "Documentation", date: "2026-06-06", did: "Fixed a typo in CONTRIBUTING.md.", title: "fix: correct typo 'maintanance' in CONTRIBUTING.md" },
+    { repo: "SSSiyan/NaomiHook", name: "NaomiHook", url: "https://github.com/SSSiyan/NaomiHook", lang: "C++", area: "Correctness", date: "2026-06-09", did: "Added a missing closing quote that broke the documented Linux and Steam Deck launch argument.", title: "fix: add missing closing quote in Linux/Steam Deck launch argument" },
+    { repo: "Cima9642/First-PR", name: "First-PR", url: "https://github.com/Cima9642/First-PR", lang: "Docs", area: "Documentation", date: "2026-06-11", did: "Corrected typos in the README. Community practice repository.", title: "fix: correct typos in README.md" },
+    { repo: "jaegertracing/jaeger", name: "Jaeger", url: "https://github.com/jaegertracing/jaeger", lang: "Go", area: "Documentation", date: "2026-06-14", did: "Fixed typos across the README files.", title: "docs: fix typos in README files" },
+    { repo: "aws/aws-cdk", name: "AWS CDK", url: "https://github.com/aws/aws-cdk", lang: "TypeScript", area: "Documentation", date: "2026-06-16", did: "Corrected the awslint rule reference for construct inheritance.", title: "docs: fix typo in awslint rule reference (construct-inheritance)" },
+    { repo: "hahwul/dalfox", name: "Dalfox", url: "https://github.com/hahwul/dalfox", lang: "Go", area: "Documentation", date: "2026-06-22", did: "Corrected the project-name typo in the parameter-analysis probe-pattern comments.", title: "docs: fix 'dlafox' typo in parameter_analysis probe-pattern comments" },
+    { repo: "Ayushmore1214/FirstCommit", name: "FirstCommit", url: "https://github.com/Ayushmore1214/FirstCommit", lang: "Docs", area: "Documentation", date: "2026-06-30", did: "Corrected a typo in the branching guide. Community practice repository.", title: "fix: correct typo in what-is-a-branch.md" },
+    { repo: "younisdev/dyvix-ui", name: "dyvix-ui", url: "https://github.com/younisdev/dyvix-ui", lang: "JavaScript", area: "Documentation", date: "2026-06-30", did: "Fixed a heading typo in the modal presets documentation.", title: "fix(docs): correct heading typo in modal presets documentation" },
+    { repo: "MCHPR/MCHPRS", name: "MCHPRS", url: "https://github.com/MCHPR/MCHPRS", lang: "Rust", area: "Documentation", date: "2026-07-01", did: "Corrected a typo in the README.", title: "fix: correct typo 'folowing' to 'following' in README.md" },
+    { repo: "safijari/openpuck", name: "openpuck", url: "https://github.com/safijari/openpuck", lang: "C++", area: "Documentation", date: "2026-07-02", did: "Corrected a controller-name typo in the README.", title: "fix: correct typo 'Swith Pro' to 'Switch Pro' in README.md" },
+    { repo: "Navashub/git-practice-hub", name: "git-practice-hub", url: "https://github.com/Navashub/git-practice-hub", lang: "Python", area: "Documentation", date: "2026-07-10", did: "Corrected a typo in the Python README. Community practice repository.", title: "fix: correct typo 'recieve' to 'receive' in python/README.md" },
+    { repo: "opendatahub-io/notebooks", name: "Open Data Hub notebooks", url: "https://github.com/opendatahub-io/notebooks", lang: "Python", area: "Documentation", date: "2026-07-11", did: "Fixed a typo in the workbench naming documentation.", title: "fix: correct typo 'overriden' to 'overridden' in docs/workbenches-naming.md" },
+  ],
+};
+
 const featuredProjectOrder = [
-  "annotool",
+  // Highlights group, in the order they should read
   "leblanc-design-loop",
-  "payitforward-redux",
-  "reverse-engineering-sewing-machine",
   "better-bmr-calculator",
+  "reverse-engineering-sewing-machine",
   "gripsense-rsi-prevention-mouse",
+  "payitforward-redux",
+  "annotool",
   "copper-vision-mood-classifier",
   "kinderegg-toy-launcher",
   "fea-barbell-bench-capstone",
@@ -2282,10 +2330,24 @@ const featuredProjectRank = new Map(
   featuredProjectOrder.map((slug, index) => [slug, index])
 );
 
+// Projects carrying a real photo or screenshot rank above ones still using
+// generated cover art. Every generated placeholder here is an .svg; anything
+// raster (.png/.jpg/.jpeg/.webp) or a video is real imagery.
+const hasRealPhoto = (project) => {
+  const src = project.mediaVideo || project.image || project.heroImage || "";
+  return /\.(png|jpe?g|webp|mp4)$/i.test(src);
+};
+
 export const visibleProjects = projects
   .map((project, index) => ({ project, index }))
   .filter(({ project }) => !project.hidden)
   .sort((a, b) => {
+    const photoA = hasRealPhoto(a.project) ? 0 : 1;
+    const photoB = hasRealPhoto(b.project) ? 0 : 1;
+    if (photoA !== photoB) {
+      return photoA - photoB;
+    }
+
     const rankA = featuredProjectRank.has(a.project.slug)
       ? featuredProjectRank.get(a.project.slug)
       : Number.POSITIVE_INFINITY;
@@ -2332,7 +2394,7 @@ export const groupedProjects = [...visibleProjects].sort((a, b) => {
 });
 
 export const projectGroups = [
-  { kind: "work",     label: "Work + Client Projects",      projects: groupedProjects.filter((p) => p.kind === "work") },
+  { kind: "work",     label: "Highlights",                  projects: groupedProjects.filter((p) => p.kind === "work") },
   { kind: "personal", label: "Personal + Side Projects",    projects: groupedProjects.filter((p) => p.kind === "personal") },
   { kind: "academic", label: "Academic + Coursework",       projects: groupedProjects.filter((p) => p.kind === "academic") },
 ];

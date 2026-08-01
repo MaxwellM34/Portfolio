@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="happyface cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#59200d"/>
+      <stop offset="0.55" stop-color="#7C2D12"/>
+      <stop offset="1" stop-color="#aa3f0f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#EA580C" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#EA580C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FED7AA" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FED7AA" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#FED7AA" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <rect x="388" y="206" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M424 272 L445 294 L482 248" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="536" y="206" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M572 272 L593 294 L630 248" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="684" y="206" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M720 272 L741 294 L778 248" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="388" y="354" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M424 420 L445 442 L482 396" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="536" y="354" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.24"/>
+  <path d="M581 399 L619 437 M619 399 L581 437" stroke="#FED7AA" stroke-width="17" stroke-linecap="round"/>
+  <rect x="684" y="354" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M720 420 L741 442 L778 396" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="388" y="502" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M424 568 L445 590 L482 544" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="536" y="502" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M572 568 L593 590 L630 544" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="684" y="502" width="128" height="128" rx="28" fill="#FED7AA" fill-opacity="0.9"/>
+  <path d="M720 568 L741 590 L778 544" fill="none" stroke="#EA580C" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

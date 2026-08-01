@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="mogbot cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#59200d"/>
+      <stop offset="0.55" stop-color="#7C2D12"/>
+      <stop offset="1" stop-color="#b14a14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#F97316" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#FED7AA" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FED7AA" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#FED7AA" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <ellipse cx="600" cy="400" rx="368" ry="222" fill="none" stroke="#FED7AA" stroke-opacity="0.2" stroke-width="9"/>
+  <line x1="600" y1="400" x2="346" y2="252" stroke="#FED7AA" stroke-opacity="0.5" stroke-width="10"/>
+  <line x1="600" y1="400" x2="890" y2="264" stroke="#FED7AA" stroke-opacity="0.5" stroke-width="10"/>
+  <line x1="600" y1="400" x2="868" y2="552" stroke="#FED7AA" stroke-opacity="0.5" stroke-width="10"/>
+  <line x1="600" y1="400" x2="334" y2="540" stroke="#FED7AA" stroke-opacity="0.5" stroke-width="10"/>
+  <circle cx="600" cy="400" r="72" fill="#FED7AA"/><circle cx="600" cy="400" r="104" fill="none" stroke="#FED7AA" stroke-opacity="0.4" stroke-width="8"/>
+  <circle cx="346" cy="252" r="42" fill="#F97316"/>
+  <circle cx="890" cy="264" r="48" fill="#F97316"/>
+  <circle cx="868" cy="552" r="44" fill="#F97316"/>
+  <circle cx="334" cy="540" r="38" fill="#F97316"/>
+</svg>

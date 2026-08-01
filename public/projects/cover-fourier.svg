@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="fourier cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#23215d"/>
+      <stop offset="0.55" stop-color="#312E81"/>
+      <stop offset="1" stop-color="#4646b0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#6366F1" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#C7D2FE" stop-opacity="0"/>
+      <stop offset="1" stop-color="#C7D2FE" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#C7D2FE" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <rect x="212" y="542" width="46" height="82" rx="23" fill="#C7D2FE" fill-opacity="0.5306046511627907"/>
+  <rect x="284" y="478" width="46" height="146" rx="23" fill="#C7D2FE" fill-opacity="0.6169302325581395"/>
+  <rect x="356" y="388" width="46" height="236" rx="23" fill="#C7D2FE" fill-opacity="0.7383255813953489"/>
+  <rect x="428" y="298" width="46" height="326" rx="23" fill="#C7D2FE" fill-opacity="0.8597209302325581"/>
+  <rect x="500" y="194" width="46" height="430" rx="23" fill="#C7D2FE" fill-opacity="1"/>
+  <rect x="572" y="298" width="46" height="326" rx="23" fill="#C7D2FE" fill-opacity="0.8597209302325581"/>
+  <rect x="644" y="388" width="46" height="236" rx="23" fill="#C7D2FE" fill-opacity="0.7383255813953489"/>
+  <rect x="716" y="478" width="46" height="146" rx="23" fill="#C7D2FE" fill-opacity="0.6169302325581395"/>
+  <rect x="788" y="542" width="46" height="82" rx="23" fill="#C7D2FE" fill-opacity="0.5306046511627907"/>
+  <rect x="860" y="572" width="46" height="52" rx="23" fill="#C7D2FE" fill-opacity="0.4901395348837209"/>
+  <rect x="932" y="588" width="46" height="36" rx="23" fill="#C7D2FE" fill-opacity="0.4685581395348837"/>
+  <path d="M212 542 L235 542 L307 478 L379 388 L451 298 L523 194 L595 298 L667 388 L739 478 L811 542 L883 572 L955 588" fill="none" stroke="#6366F1" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

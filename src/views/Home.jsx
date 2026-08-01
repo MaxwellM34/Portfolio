@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   education,
   experience,
+  openSource,
   orbitProjects,
   projectGroups,
   projects,
@@ -1087,6 +1088,7 @@ export default function Home() {
                       title="Maxwell McInnis Resume"
                       src={`${resume.resumeUrl}#toolbar=1&navpanes=0&zoom=page-width&view=FitH`}
                       className="resume-pdf-frame"
+                      loading="lazy"
                     />
                   </div>
                 </article>
@@ -1103,6 +1105,7 @@ export default function Home() {
                       title="Maxwell McInnis EU CV"
                       src={`${resume.cvUrl}#toolbar=0&navpanes=0&scrollbar=1&zoom=80`}
                       className="resume-pdf-frame"
+                      loading="lazy"
                     />
                   </div>
                 </article>
@@ -1207,6 +1210,52 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section id="open-source" className="section section--opensource">
+          <div className="section__heading">
+            <div>
+              <p className="eyebrow">Open source</p>
+              <h2>Contributions merged into other people&apos;s projects.</h2>
+            </div>
+            <p className="section__lead">{openSource.summary}</p>
+          </div>
+
+          <div className="os-stats">
+            {openSource.stats.map((stat) => (
+              <div key={stat.label} className="os-stat reveal">
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <ul className="os-merge-list">
+            {openSource.merges.map((m) => (
+              <li key={m.repo} className="os-merge reveal">
+                <div className="os-merge__head">
+                  <a href={m.url} target="_blank" rel="noreferrer" className="os-merge__repo">
+                    {m.repo}
+                  </a>
+                  <span className="os-merge__lang">{m.lang}</span>
+                </div>
+                <p className="os-merge__did">{m.did}</p>
+                <div className="os-merge__foot">
+                  <code>{m.title}</code>
+                  <span className="os-pr__date">{m.date}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            className="button button--ghost os-profile-link"
+            href={openSource.profileUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View GitHub profile
+          </a>
         </section>
 
         <section id="contact" className="section section--contact">

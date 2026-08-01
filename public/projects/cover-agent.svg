@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="agent cover art">
+
+  <defs>
+    <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b111e"/>
+      <stop offset="0.55" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#205d81"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.28" r="0.62">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#E0F2FE" stop-opacity="0"/>
+      <stop offset="1" stop-color="#E0F2FE" stop-opacity="0.14"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#E0F2FE" stroke-opacity="0.07" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#f)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <rect width="1200" height="800" fill="url(#sheen)"/>
+  
+  <rect x="196" y="188" width="808" height="424" rx="34" fill="#090d18" fill-opacity="0.92"/>
+  <rect x="196" y="188" width="808" height="424" rx="34" fill="none" stroke="#E0F2FE" stroke-opacity="0.34" stroke-width="8"/>
+  <rect x="196" y="188" width="808" height="76" rx="34" fill="#E0F2FE" fill-opacity="0.14"/>
+  <rect x="196" y="230" width="808" height="34" fill="#E0F2FE" fill-opacity="0.14"/>
+  <circle cx="256" cy="226" r="15" fill="#E0F2FE" fill-opacity="0.85"/>
+  <circle cx="308" cy="226" r="15" fill="#E0F2FE" fill-opacity="0.6499999999999999"/>
+  <circle cx="360" cy="226" r="15" fill="#E0F2FE" fill-opacity="0.44999999999999996"/>
+  <path d="M262 356 L340 420 L262 484" fill="none" stroke="#E0F2FE" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="386" y="404" width="300" height="30" rx="15" fill="#38BDF8"/>
+  <rect x="386" y="484" width="200" height="30" rx="15" fill="#E0F2FE" fill-opacity="0.45"/>
+</svg>

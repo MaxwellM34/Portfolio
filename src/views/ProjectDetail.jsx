@@ -2,51 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import AutoVideo from "../components/AutoVideo";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
-
-function SequentialVideo({
-  sources,
-  className,
-  poster,
-  controls = false,
-  muted = true,
-  autoPlay = true,
-  onClick,
-}) {
-  const safeSources = Array.isArray(sources) ? sources.filter(Boolean) : [];
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [safeSources.join("|")]);
-
-  if (!safeSources.length) {
-    return null;
-  }
-
-  const source = safeSources[activeIndex];
-
-  return (
-    <video
-      className={className}
-      src={source}
-      poster={poster}
-      autoPlay={autoPlay}
-      muted={muted}
-      controls={controls}
-      playsInline
-      preload="metadata"
-      loop={safeSources.length === 1}
-      onEnded={() => {
-        if (safeSources.length > 1) {
-          setActiveIndex((index) => (index + 1) % safeSources.length);
-        }
-      }}
-      onClick={onClick}
-    />
-  );
-}
 
 export default function ProjectDetail({ project, nextProject }) {
   const solidCardColor = project.palette[0];
@@ -132,12 +90,10 @@ export default function ProjectDetail({ project, nextProject }) {
             }}
           >
             {heroVideoSources.length ? (
-              <SequentialVideo
+              <AutoVideo
                 className="detail-hero__video"
                 sources={heroVideoSources}
                 poster={heroImage}
-                muted
-                autoPlay
               />
             ) : null}
           </div>
@@ -228,12 +184,10 @@ export default function ProjectDetail({ project, nextProject }) {
                   onClick={() => setActiveGalleryItem(item)}
                 >
                   {isVideo ? (
-                    <SequentialVideo
+                    <AutoVideo
                       className="gallery-card__video"
                       sources={videoSources}
                       poster={item.image || heroImage}
-                      muted
-                      autoPlay
                     />
                   ) : null}
                 </button>
@@ -268,13 +222,11 @@ export default function ProjectDetail({ project, nextProject }) {
             x
           </button>
           {getGalleryVideoSources(activeGalleryItem).length ? (
-            <SequentialVideo
+            <AutoVideo
               className="gallery-modal__video"
               sources={getGalleryVideoSources(activeGalleryItem)}
               poster={activeGalleryItem.image || heroImage}
               controls
-              muted
-              autoPlay
               onClick={(event) => event.stopPropagation()}
             />
           ) : (

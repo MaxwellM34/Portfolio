@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import AutoVideo from "./AutoVideo";
 
 export default function ProjectCard({ project, index }) {
   const solidCardColor = project.palette[0];
@@ -23,15 +24,11 @@ export default function ProjectCard({ project, index }) {
     >
       <div className="project-card__image" style={cardImageStyle}>
         {cardVideo ? (
-          <video
+          <AutoVideo
             className="project-card__video"
             src={cardVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
+            poster={cardImage}
+            decorative
           />
         ) : null}
         <div className="project-card__image-overlay" aria-hidden="true"></div>

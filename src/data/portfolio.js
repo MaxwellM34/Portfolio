@@ -2282,7 +2282,7 @@ export const projects = [
 
 export const openSource = {
   summary:
-    "Pull requests I have had merged into repositories maintained by other people and organisations. Every one is listed, with what it actually changed.",
+    "Projects maintained by other people and organisations that I have had contributions merged into.",
   profileUrl: "https://github.com/MaxwellM34",
   stats: [
     { label: "Merged pull requests", value: "15" },
@@ -2290,21 +2290,21 @@ export const openSource = {
     { label: "Languages touched", value: "Go, Rust, Python, TS, JS, C++" },
   ],
   merges: [
-    { repo: "untemps/react-vocal", name: "react-vocal", url: "https://github.com/untemps/react-vocal", lang: "JavaScript", area: "Documentation", date: "2026-06-01", did: "Corrected typos in the README 'Special cases' section.", title: "fix: correct typos in README 'Special cases' section" },
-    { repo: "elastic/beats", name: "Beats", url: "https://github.com/elastic/beats", lang: "Go", area: "Documentation", date: "2026-06-02", did: "Fixed typos in the Kubernetes README and extended the surrounding docs.", title: "fix: correct typos in kubernetes README and extend docs" },
-    { repo: "apache/doris-website", name: "Doris website", url: "https://github.com/apache/doris-website", lang: "Docs", area: "Documentation", date: "2026-06-06", did: "Corrected errors in the Fluent Bit and Logstash configuration examples.", title: "fix(docs): correct typos in Fluent Bit and Logstash config examples" },
-    { repo: "piscinajs/piscina", name: "Piscina", url: "https://github.com/piscinajs/piscina", lang: "JavaScript", area: "Documentation", date: "2026-06-06", did: "Fixed a typo in CONTRIBUTING.md.", title: "fix: correct typo 'maintanance' in CONTRIBUTING.md" },
-    { repo: "SSSiyan/NaomiHook", name: "NaomiHook", url: "https://github.com/SSSiyan/NaomiHook", lang: "C++", area: "Correctness", date: "2026-06-09", did: "Added a missing closing quote that broke the documented Linux and Steam Deck launch argument.", title: "fix: add missing closing quote in Linux/Steam Deck launch argument" },
-    { repo: "Cima9642/First-PR", name: "First-PR", url: "https://github.com/Cima9642/First-PR", lang: "Docs", area: "Documentation", date: "2026-06-11", did: "Corrected typos in the README. Community practice repository.", title: "fix: correct typos in README.md" },
-    { repo: "jaegertracing/jaeger", name: "Jaeger", url: "https://github.com/jaegertracing/jaeger", lang: "Go", area: "Documentation", date: "2026-06-14", did: "Fixed typos across the README files.", title: "docs: fix typos in README files" },
-    { repo: "aws/aws-cdk", name: "AWS CDK", url: "https://github.com/aws/aws-cdk", lang: "TypeScript", area: "Documentation", date: "2026-06-16", did: "Corrected the awslint rule reference for construct inheritance.", title: "docs: fix typo in awslint rule reference (construct-inheritance)" },
-    { repo: "hahwul/dalfox", name: "Dalfox", url: "https://github.com/hahwul/dalfox", lang: "Go", area: "Documentation", date: "2026-06-22", did: "Corrected the project-name typo in the parameter-analysis probe-pattern comments.", title: "docs: fix 'dlafox' typo in parameter_analysis probe-pattern comments" },
-    { repo: "Ayushmore1214/FirstCommit", name: "FirstCommit", url: "https://github.com/Ayushmore1214/FirstCommit", lang: "Docs", area: "Documentation", date: "2026-06-30", did: "Corrected a typo in the branching guide. Community practice repository.", title: "fix: correct typo in what-is-a-branch.md" },
-    { repo: "younisdev/dyvix-ui", name: "dyvix-ui", url: "https://github.com/younisdev/dyvix-ui", lang: "JavaScript", area: "Documentation", date: "2026-06-30", did: "Fixed a heading typo in the modal presets documentation.", title: "fix(docs): correct heading typo in modal presets documentation" },
-    { repo: "MCHPR/MCHPRS", name: "MCHPRS", url: "https://github.com/MCHPR/MCHPRS", lang: "Rust", area: "Documentation", date: "2026-07-01", did: "Corrected a typo in the README.", title: "fix: correct typo 'folowing' to 'following' in README.md" },
-    { repo: "safijari/openpuck", name: "openpuck", url: "https://github.com/safijari/openpuck", lang: "C++", area: "Documentation", date: "2026-07-02", did: "Corrected a controller-name typo in the README.", title: "fix: correct typo 'Swith Pro' to 'Switch Pro' in README.md" },
-    { repo: "Navashub/git-practice-hub", name: "git-practice-hub", url: "https://github.com/Navashub/git-practice-hub", lang: "Python", area: "Documentation", date: "2026-07-10", did: "Corrected a typo in the Python README. Community practice repository.", title: "fix: correct typo 'recieve' to 'receive' in python/README.md" },
-    { repo: "opendatahub-io/notebooks", name: "Open Data Hub notebooks", url: "https://github.com/opendatahub-io/notebooks", lang: "Python", area: "Documentation", date: "2026-07-11", did: "Fixed a typo in the workbench naming documentation.", title: "fix: correct typo 'overriden' to 'overridden' in docs/workbenches-naming.md" },
+    { repo: "untemps/react-vocal", name: "react-vocal", url: "https://github.com/untemps/react-vocal", lang: "JavaScript" },
+    { repo: "elastic/beats", name: "Beats", url: "https://github.com/elastic/beats", lang: "Go" },
+    { repo: "apache/doris-website", name: "Doris website", url: "https://github.com/apache/doris-website", lang: "Docs" },
+    { repo: "piscinajs/piscina", name: "Piscina", url: "https://github.com/piscinajs/piscina", lang: "JavaScript" },
+    { repo: "SSSiyan/NaomiHook", name: "NaomiHook", url: "https://github.com/SSSiyan/NaomiHook", lang: "C++" },
+    { repo: "Cima9642/First-PR", name: "First-PR", url: "https://github.com/Cima9642/First-PR", lang: "Docs" },
+    { repo: "jaegertracing/jaeger", name: "Jaeger", url: "https://github.com/jaegertracing/jaeger", lang: "Go" },
+    { repo: "aws/aws-cdk", name: "AWS CDK", url: "https://github.com/aws/aws-cdk", lang: "TypeScript" },
+    { repo: "hahwul/dalfox", name: "Dalfox", url: "https://github.com/hahwul/dalfox", lang: "Go" },
+    { repo: "Ayushmore1214/FirstCommit", name: "FirstCommit", url: "https://github.com/Ayushmore1214/FirstCommit", lang: "Docs" },
+    { repo: "younisdev/dyvix-ui", name: "dyvix-ui", url: "https://github.com/younisdev/dyvix-ui", lang: "JavaScript" },
+    { repo: "MCHPR/MCHPRS", name: "MCHPRS", url: "https://github.com/MCHPR/MCHPRS", lang: "Rust" },
+    { repo: "safijari/openpuck", name: "openpuck", url: "https://github.com/safijari/openpuck", lang: "C++" },
+    { repo: "Navashub/git-practice-hub", name: "git-practice-hub", url: "https://github.com/Navashub/git-practice-hub", lang: "Python" },
+    { repo: "opendatahub-io/notebooks", name: "Open Data Hub notebooks", url: "https://github.com/opendatahub-io/notebooks", lang: "Python" },
   ],
 };
 

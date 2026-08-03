@@ -352,8 +352,9 @@ main {
   min-height: 268px;
   padding: 1.25rem;
   border-radius: 24px;
-  clip-path: inset(0 round 24px);
-  backface-visibility: hidden;
+  /* No clip-path/backface-visibility here: on iOS they push the card into a
+     compositing path that blanks out inline <video>. border-radius plus
+     overflow: hidden clips identically without that cost. */
   color: #fff;
   overflow: hidden;
   background-size: cover;
@@ -1873,4 +1874,14 @@ body {
   color: var(--muted);
   word-break: break-word;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Repo-only variant: name and language, nothing else */
+.os-merge-list { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.os-merge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
 }

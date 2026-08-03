@@ -17,6 +17,7 @@ import {
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import ProjectCard from "../components/ProjectCard";
+import AutoVideo from "../components/AutoVideo";
 
 const RELEASE_FREEZE_MS = 1000;
 const RELEASE_RAMP_MS = 2800;
@@ -919,15 +920,14 @@ export default function Home() {
                         <span>{project.year}</span>
                       </div>
                       {cardVideo ? (
-                        <video
+                        <AutoVideo
                           className="hero-card__media hero-card__media-video"
                           src={cardVideo}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          aria-hidden="true"
+                          poster={cardImage}
+                          // Orbit cards all sit on the same spot, so depth —
+                          // not screen position — decides who plays first.
+                          priorityHint={(1 - orbit.depth) * 400}
+                          decorative
                         />
                       ) : (
                         <div
@@ -1232,18 +1232,11 @@ export default function Home() {
 
           <ul className="os-merge-list">
             {openSource.merges.map((m) => (
-              <li key={m.repo} className="os-merge reveal">
-                <div className="os-merge__head">
-                  <a href={m.url} target="_blank" rel="noreferrer" className="os-merge__repo">
-                    {m.repo}
-                  </a>
-                  <span className="os-merge__lang">{m.lang}</span>
-                </div>
-                <p className="os-merge__did">{m.did}</p>
-                <div className="os-merge__foot">
-                  <code>{m.title}</code>
-                  <span className="os-pr__date">{m.date}</span>
-                </div>
+              <li key={m.repo} className="os-merge">
+                <a href={m.url} target="_blank" rel="noreferrer" className="os-merge__repo">
+                  {m.repo}
+                </a>
+                <span className="os-merge__lang">{m.lang}</span>
               </li>
             ))}
           </ul>
